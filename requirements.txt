@@ -4,3 +4,6 @@ rapidfuzz
 rich
 typer
 pandas
+feedparser
+cloudscraper
+letterboxdpy

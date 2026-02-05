@@ -1,64 +1,56 @@
 import json
 import pandas as pd
+from playwright.sync_api import sync_playwright  # Using sync version
 from letterbox_scraper import scrape_films
 from matcher import get_unwatched
-from justwatch import search_title, extract_offers, get_providers
+from justwatch_query import get_film_offers # Updated import
 
 # Load config
 with open("config.json", "r") as f:
     config = json.load(f)
 
 USERNAME = config["letterboxd_user"]
-COUNTRIES = config.get("country_scan", ["ES"])
-
-WATCHED_URL = f"https://letterboxd.com/{USERNAME}/films/"
-WATCHLIST_URL = f"https://letterboxd.com/{USERNAME}/watchlist/"
+COUNTRIES = config.get("country_scan", ["US"])
 
 def main():
-    print(f"Scraping watched films for {USERNAME}...")
-    watched = scrape_films(WATCHED_URL)
-    print(f"Found {len(watched)} watched films")
-
-    print("Scraping watchlist...")
-    watchlist = scrape_films(WATCHLIST_URL)
-    print(f"Found {len(watchlist)} watchlist films")
-
+    # ... (Your existing Letterboxd scraping code remains the same) ...
+    watched = scrape_films(f"https://letterboxd.com/{USERNAME}/films/")
+    watchlist = scrape_films(f"https://letterboxd.com/{USERNAME}/watchlist/")
     unwatched = get_unwatched(watchlist, watched)
-    print(f"Found {len(unwatched)} unwatched films")
 
-    providers_by_country = {c: get_providers(c) for c in COUNTRIES}
     rows = []
 
-    for film in unwatched:
-        print(f"🔍 {film['title']} ({film['year']})")
+    # Start Playwright once
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(
+            user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+        )
+        page = context.new_page()
 
-        for country in COUNTRIES:
-            item = search_title(
-                film["title"],
-                year=film["year"],
-                country=country
-            )
-            if not item:
-                continue
+        for film in unwatched:
+            print(f"🔍 Checking: {film['title']} ({film['year']})")
 
-            for o in extract_offers(item):
-                provider_name = providers_by_country[country].get(
-                    o["provider_id"], f"Unknown ({o['provider_id']})"
-                )
+            for country in COUNTRIES:
+                # Use the new combined function
+                offers = get_film_offers(page, film["title"], film["year"], country.lower())
+                
+                for o in offers:
+                    rows.append({
+                        "title": film["title"],
+                        "year": film["year"],
+                        "country": country,
+                        "provider": o["provider"],
+                        "monetization": o["monetization"],
+                        "details": o["details"]
+                    })
 
-                rows.append({
-                    "title": film["title"],
-                    "year": film["year"],
-                    "country": country,
-                    "provider": provider_name,
-                    "monetization": o["monetization"]
-                })
+        browser.close()
 
+    # Save results
     df = pd.DataFrame(rows)
     df.to_csv("data/unwatched.csv", index=False)
-    df.to_json("data/unwatched.json", orient="records", indent=2)
-
-    print("✅ Results saved")
+    print(f"✅ Results saved for {len(unwatched)} films")
 
 if __name__ == "__main__":
     main()
