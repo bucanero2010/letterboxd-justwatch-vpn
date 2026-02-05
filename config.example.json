@@ -1,0 +1,8 @@
+{
+  "letterboxd_user": "your_username_here",
+  "services": [
+    "Netflix",
+    "Amazon Prime Video"
+  ],
+  "country_scan": ["US", "ES", "FR"]
+}
