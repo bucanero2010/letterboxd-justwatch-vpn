@@ -1,0 +1,6 @@
+requests
+beautifulsoup4
+rapidfuzz
+rich
+typer
+pandas
