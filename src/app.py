@@ -2,23 +2,7 @@ import streamlit as st
 import pandas as pd
 from pathlib import Path
 
-# --- PAGE CONFIG ---
 st.set_page_config(page_title="Global Watchlist", layout="wide", page_icon="🍿")
-
-# --- CUSTOM CSS FOR POSTERS ---
-st.markdown("""
-    <style>
-    .stImage > img {
-        border-radius: 10px;
-        transition: transform .3s;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-    .stImage > img:hover {
-        transform: scale(1.03);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-    }
-    </style>
-""", unsafe_allow_html=True)
 
 # --- PATHING ---
 BASE_DIR = Path(__file__).resolve().parent.parent 
@@ -30,58 +14,62 @@ if file_path.exists():
     # --- SIDEBAR FILTERS ---
     st.sidebar.title("🎯 Filters")
     
-    all_countries = sorted(df['country'].unique())
-    selected_country = st.sidebar.multiselect("Select Countries", all_countries, default=all_countries)
-    
-    all_services = sorted(df['provider'].unique())
-    selected_service = st.sidebar.multiselect("Select Services", all_services, default=all_services)
+    # Country Filter with Select All
+    all_countries = sorted(df['country'].unique().tolist())
+    select_all_countries = st.sidebar.checkbox("Select all countries", value=True)
+    if select_all_countries:
+        selected_countries = st.sidebar.multiselect("Countries", all_countries, default=all_countries)
+    else:
+        selected_countries = st.sidebar.multiselect("Countries", all_countries)
 
-    # --- SEARCH BAR ---
-    search_query = st.text_input("", placeholder="🔍 Search your watchlist (e.g., 'Inception' or '2010')...")
+    # Service Filter with Select All
+    all_services = sorted(df['provider'].unique().tolist())
+    select_all_services = st.sidebar.checkbox("Select all services", value=True)
+    if select_all_services:
+        selected_services = st.sidebar.multiselect("Services", all_services, default=all_services)
+    else:
+        selected_services = st.sidebar.multiselect("Services", all_services)
 
-    # --- FILTERING LOGIC ---
+    # --- SEARCH & FILTER ---
+    search_query = st.text_input("", placeholder="🔍 Search movie titles...")
+
     filtered_df = df[
-        (df['country'].isin(selected_country)) & 
-        (df['provider'].isin(selected_service))
+        (df['country'].isin(selected_countries)) & 
+        (df['provider'].isin(selected_services))
     ]
     
     if search_query:
         filtered_df = filtered_df[filtered_df['title'].str.contains(search_query, case=False, na=False)]
 
     # --- GRID DISPLAY ---
-    # Grouping by title so we show one poster with multiple flags/providers
+    # Group by movie to avoid duplicates
     movies = filtered_df.groupby(['title', 'year']).agg({
         'country': list,
         'provider': list,
-        # Fallback if poster_url doesn't exist yet
-        'poster_url': 'first' if 'poster_url' in df.columns else lambda x: "https://via.placeholder.com/500x750?text=No+Poster"
+        'poster_url': 'first'
     }).reset_index()
 
     if movies.empty:
-        st.warning("No movies found with those filters!")
+        st.info("No movies match your filters.")
     else:
-        # Create columns (responsive-ish grid)
+        # Create a clean grid
         n_cols = 5
-        rows = [movies[i:i + n_cols] for i in range(0, movies.shape[0], n_cols)]
-
-        for row in rows:
+        for i in range(0, len(movies), n_cols):
             cols = st.columns(n_cols)
-            for i, (_, movie) in enumerate(row.iterrows()):
-                with cols[i]:
-                    # Poster Image
-                    st.image(movie['poster_url'], use_container_width=True)
-                    
-                    # Title & Year
-                    st.markdown(f"**{movie['title']}** ({int(movie['year'])})")
-                    
-                    # Displaying unique availability
-                    # Combining country + provider for a clean list
-                    availability = list(set([f"{c}: {p}" for c, p in zip(movie['country'], movie['provider'])]))
-                    for item in availability[:3]: # Show top 3 to keep it clean
-                        st.caption(f"📍 {item}")
-                    if len(availability) > 3:
-                        st.caption(f" + {len(availability)-3} more options")
-
+            for j, col in enumerate(cols):
+                if i + j < len(movies):
+                    movie = movies.iloc[i + j]
+                    with col:
+                        # Display Poster
+                        st.image(movie['poster_url'], use_container_width=True)
+                        st.markdown(f"**{movie['title']}** ({int(movie['year'])})")
+                        
+                        # CLEAN UI SOLUTION: The Expander
+                        # Combine country and provider into unique strings
+                        availability = sorted(list(set([f"{c}: {p}" for c, p in zip(movie['country'], movie['provider'])])))
+                        
+                        with st.expander(f"📍 Available on {len(availability)} options"):
+                            for item in availability:
+                                st.caption(item)
 else:
-    st.title("🍿 Global Watchlist")
-    st.error("Data file not found. Please run the scraper first!")
+    st.error("CSV file not found. Run your scraper first!")

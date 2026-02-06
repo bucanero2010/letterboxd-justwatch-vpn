@@ -3,3 +3,4 @@ pandas
 beautifulsoup4
 cloudscraper
 playwright
+requests
