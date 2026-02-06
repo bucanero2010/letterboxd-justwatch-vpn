@@ -31,7 +31,7 @@ def main():
     config = load_config()
     USERNAME = config["letterboxd_user"]
     TMDB_TOKEN = config["tmdb_key"]
-    COUNTRIES = ["US"] # config.get("country_scan", ["US"])
+    COUNTRIES = config.get("country_scan", ["US"])
 
     print(f"--- Fetching Letterboxd data for {USERNAME} ---")
     watched = scrape_films(f"https://letterboxd.com/{USERNAME}/films/")
@@ -50,7 +50,7 @@ def main():
             print(f"\n🌍 SCANNING: {country.upper()}")
             
             # Remove [:4] when you are ready to run the full list
-            for film in unwatched[:4]:
+            for film in unwatched:
                 # 1. Get/Cache Poster URL
                 movie_id = f"{film['title']}_{film['year']}"
                 if movie_id not in poster_cache:
