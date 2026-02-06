@@ -7,7 +7,6 @@ from playwright.sync_api import sync_playwright
 
 # --- LOCAL MODULES ---
 from letterbox_scraper import scrape_films
-from matcher import get_unwatched
 from justwatch_query import get_film_offers
 from poster_service import get_poster_url  # <--- New Import
 
