@@ -1,5 +1,5 @@
-cloudscraper
-beautifulsoup4
+streamlit>=1.40.0
 pandas
+beautifulsoup4
+cloudscraper
 playwright
-streamlit

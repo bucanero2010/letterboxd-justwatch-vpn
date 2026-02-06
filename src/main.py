@@ -2,10 +2,21 @@ import json
 import pandas as pd
 import time
 import random
+import os
+from pathlib import Path
 from playwright.sync_api import sync_playwright
 from letterbox_scraper import scrape_films
 from matcher import get_unwatched
 from justwatch_query import get_film_offers
+
+# --- SMART PATHING ---
+# This finds the 'src' folder where main.py lives, then goes up one level to the root
+BASE_DIR = Path(__file__).resolve().parent.parent 
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_FILE = DATA_DIR / "unwatched_by_country.csv"
+
+# Ensure the data directory exists
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 # Load config
 with open("config.json", "r") as f:
@@ -38,7 +49,7 @@ def main():
             print("=" * 30)
             
             # LOOP 2: By Movie (Internal)
-            for film in unwatched:
+            for film in unwatched[:4]:
                 # Use the function as defined in justwatch_query
                 offers = get_film_offers(page, film["title"], film["year"], country.lower())
                 
@@ -63,9 +74,9 @@ def main():
 
     # Save results
     if rows:
+        # Save results using the smart path
         df = pd.DataFrame(rows)
-        df.to_csv("data/unwatched_by_country.csv", index=False)
-        df.to_json("data/unwatched_by_country.json", orient="records", indent=2)
+        df.to_csv(OUTPUT_FILE, index=False)
         print(f"\n✅ Done! Results saved for {len(unwatched)} films across {len(COUNTRIES)} countries.")
     else:
         print("\n❌ No streaming results found.")
