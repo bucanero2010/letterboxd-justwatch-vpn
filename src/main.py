@@ -34,9 +34,7 @@ def main():
     COUNTRIES = config.get("country_scan", ["US"])
 
     print(f"--- Fetching Letterboxd data for {USERNAME} ---")
-    watched = scrape_films(f"https://letterboxd.com/{USERNAME}/films/by/date/")
-    watchlist = scrape_films(f"https://letterboxd.com/{USERNAME}/watchlist/")
-    unwatched = get_unwatched(watchlist, watched)
+    unwatched = scrape_films(f"https://letterboxd.com/{USERNAME}/watchlist/")
     
     rows = []
     poster_cache = {} # Dictionary to avoid redundant API calls
