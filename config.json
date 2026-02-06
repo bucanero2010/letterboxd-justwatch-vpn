@@ -1,0 +1,15 @@
+{
+  "letterboxd_user": "bucanero2010",
+  "services": [
+    "Netflix",
+    "HBO Max",
+    "Disney Plus",
+    "Amazon Prime Video",
+    "Apple TV Plus",
+    "MUBI",
+    "Filmin",
+    "RTVE Play",
+    "Youtube"
+  ],
+  "country_scan": ["ES", "US", "UK", "AR", "JP", "CA", "AU", "DK", "ZA"]
+}

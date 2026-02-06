@@ -1,9 +1,5 @@
-requests
-beautifulsoup4
-rapidfuzz
-rich
-typer
-pandas
-feedparser
 cloudscraper
-letterboxdpy
+beautifulsoup4
+pandas
+playwright
+streamlit

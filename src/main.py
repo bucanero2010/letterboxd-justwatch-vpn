@@ -13,7 +13,7 @@ with open("config.json", "r") as f:
 
 USERNAME = config["letterboxd_user"]
 # Ensure countries are loaded from config
-COUNTRIES = ["JP"] #config.get("country_scan", ["US", "UK", "ES", "AR"])
+COUNTRIES = config.get("country_scan", ["US", "UK", "ES", "AR"])
 
 def main():
     print(f"--- Fetching Letterboxd data for {USERNAME} ---")
