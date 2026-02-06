@@ -8,7 +8,7 @@ from playwright.sync_api import sync_playwright
 # --- LOCAL MODULES ---
 from letterbox_scraper import scrape_films
 from justwatch_query import get_film_offers
-from poster_service import get_poster_url  # <--- New Import
+from poster_service import get_movie_metadata
 
 # --- SMART PATHING ---
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -36,7 +36,7 @@ def main():
     unwatched = scrape_films(f"https://letterboxd.com/{USERNAME}/watchlist/")
     
     rows = []
-    poster_cache = {} # Dictionary to avoid redundant API calls
+    movie_cache = {} # Dictionary to avoid redundant API calls
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -50,9 +50,17 @@ def main():
             for film in unwatched:
                 # 1. Get/Cache Poster URL
                 movie_id = f"{film['title']}_{film['year']}"
-                if movie_id not in poster_cache:
-                    print(f"🎬 Getting poster: {film['title']}")
-                    poster_cache[movie_id] = get_poster_url(film["title"], film["year"], TMDB_TOKEN)
+
+                if movie_id not in movie_cache:
+                    print(f"🎬 Fetching metadata: {film['title']}")
+                    poster, runtime = get_movie_metadata(
+                        film["title"], film["year"], TMDB_TOKEN
+                    )
+                    movie_cache[movie_id] = {
+                        "poster_url": poster,
+                        "runtime": runtime
+                    }
+
                 
                 # 2. Scrape JustWatch
                 offers = get_film_offers(page, film["title"], film["year"], country.lower())
@@ -64,7 +72,8 @@ def main():
                             "year": film["year"],
                             "country": country.upper(),
                             "provider": o,
-                            "poster_url": poster_cache[movie_id]
+                            "poster_url": movie_cache[movie_id]["poster_url"],
+                            "runtime": movie_cache[movie_id]["runtime"]
                         })
                 
                 time.sleep(random.uniform(1, 2))

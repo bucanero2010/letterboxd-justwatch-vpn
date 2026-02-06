@@ -3,7 +3,7 @@ import pandas as pd
 from pathlib import Path
 
 st.set_page_config(
-    page_title="🍿 Global Watchlist",
+    page_title="Global Watchlist",
     layout="wide",
     page_icon="🍿"
 )
@@ -11,8 +11,8 @@ st.set_page_config(
 # =========================
 # 🍿 HEADER
 # =========================
-st.markdown("## 🍿 Global Watchlist")
-st.markdown("🌍 **Where your watchlist is streaming worldwide**")
+st.markdown("## 🍿 Watchlist Availability")
+st.markdown("**Where your watchlist is streaming worldwide**")
 
 # =========================
 # 📁 PATHING
@@ -34,10 +34,13 @@ def country_to_flag(code: str) -> str:
         return code
     return "".join(chr(127397 + ord(c)) for c in code.upper())
 
+def format_runtime(runtime):
+    return f"⏱️ {runtime} min" if pd.notna(runtime) else ""
+
 # =========================
 # 🎛️ SIDEBAR FILTERS
 # =========================
-st.sidebar.markdown("## 🎛️ Filters")
+st.sidebar.markdown("## Filters")
 
 # 🌍 Countries with flags
 countries = sorted(df["country"].unique().tolist())
@@ -50,13 +53,9 @@ selected_country_labels = st.sidebar.multiselect(
     default=["🌍 All countries"]
 )
 
-if "🌍 All countries" in selected_country_labels:
-    selected_countries = countries
-else:
-    selected_countries = [
-        c for c, label in country_labels.items()
-        if label in selected_country_labels
-    ]
+selected_countries = countries if "🌍 All countries" in selected_country_labels else [
+    c for c, label in country_labels.items() if label in selected_country_labels
+]
 
 # 📺 Services
 services = sorted(df["provider"].unique().tolist())
@@ -70,12 +69,6 @@ selected_services = st.sidebar.multiselect(
 if "📺 All services" in selected_services:
     selected_services = services
 
-# 🔍 Search
-search_query = st.text_input(
-    "",
-    placeholder="🔍 Search movie titles..."
-)
-
 # =========================
 # 🔎 FILTERING
 # =========================
@@ -84,19 +77,27 @@ filtered_df = df[
     (df["provider"].isin(selected_services))
 ]
 
-if search_query:
-    filtered_df = filtered_df[
-        filtered_df["title"].str.contains(search_query, case=False, na=False)
-    ]
-
 # =========================
 # 🎬 GRID DISPLAY
 # =========================
+# Group by movie to avoid duplicates
 movies = filtered_df.groupby(["title", "year"]).agg({
     "country": list,
     "provider": list,
-    "poster_url": "first"
+    "poster_url": "first",
+    "runtime": "first"
 }).reset_index()
+
+# 🔍 Search above grid
+search_query = st.text_input(
+    "",
+    placeholder="🔍 Search movie titles..."
+)
+if search_query:
+    movies = movies[movies["title"].str.contains(search_query, case=False, na=False)]
+
+# 🔢 SORTING by runtime ascending by default
+movies = movies.sort_values("runtime", na_position="last")  # shortest → longest
 
 if movies.empty:
     st.info("😕 No movies match your filters.")
@@ -109,7 +110,8 @@ else:
                 movie = movies.iloc[i + j]
                 with col:
                     st.image(movie["poster_url"], use_container_width=True)
-                    st.markdown(f"**{movie['title']}** ({int(movie['year'])})")
+                    runtime_text = format_runtime(movie.get("runtime"))
+                    st.markdown(f"**{movie['title']}** ({int(movie['year'])}) {runtime_text}")
 
                     availability = sorted(
                         set(
@@ -117,7 +119,6 @@ else:
                             for c, p in zip(movie["country"], movie["provider"])
                         )
                     )
-
                     with st.expander(f"📍 Available in {len(availability)} places"):
                         for item in availability:
                             st.caption(item)

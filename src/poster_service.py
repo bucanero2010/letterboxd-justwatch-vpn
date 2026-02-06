@@ -1,29 +1,55 @@
 import requests
 
-def get_poster_url(title, year, api_token):
-    """Fetches movie poster from TMDB using a Bearer Token."""
-    url = "https://api.themoviedb.org/3/search/movie"
-    params = {
-        "query": title, 
-        "year": year, 
-        "language": "en-US"
-    }
+TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w500"
+
+def get_movie_metadata(title, year, api_token):
+    """
+    Fetch poster + runtime from TMDB.
+    Returns: (poster_url, runtime)
+    """
+    search_url = "https://api.themoviedb.org/3/search/movie"
     headers = {
         "accept": "application/json",
         "Authorization": f"Bearer {api_token}"
     }
-    
+
+    params = {
+        "query": title,
+        "year": year,
+        "language": "en-US"
+    }
+
     try:
-        response = requests.get(url, headers=headers, params=params)
-        response.raise_for_status()
-        data = response.json()
-        
-        if data.get('results'):
-            poster_path = data['results'][0].get('poster_path')
-            if poster_path:
-                return f"https://image.tmdb.org/t/p/w500{poster_path}"
+        search = requests.get(search_url, headers=headers, params=params)
+        search.raise_for_status()
+        data = search.json()
+
+        if not data.get("results"):
+            raise ValueError("No TMDB results")
+
+        movie = data["results"][0]
+        movie_id = movie["id"]
+        poster_path = movie.get("poster_path")
+
+        # --- SECOND CALL: movie details ---
+        details_url = f"https://api.themoviedb.org/3/movie/{movie_id}"
+        details = requests.get(details_url, headers=headers)
+        details.raise_for_status()
+        details_data = details.json()
+
+        runtime = details_data.get("runtime")
+
+        poster_url = (
+            f"{TMDB_IMAGE_BASE}{poster_path}"
+            if poster_path
+            else "https://via.placeholder.com/500x750?text=No+Poster"
+        )
+
+        return poster_url, runtime
+
     except Exception as e:
-        print(f"⚠️ TMDB Error for {title}: {e}")
-    
-    # Return a high-quality placeholder if search fails
-    return "https://via.placeholder.com/500x750?text=No+Poster+Found"
+        print(f"⚠️ TMDB error for {title}: {e}")
+        return (
+            "https://via.placeholder.com/500x750?text=No+Poster",
+            None
+        )
