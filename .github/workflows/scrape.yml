@@ -26,7 +26,12 @@ jobs:
           playwright install chromium --with-deps
 
       - name: Run Scraper
-        run: python main.py
+        # This tells GitHub to stay in the 'src' folder for the whole step
+        working-directory: ./src 
+        run: |
+          # We add the current directory to PYTHONPATH so main.py finds its neighbors
+          export PYTHONPATH=$PYTHONPATH:.
+          python main.py
 
       - name: Commit and Push Results
         run: |
