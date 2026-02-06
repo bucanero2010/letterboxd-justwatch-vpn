@@ -1,83 +1,112 @@
 import json
-import pandas as pd
 import time
 import random
 from pathlib import Path
+
+import pandas as pd
 from playwright.sync_api import sync_playwright
 
 # --- LOCAL MODULES ---
 from letterbox_scraper import scrape_films
 from matcher import get_unwatched
 from justwatch_query import get_film_offers
-from poster_service import get_poster_url  # <--- New Import
+from poster_service import get_poster_url
 
-# --- SMART PATHING ---
+# --- PATHS ---
 SCRIPT_DIR = Path(__file__).resolve().parent
-BASE_DIR = SCRIPT_DIR.parent 
+BASE_DIR = SCRIPT_DIR.parent
 DATA_DIR = BASE_DIR / "data"
 OUTPUT_FILE = DATA_DIR / "unwatched_by_country.csv"
 
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
+
 def load_config():
-    paths = [SCRIPT_DIR / "config.json", BASE_DIR / "config.json"]
-    for p in paths:
-        if p.exists():
-            with open(p, "r") as f:
+    for path in (SCRIPT_DIR / "config.json", BASE_DIR / "config.json"):
+        if path.exists():
+            with open(path, "r") as f:
                 return json.load(f)
     raise FileNotFoundError("❌ config.json not found")
 
+
 def main():
     config = load_config()
+
     USERNAME = config["letterboxd_user"]
     TMDB_TOKEN = config["tmdb_key"]
     COUNTRIES = config.get("country_scan", ["US"])
 
-    print(f"--- Fetching Letterboxd data for {USERNAME} ---")
+    print(f"\n🎞️ Fetching Letterboxd data for {USERNAME}")
+
     watched = scrape_films(f"https://letterboxd.com/{USERNAME}/films/by/date/")
     watchlist = scrape_films(f"https://letterboxd.com/{USERNAME}/watchlist/")
     unwatched = get_unwatched(watchlist, watched)
-    
+
+    print(f"🧮 Unwatched films: {len(unwatched)}")
+
     rows = []
-    poster_cache = {} # Dictionary to avoid redundant API calls
+    poster_cache = {}
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-        context = browser.new_context(user_agent="Mozilla/5.0 ...")
+        context = browser.new_context(
+            user_agent=(
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/122.0.0.0 Safari/537.36"
+            )
+        )
         page = context.new_page()
 
         for country in COUNTRIES:
-            print(f"\n🌍 SCANNING: {country.upper()}")
-            
-            # Remove [:4] when you are ready to run the full list
+            country_code = country.lower()
+            print(f"\n🌍 Scanning country: {country.upper()}")
+
             for film in unwatched:
-                # 1. Get/Cache Poster URL
-                movie_id = f"{film['title']}_{film['year']}"
-                if movie_id not in poster_cache:
-                    print(f"🎬 Getting poster: {film['title']}")
-                    poster_cache[movie_id] = get_poster_url(film["title"], film["year"], TMDB_TOKEN)
-                
-                # 2. Scrape JustWatch
-                offers = get_film_offers(page, film["title"], film["year"], country.lower())
-                
+                title = film["title"]
+                year = film["year"]
+
+                cache_key = f"{title}_{year}"
+
+                # --- POSTER ---
+                if cache_key not in poster_cache:
+                    print(f"🖼️  Fetching poster: {title}")
+                    poster_cache[cache_key] = get_poster_url(
+                        title,
+                        year,
+                        TMDB_TOKEN
+                    )
+
+                # --- JUSTWATCH ---
+                offers = get_film_offers(
+                    page=page,
+                    title=title,
+                    year=year,
+                    country=country_code,
+                )
+
                 if offers:
-                    for o in offers:
+                    for provider in offers:
                         rows.append({
-                            "title": film["title"],
-                            "year": film["year"],
+                            "title": title,
+                            "year": year,
                             "country": country.upper(),
-                            "provider": o,
-                            "poster_url": poster_cache[movie_id]
+                            "provider": provider,
+                            "poster_url": poster_cache[cache_key],
                         })
-                
-                time.sleep(random.uniform(1, 2))
+
+                time.sleep(random.uniform(1.0, 2.0))
 
         browser.close()
 
-    if rows:
-        df = pd.DataFrame(rows)
-        df.to_csv(OUTPUT_FILE, index=False)
-        print(f"\n✅ Results saved to: {OUTPUT_FILE}")
+    if not rows:
+        print("\n⚠️ No offers found.")
+        return
+
+    df = pd.DataFrame(rows)
+    df.to_csv(OUTPUT_FILE, index=False)
+    print(f"\n✅ Results saved to {OUTPUT_FILE}")
+
 
 if __name__ == "__main__":
     main()
