@@ -1,5 +1,4 @@
-title,year,country,provider
-Good Time,2017,US,HBO Max
-Good Time,2017,US,Cinemax Amazon Channel
-Good Time,2017,US,HBO Max Amazon Channel
-Good Time,2017,US,Cinemax Apple TV Channel
+title,year,country,provider,poster_url
+The Handmaiden,2016,US,Amazon Prime Video,https://image.tmdb.org/t/p/w500/dLlH4aNHdnmf62umnInL8xPlPzw.jpg
+F1,2025,US,Apple TV,https://image.tmdb.org/t/p/w500/vqBmyAj0Xm9LnS1xe1MSlMAJyHq.jpg
+F1,2025,US,Apple TV Amazon Channel,https://image.tmdb.org/t/p/w500/vqBmyAj0Xm9LnS1xe1MSlMAJyHq.jpg
