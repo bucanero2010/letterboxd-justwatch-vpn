@@ -1,75 +1,68 @@
 import time
 import re
-from urllib.parse import urljoin
-import cloudscraper
+import random
 from bs4 import BeautifulSoup
 
-# Cloudflare-safe scraper
-scraper = cloudscraper.create_scraper()
-
-# Regex to extract year from title if present at the end
 YEAR_RE = re.compile(r"\((\d{4})\)$")
 
-def scrape_films(base_url, sleep=1, max_pages=100):
-    """
-    Scrape films from any Letterboxd paginated list using react-component metadata.
-    Works for:
-        - /films/
-        - /watchlist/
-        - /list/<slug>/
-    Extracts:
-        - title
-        - slug
-        - year (from title if available)
-    """
-
+def scrape_films_browser(page, base_url, max_pages=100):
     films = []
     seen_slugs = set()
-
-    # Remove domain if present
     next_path = base_url.replace("https://letterboxd.com", "")
 
-    page = 1
-    while next_path and page <= max_pages:
-        url = urljoin("https://letterboxd.com", next_path)
-        print(f"Scraping: {url}")
+    # Apply stealth script to hide automation flags
+    page.add_init_script("""
+        Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+    """)
 
-        r = scraper.get(url)
-        if r.status_code != 200:
-            print(f"Failed to fetch {url}: {r.status_code}")
+    page_num = 1
+    while next_path and page_num <= max_pages:
+        url = f"https://letterboxd.com{next_path}"
+        print(f"🚀 [Browser] Scraping: {url}")
+
+        try:
+            # Human-like pause
+            time.sleep(random.uniform(2, 4)) 
+
+            # Capture the response object from page.goto
+            response = page.goto(url, wait_until="domcontentloaded", timeout=60000)
+
+            # Check for 403 specifically using the captured response
+            if response and response.status == 403:
+                print(f"❌ Blocked (403) on {url}. Saving debug screenshot...")
+                page.screenshot(path="debug_403.png")
+                break
+                
+            # Simulate human interaction to satisfy Cloudflare
+            page.mouse.move(random.randint(0, 100), random.randint(0, 100))
+            page.evaluate("window.scrollTo(0, document.body.scrollHeight / 3)")
+            time.sleep(1)
+
+            # Extract HTML
+            content = page.content()
+            soup = BeautifulSoup(content, "html.parser")
+            
+            components = soup.find_all("div", class_="react-component")
+            for comp in components:
+                slug = comp.get("data-item-slug")
+                title_raw = comp.get("data-item-name") or ""
+                if not slug or slug in seen_slugs:
+                    continue
+
+                year_match = YEAR_RE.search(title_raw)
+                year = int(year_match.group(1)) if year_match else None
+                title = YEAR_RE.sub("", title_raw).strip()
+
+                films.append({"title": title, "year": year, "slug": slug})
+                seen_slugs.add(slug)
+
+            # Find next page
+            next_link = soup.find("a", class_="next")
+            next_path = next_link.get("href") if next_link else None
+            page_num += 1
+
+        except Exception as e:
+            print(f"⚠️ Error scraping {url}: {e}")
             break
-
-        soup = BeautifulSoup(r.text, "html.parser")
-
-        # All React components containing films
-        components = soup.find_all("div", class_="react-component")
-
-        for comp in components:
-            slug = comp.get("data-item-slug")
-            title_raw = comp.get("data-item-name") or ""
-
-            if not slug or slug in seen_slugs:
-                continue
-
-            # Extract year from title
-            year_match = YEAR_RE.search(title_raw)
-            year = int(year_match.group(1)) if year_match else None
-
-            # Remove year from title
-            title = YEAR_RE.sub("", title_raw).strip()
-
-            films.append({
-                "title": title,
-                "year": year,
-                "slug": slug
-            })
-            seen_slugs.add(slug)
-
-        # Pagination: next page
-        next_link = soup.find("a", class_="next")
-        next_path = next_link.get("href") if next_link else None
-
-        page += 1
-        time.sleep(sleep)
 
     return films
