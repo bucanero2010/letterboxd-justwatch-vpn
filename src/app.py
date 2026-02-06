@@ -4,6 +4,21 @@ from pathlib import Path
 
 st.set_page_config(page_title="Global Watchlist", layout="wide", page_icon="🍿")
 
+# Add this near your st.set_page_config
+st.markdown("""
+    <style>
+    /* Hide the Streamlit header and footer for a cleaner mobile look */
+    header {visibility: hidden;}
+    footer {visibility: hidden;}
+    
+    /* Make the app take up the full screen height on mobile */
+    .main .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # --- PATHING ---
 BASE_DIR = Path(__file__).resolve().parent.parent 
 file_path = BASE_DIR / "data" / "unwatched_by_country.csv"
