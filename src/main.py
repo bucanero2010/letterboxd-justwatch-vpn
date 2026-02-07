@@ -61,7 +61,6 @@ def main():
                         "runtime": runtime
                     }
 
-                
                 # 2. Scrape JustWatch
                 offers = get_film_offers(page, film["title"], film["year"], country.lower())
                 
@@ -76,7 +75,7 @@ def main():
                             "runtime": movie_cache[movie_id]["runtime"]
                         })
                 
-                time.sleep(random.uniform(1, 2))
+                time.sleep(random.uniform(1, 2)*0.05)
 
         browser.close()
 
