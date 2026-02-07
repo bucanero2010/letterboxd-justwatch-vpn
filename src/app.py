@@ -30,9 +30,18 @@ df = pd.read_csv(file_path)
 # 🧠 HELPERS
 # =========================
 def country_to_flag(code: str) -> str:
+    code = code.upper()
+    
+    # FIX: The UK flag is tied to the GB ISO code
+    if code == "UK":
+        code = "GB"
+        
     if len(code) != 2:
         return code
-    return "".join(chr(127397 + ord(c)) for c in code.upper())
+        
+    # Standard Regional Indicator Symbol formula
+    # Offset 127397 is sometimes used, but 127462 - ord('A') is safer
+    return "".join(chr(ord(c) + 127397) for c in code)
 
 def format_runtime(runtime):
     return f"⏱️ {runtime} min" if pd.notna(runtime) else ""
