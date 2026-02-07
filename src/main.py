@@ -2,6 +2,7 @@ import json
 import pandas as pd
 import time
 import random
+import re
 from datetime import datetime
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -37,6 +38,23 @@ def get_history():
 def save_history(history_set):
     with open(WATCHLIST_HISTORY, "w") as f:
         json.dump(list(history_set), f)
+
+# --- THE CLEANING FUNCTION ---
+def clean_provider_name(name):
+    if not name or pd.isna(name):
+        return name
+    
+    # 1. Remove specific add-on suffixes (Amazon Channel, Apple Channel, etc)
+    name = re.sub(r'\s*(?:on\s+)?(?:Amazon|Apple TV|U-Next|BFI|Curzon|Studiocanal)\s+Channel.*', '', name, flags=re.IGNORECASE)
+    
+    # 2. Remove tier and ad descriptors
+    name = re.sub(r'\s*(?:with Ads|Standard with Ads|Basic with Ads|Premium|Essential|Total|Ficción Total|Player|Extra|Basic|on U-Next).*', '', name, flags=re.IGNORECASE)
+
+    # 3. Specific manual cleanup
+    name = name.replace("Paramount Plus", "Paramount+")
+    name = name.replace("AMC Plus", "AMC+")
+    
+    return name.strip()
 
 def main():
     config = load_config()
@@ -94,12 +112,18 @@ def main():
                 offers = get_film_offers(page, film["title"], film["year"], country.lower())
                 
                 if offers:
+                    # Use a set to immediately de-duplicate the cleaned names
+                    unique_cleaned_providers = set()
                     for o in offers:
+                        cleaned = clean_provider_name(o)
+                        unique_cleaned_providers.add(cleaned)
+
+                    for provider in unique_cleaned_providers:
                         rows.append({
                             "title": film["title"],
                             "year": film["year"],
                             "country": country.upper(),
-                            "provider": o,
+                            "provider": provider, # Storing the clean version
                             "poster_url": movie_cache[movie_id]["poster_url"],
                             "runtime": movie_cache[movie_id]["runtime"],
                             "last_updated": today.strftime("%Y-%m-%d")
