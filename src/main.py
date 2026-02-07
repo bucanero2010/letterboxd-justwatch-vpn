@@ -39,12 +39,11 @@ def save_history(history_set):
     with open(WATCHLIST_HISTORY, "w") as f:
         json.dump(list(history_set), f)
 
-# --- THE CLEANING FUNCTION ---
 def clean_provider_name(name):
     if not name or pd.isna(name):
         return name
     
-    # 1. Remove specific add-on suffixes (Amazon Channel, Apple Channel, etc)
+    # 1. Remove specific add-on suffixes
     name = re.sub(r'\s*(?:on\s+)?(?:Amazon|Apple TV|U-Next|BFI|Curzon|Studiocanal)\s+Channel.*', '', name, flags=re.IGNORECASE)
     
     # 2. Remove tier and ad descriptors
@@ -62,7 +61,7 @@ def main():
     TMDB_TOKEN = config["tmdb_key"]
     COUNTRIES = config.get("country_scan", ["US"])
 
-    # 1. Fetch current watchlist
+    # 1. Fetch current watchlist (Source of Truth)
     print(f"--- Fetching Letterboxd data for {USERNAME} ---")
     current_watchlist = scrape_films(f"https://letterboxd.com/{USERNAME}/watchlist/")
     
@@ -73,6 +72,7 @@ def main():
     is_full_scan = is_sunday or is_first_of_month
 
     history = get_history()
+    # Create a set of IDs currently in Letterboxd to help with pruning and filtering
     current_ids = {f"{f['title']}_{f['year']}" for f in current_watchlist}
     
     if is_full_scan:
@@ -82,75 +82,81 @@ def main():
         print(f"📅 {today.strftime('%Y-%m-%d')}: DAILY SCAN (New movies only)")
         films_to_scan = [f for f in current_watchlist if f"{f['title']}_{f['year']}" not in history]
 
+    # Initialize rows to store potential new findings
+    new_rows = []
+
     if not films_to_scan:
-        print("☕ No new movies to check. Exiting.")
-        save_history(current_ids) # Update history to reflect current watchlist
-        return
+        print("☕ No new movies to check for streaming offers.")
+    else:
+        print(f"🚀 Processing {len(films_to_scan)} movies...")
+        movie_cache = {}
 
-    print(f"🚀 Processing {len(films_to_scan)} movies...")
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(user_agent="Mozilla/5.0 ...")
+            page = context.new_page()
 
-    rows = []
-    movie_cache = {}
+            for country in COUNTRIES:
+                print(f"\n🌍 SCANNING: {country.upper()}")
+                for film in films_to_scan:
+                    movie_id = f"{film['title']}_{film['year']}"
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        context = browser.new_context(user_agent="Mozilla/5.0 ...")
-        page = context.new_page()
+                    if movie_id not in movie_cache:
+                        poster, runtime = get_movie_metadata(film["title"], film["year"], TMDB_TOKEN)
+                        movie_cache[movie_id] = {"poster_url": poster, "runtime": runtime}
 
-        for country in COUNTRIES:
-            print(f"\n🌍 SCANNING: {country.upper()}")
-            
-            for film in films_to_scan:
-                movie_id = f"{film['title']}_{film['year']}"
+                    offers = get_film_offers(page, film["title"], film["year"], country.lower())
+                    
+                    if offers:
+                        unique_cleaned_providers = {clean_provider_name(o) for o in offers}
+                        for provider in unique_cleaned_providers:
+                            new_rows.append({
+                                "title": film["title"],
+                                "year": film["year"],
+                                "country": country.upper(),
+                                "provider": provider,
+                                "poster_url": movie_cache[movie_id]["poster_url"],
+                                "runtime": movie_cache[movie_id]["runtime"],
+                                "last_updated": today.strftime("%Y-%m-%d")
+                            })
+                    time.sleep(random.uniform(0.1, 0.3))
+            browser.close()
 
-                # 1. Metadata Cache
-                if movie_id not in movie_cache:
-                    poster, runtime = get_movie_metadata(film["title"], film["year"], TMDB_TOKEN)
-                    movie_cache[movie_id] = {"poster_url": poster, "runtime": runtime}
+    # --- 3. HANDLE RESULTS & PRUNING ---
+    # Load existing data if it exists to perform pruning
+    if OUTPUT_FILE.exists():
+        df_existing = pd.read_csv(OUTPUT_FILE)
+        # Create a temporary ID to check against current Letterboxd watchlist
+        df_existing['temp_id'] = df_existing['title'] + "_" + df_existing['year'].astype(str)
+        
+        # PRUNE: Keep only rows where the movie still exists in the Letterboxd Watchlist
+        df_pruned = df_existing[df_existing['temp_id'].isin(current_ids)].copy()
+        df_pruned.drop(columns=['temp_id'], inplace=True)
+        
+        rows_removed = len(df_existing) - len(df_pruned)
+        if rows_removed > 0:
+            print(f"🧹 Pruned {rows_removed} rows for movies removed from Letterboxd.")
+    else:
+        df_pruned = pd.DataFrame()
 
-                # 2. Scrape JustWatch
-                offers = get_film_offers(page, film["title"], film["year"], country.lower())
-                
-                if offers:
-                    # Use a set to immediately de-duplicate the cleaned names
-                    unique_cleaned_providers = set()
-                    for o in offers:
-                        cleaned = clean_provider_name(o)
-                        unique_cleaned_providers.add(cleaned)
-
-                    for provider in unique_cleaned_providers:
-                        rows.append({
-                            "title": film["title"],
-                            "year": film["year"],
-                            "country": country.upper(),
-                            "provider": provider, # Storing the clean version
-                            "poster_url": movie_cache[movie_id]["poster_url"],
-                            "runtime": movie_cache[movie_id]["runtime"],
-                            "last_updated": today.strftime("%Y-%m-%d")
-                        })
-                
-                time.sleep(random.uniform(0.1, 0.3))
-
-        browser.close()
-
-    # 3. Handle Results
-    if rows:
-        new_df = pd.DataFrame(rows)
-        if is_full_scan or not OUTPUT_FILE.exists():
-            # Overwrite on full scan
-            new_df.to_csv(OUTPUT_FILE, index=False)
+    if new_rows:
+        df_new = pd.DataFrame(new_rows)
+        if is_full_scan:
+            # Full scan: Fresh start (already pruned by nature of scanning current list)
+            df_new.to_csv(OUTPUT_FILE, index=False)
         else:
-            # Append on daily scan, but remove duplicates for the same movie/country/provider
-            existing_df = pd.read_csv(OUTPUT_FILE)
-            combined_df = pd.concat([existing_df, new_df]).drop_duplicates(
+            # Daily scan: Merge new findings with the pruned existing database
+            combined_df = pd.concat([df_pruned, df_new]).drop_duplicates(
                 subset=["title", "year", "country", "provider"], keep="last"
             )
             combined_df.to_csv(OUTPUT_FILE, index=False)
-        
-        print(f"\n✅ Results updated in: {OUTPUT_FILE}")
+    else:
+        # If no new movies were found, still save the pruned version to reflect deletions
+        df_pruned.to_csv(OUTPUT_FILE, index=False)
 
-    # 4. Update history so we don't scan these again tomorrow
+    # 4. Update history so we don't scan current movies again
     save_history(current_ids)
+    print(f"✅ Sync complete. Results: {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()
