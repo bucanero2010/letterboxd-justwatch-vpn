@@ -33,13 +33,31 @@ def perform_search(page, country, query, target_year):
             return None 
 
         soup = BeautifulSoup(page.content(), 'html.parser')
+
+        # NEW: Search results now use title-list-row with column-header links
+        # href can be absolute (https://www.justwatch.com/us/movie/...) or relative (/us/movie/...)
+        for header_link in soup.select("a.title-list-row__column-header"):
+            href = header_link.get("href", "")
+            # Normalize: strip domain prefix if present
+            path = href.replace("https://www.justwatch.com", "")
+            if not re.match(rf"^/{country}/[^/]+/[^/]+$", path):
+                continue
+            movie_keywords = ["movie", "pelicula", "film", "filme", "映画"]
+            if not any(kw in path for kw in movie_keywords):
+                continue
+            link_text = header_link.get_text(" ", strip=True)
+            if validate_match(query.split()[0], target_year, link_text):
+                return f"https://www.justwatch.com{path}"
+
+        # FALLBACK: Legacy approach for older layouts
         for a in soup.find_all("a", href=True):
             href = a['href']
-            if re.match(rf"^/{country}/[^/]+/[^/]+$", href):
-                if any(x in href for x in ["movie", "pelicula", "film", "filme", "映画"]):
+            path = href.replace("https://www.justwatch.com", "")
+            if re.match(rf"^/{country}/[^/]+/[^/]+$", path):
+                if any(x in path for x in ["movie", "pelicula", "film", "filme", "映画"]):
                     link_text = a.get_text(" ", strip=True) or (a.find("img").get("alt") if a.find("img") else "")
                     if validate_match(query.split()[0], target_year, link_text):
-                        return f"https://www.justwatch.com{href}"
+                        return f"https://www.justwatch.com{path}"
     except:
         pass
     return None
@@ -86,14 +104,14 @@ def get_film_offers(page, title, year, country):
 
         # 1. Scroll Down (Vital for lazy loading offers)
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        time.sleep(0.1)
+        time.sleep(0.5)
 
         # 2. Switch to Grid
         ensure_grid_view(page)
 
         # 3. Wait for Content
         try:
-            page.wait_for_selector(".buybox-row, .price-comparison__grid__row", timeout=5000)
+            page.wait_for_selector(".buybox-row, .price-comparison__grid__row", timeout=8000)
         except:
             return []
 
@@ -123,18 +141,20 @@ def get_film_offers(page, title, year, country):
                             is_streaming = True
 
             if is_streaming:
-                for img in row.select("img"):
-                    name = img.get('alt') or img.get('title')
-                    if name and "justwatch" not in name.lower():
-                        providers.append(name)
+                # NEW: Extract from a.offer > img.provider-icon (current layout)
+                for offer_link in row.select("a.offer"):
+                    img = offer_link.select_one("img.provider-icon, img")
+                    if img:
+                        name = img.get('alt') or img.get('title')
+                        if name and "justwatch" not in name.lower():
+                            providers.append(name)
                 
+                # FALLBACK: Direct img scan for older layouts
                 if not providers:
-                    for link in row.select("a"):
-                        img = link.find("img")
-                        if img:
-                             name = img.get('alt') or img.get('title')
-                             if name and "justwatch" not in name.lower():
-                                providers.append(name)
+                    for img in row.select("img"):
+                        name = img.get('alt') or img.get('title')
+                        if name and "justwatch" not in name.lower():
+                            providers.append(name)
         
         providers = list(set(providers))
         
