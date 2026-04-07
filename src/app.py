@@ -78,6 +78,22 @@ selected_services = st.sidebar.multiselect(
 if "📺 All services" in selected_services:
     selected_services = services
 
+# 📋 Sources (only if source column exists)
+has_source_column = "source" in df.columns
+selected_source = "📋 All sources"
+
+if has_source_column:
+    # Extract distinct source values from comma-separated entries
+    all_sources = sorted(
+        {s.strip() for val in df["source"].dropna() for s in str(val).split(",")}
+    )
+    source_options = ["📋 All sources"] + all_sources
+    selected_source = st.sidebar.selectbox(
+        "📋 Source",
+        options=source_options,
+        index=0
+    )
+
 # =========================
 # 🔎 FILTERING
 # =========================
@@ -85,6 +101,16 @@ filtered_df = df[
     (df["country"].isin(selected_countries)) &
     (df["provider"].isin(selected_services))
 ]
+
+# Apply source filter
+if has_source_column and selected_source != "📋 All sources":
+    filtered_df = filtered_df[
+        filtered_df["source"].fillna("").str.contains(selected_source, regex=False)
+    ]
+
+# Deduplicate by (title, year) when showing all sources
+if has_source_column and selected_source == "📋 All sources":
+    filtered_df = filtered_df.drop_duplicates(subset=["title", "year", "country", "provider"], keep="first")
 
 # =========================
 # 🎬 GRID DISPLAY
