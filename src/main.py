@@ -69,7 +69,7 @@ def main():
     today = datetime.today()
     is_sunday = today.weekday() == 6
     is_first_of_month = today.day == 1
-    is_full_scan = is_sunday or is_first_of_month
+    is_full_scan = True # is_sunday or is_first_of_month
 
     history = get_history()
     # Create a set of IDs currently in Letterboxd to help with pruning and filtering
