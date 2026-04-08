@@ -51,41 +51,42 @@ def format_runtime(runtime):
 # =========================
 st.sidebar.markdown("## Filters")
 
-# 🌍 Countries with flags
+# --- 🌍 Countries (popover with checkboxes) ---
 countries = sorted(df["country"].unique().tolist())
-country_labels = {c: f"{country_to_flag(c)} {c}" for c in countries}
 
-country_options = ["🌍 All countries"] + list(country_labels.values())
-selected_country_labels = st.sidebar.multiselect(
-    "🌍 Countries",
-    options=country_options,
-    default=["🌍 All countries"]
-)
+with st.sidebar.popover("🌍 Countries", use_container_width=True):
+    all_countries_checked = st.checkbox("Select all", value=True, key="all_countries")
+    country_selections = {}
+    for c in countries:
+        label = f"{country_to_flag(c)} {c}"
+        country_selections[c] = st.checkbox(label, value=all_countries_checked, key=f"country_{c}")
 
-selected_countries = countries if "🌍 All countries" in selected_country_labels else [
-    c for c, label in country_labels.items() if label in selected_country_labels
-]
+selected_countries = [c for c, checked in country_selections.items() if checked]
+if not selected_countries:
+    selected_countries = countries  # fallback to all if none selected
 
-# 📺 Services
-services = sorted(df["provider"].unique().tolist())
-service_options = ["📺 All services"] + services
-selected_services = st.sidebar.multiselect(
-    "📺 Streaming services",
-    options=service_options,
-    default=["📺 All services"]
-)
+# --- 📺 Services (cascaded from country, popover with checkboxes) ---
+country_filtered_df = df[df["country"].isin(selected_countries)]
+services = sorted(country_filtered_df["provider"].unique().tolist())
 
-if "📺 All services" in selected_services:
-    selected_services = services
+with st.sidebar.popover("📺 Streaming services", use_container_width=True):
+    all_services_checked = st.checkbox("Select all", value=True, key="all_services")
+    service_selections = {}
+    for s in services:
+        service_selections[s] = st.checkbox(s, value=all_services_checked, key=f"service_{s}")
 
-# 📋 Sources (only if source column exists)
+selected_services = [s for s, checked in service_selections.items() if checked]
+if not selected_services:
+    selected_services = services  # fallback to all if none selected
+
+# --- 📋 Sources (cascaded, only if column exists) ---
 has_source_column = "source" in df.columns
 selected_source = "📋 All sources"
 
 if has_source_column:
-    # Extract distinct source values from comma-separated entries
+    source_filtered_df = country_filtered_df[country_filtered_df["provider"].isin(selected_services)]
     all_sources = sorted(
-        {s.strip() for val in df["source"].dropna() for s in str(val).split(",")}
+        {s.strip() for val in source_filtered_df["source"].dropna() for s in str(val).split(",")}
     )
     source_options = ["📋 All sources"] + all_sources
     selected_source = st.sidebar.selectbox(
