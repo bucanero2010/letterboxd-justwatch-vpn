@@ -51,33 +51,58 @@ def format_runtime(runtime):
 # =========================
 st.sidebar.markdown("## Filters")
 
+# --- Helper: toggle all checkboxes in a group via session state ---
+def toggle_all(group_prefix, items, select_all_key):
+    """Callback: sync individual checkboxes to the select-all state."""
+    val = st.session_state[select_all_key]
+    for item in items:
+        st.session_state[f"{group_prefix}_{item}"] = val
+
 # --- 🌍 Countries (popover with checkboxes) ---
 countries = sorted(df["country"].unique().tolist())
 
+# Initialize session state for countries on first run
+if "all_countries" not in st.session_state:
+    st.session_state["all_countries"] = True
+    for c in countries:
+        st.session_state[f"country_{c}"] = True
+
 with st.sidebar.popover("🌍 Countries", use_container_width=True):
-    all_countries_checked = st.checkbox("Select all", value=True, key="all_countries")
-    country_selections = {}
+    st.checkbox(
+        "Select all", key="all_countries",
+        on_change=toggle_all, args=("country", countries, "all_countries")
+    )
     for c in countries:
         label = f"{country_to_flag(c)} {c}"
-        country_selections[c] = st.checkbox(label, value=all_countries_checked, key=f"country_{c}")
+        st.checkbox(label, key=f"country_{c}")
 
-selected_countries = [c for c, checked in country_selections.items() if checked]
+selected_countries = [c for c in countries if st.session_state.get(f"country_{c}", True)]
 if not selected_countries:
-    selected_countries = countries  # fallback to all if none selected
+    selected_countries = countries
 
-# --- 📺 Services (cascaded from country, popover with checkboxes) ---
+# --- 📺 Services (cascaded from country, popover with scrollable checkboxes) ---
 country_filtered_df = df[df["country"].isin(selected_countries)]
 services = sorted(country_filtered_df["provider"].unique().tolist())
 
-with st.sidebar.popover("📺 Streaming services", use_container_width=True):
-    all_services_checked = st.checkbox("Select all", value=True, key="all_services")
-    service_selections = {}
+# Initialize session state for services on first run
+if "all_services" not in st.session_state:
+    st.session_state["all_services"] = True
     for s in services:
-        service_selections[s] = st.checkbox(s, value=all_services_checked, key=f"service_{s}")
+        st.session_state[f"service_{s}"] = True
 
-selected_services = [s for s, checked in service_selections.items() if checked]
+with st.sidebar.popover("📺 Streaming services", use_container_width=True):
+    st.checkbox(
+        "Select all", key="all_services",
+        on_change=toggle_all, args=("service", services, "all_services")
+    )
+    # Scrollable container so the list doesn't overflow upward
+    with st.container(height=300):
+        for s in services:
+            st.checkbox(s, key=f"service_{s}")
+
+selected_services = [s for s in services if st.session_state.get(f"service_{s}", True)]
 if not selected_services:
-    selected_services = services  # fallback to all if none selected
+    selected_services = services
 
 # --- 📋 Sources (cascaded, only if column exists) ---
 has_source_column = "source" in df.columns
