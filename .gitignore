@@ -209,3 +209,7 @@ __marimo__/
 # Personal files
 test.py
 .DS_Store
+
+# data
+
+data/
