@@ -47,6 +47,19 @@ def format_runtime(runtime):
     return f"⏱️ {runtime} min" if pd.notna(runtime) else ""
 
 # =========================
+# 🏠 OWNED SERVICES MAP
+# =========================
+OWNED_SERVICES_MAP: dict[str, list[str]] = {
+    "Netflix":  ["Netflix"],
+    "Prime":    ["Amazon Prime Video"],
+    "HBO":      ["HBO Max"],
+    "Apple":    ["Apple TV"],
+    "Disney":   ["Disney Plus"],
+    "Youtube":  ["YouTube"],
+    "RTVE":     ["RTVE"],
+}
+
+# =========================
 # 🎛️ SIDEBAR FILTERS
 # =========================
 st.sidebar.markdown("## Filters")
@@ -104,6 +117,25 @@ selected_services = [s for s in services if st.session_state.get(f"service_{s}",
 if not selected_services:
     selected_services = services
 
+# --- 🏠 Services I own (popover with checkboxes, opt-in) ---
+owned_labels = list(OWNED_SERVICES_MAP.keys())
+
+# Initialize session state for owned services on first run (all unchecked)
+if "all_owned" not in st.session_state:
+    st.session_state["all_owned"] = False
+    for label in owned_labels:
+        st.session_state[f"owned_{label}"] = False
+
+with st.sidebar.popover("🏠 Services I own", use_container_width=True):
+    st.checkbox(
+        "Select all", key="all_owned",
+        on_change=toggle_all, args=("owned", owned_labels, "all_owned")
+    )
+    for label in owned_labels:
+        st.checkbox(label, key=f"owned_{label}")
+
+selected_owned_services = [label for label in owned_labels if st.session_state.get(f"owned_{label}", False)]
+
 # --- 📋 Sources (cascaded, only if column exists) ---
 has_source_column = "source" in df.columns
 selected_source = "📋 All sources"
@@ -127,6 +159,16 @@ filtered_df = df[
     (df["country"].isin(selected_countries)) &
     (df["provider"].isin(selected_services))
 ]
+
+# Apply owned services filter
+if selected_owned_services:
+    patterns = []
+    for label in selected_owned_services:
+        patterns.extend(OWNED_SERVICES_MAP[label])
+    mask = pd.Series(False, index=filtered_df.index)
+    for pattern in patterns:
+        mask = mask | filtered_df["provider"].str.contains(pattern, regex=False)
+    filtered_df = filtered_df[mask]
 
 # Apply source filter
 if has_source_column and selected_source != "📋 All sources":
