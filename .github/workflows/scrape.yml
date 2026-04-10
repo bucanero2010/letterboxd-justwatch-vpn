@@ -37,7 +37,7 @@ jobs:
         run: |
           git config --global user.name "Scraper Bot"
           git config --global user.email "bot@github.com"
-          git add data/unwatched_by_country.csv
-          git add data/seen_watchlist.json
+          git add -f data/unwatched_by_country.csv
+          git add -f data/seen_watchlist.json
           git commit -m "Update streaming data [skip ci]" || echo "No changes to commit"
           git push
