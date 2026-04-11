@@ -72,83 +72,84 @@ def main():
 
     # --- 1. Discover sources (Task 4.1) ---
     print(f"--- Fetching Letterboxd data for {USERNAME} ---")
-    sources = [{'name': 'Watchlist', 'url': f'https://letterboxd.com/{USERNAME}/watchlist/', 'key': 'watchlist'}]
-    try:
-        discovered = discover_lists(USERNAME)
-    except Exception as e:
-        print(f"⚠️ Failed to discover lists: {e}")
-        discovered = []
 
-    for lst in discovered:
-        sources.append({
-            'name': lst['name'],
-            'url': f"https://letterboxd.com{lst['url']}",
-            'key': f"list_{lst['slug']}",
-        })
-    print(f"📋 Found {len(sources)} sources: {', '.join(s['name'] for s in sources)}")
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+        page = context.new_page()
 
-    # --- 2. Determine scan mode ---
-    today = datetime.today()
-    is_full_scan = True # today.weekday() == 6 or today.day == 1
-
-    if is_full_scan:
-        print(f"📅 {today.strftime('%Y-%m-%d')}: FULL SCAN TRIGGERED (Sunday/1st of Month)")
-    else:
-        print(f"📅 {today.strftime('%Y-%m-%d')}: DAILY SCAN (New movies only)")
-
-    # --- 3. Per-source scraping with dedup tracking (Tasks 4.2 & 4.3) ---
-    all_films = {}  # film_id -> {'film': dict, 'sources': set}
-    combined_current_ids = set()
-    films_to_scan_set = set()  # film_ids that need JustWatch scanning
-
-    for source in sources:
-        print(f"\n📂 Scraping source: {source['name']}")
+        sources = [{'name': 'Watchlist', 'url': f'https://letterboxd.com/{USERNAME}/watchlist/', 'key': 'watchlist'}]
         try:
-            films = scrape_films(source['url'])
+            discovered = discover_lists(USERNAME, pw_page=page)
         except Exception as e:
-            print(f"⚠️ Failed to scrape {source['name']}: {e}")
-            continue
+            print(f"⚠️ Failed to discover lists: {e}")
+            discovered = []
 
-        history = load_history(source['key'])
-        source_ids = {f"{f['title']}_{f['year']}" for f in films}
-        combined_current_ids.update(source_ids)
+        for lst in discovered:
+            sources.append({
+                'name': lst['name'],
+                'url': f"https://letterboxd.com{lst['url']}",
+                'key': f"list_{lst['slug']}",
+            })
+        print(f"📋 Found {len(sources)} sources: {', '.join(s['name'] for s in sources)}")
 
-        # Track sources per film for deduplication and tagging
-        for f in films:
-            fid = f"{f['title']}_{f['year']}"
-            if fid not in all_films:
-                all_films[fid] = {'film': f, 'sources': set()}
-            all_films[fid]['sources'].add(source['name'])
+        # --- 2. Determine scan mode ---
+        today = datetime.today()
+        is_full_scan = True # today.weekday() == 6 or today.day == 1
 
-        # Determine what to scan for this source
         if is_full_scan:
-            for f in films:
-                films_to_scan_set.add(f"{f['title']}_{f['year']}")
+            print(f"📅 {today.strftime('%Y-%m-%d')}: FULL SCAN TRIGGERED (Sunday/1st of Month)")
         else:
+            print(f"📅 {today.strftime('%Y-%m-%d')}: DAILY SCAN (New movies only)")
+
+        # --- 3. Per-source scraping with dedup tracking (Tasks 4.2 & 4.3) ---
+        all_films = {}  # film_id -> {'film': dict, 'sources': set}
+        combined_current_ids = set()
+        films_to_scan_set = set()  # film_ids that need JustWatch scanning
+
+        for source in sources:
+            print(f"\n📂 Scraping source: {source['name']}")
+            try:
+                films = scrape_films(source['url'], pw_page=page)
+            except Exception as e:
+                print(f"⚠️ Failed to scrape {source['name']}: {e}")
+                continue
+
+            history = load_history(source['key'])
+            source_ids = {f"{f['title']}_{f['year']}" for f in films}
+            combined_current_ids.update(source_ids)
+
+            # Track sources per film for deduplication and tagging
             for f in films:
                 fid = f"{f['title']}_{f['year']}"
-                if fid not in history:
-                    films_to_scan_set.add(fid)
+                if fid not in all_films:
+                    all_films[fid] = {'film': f, 'sources': set()}
+                all_films[fid]['sources'].add(source['name'])
 
-        # Save history for this source
-        save_history(source['key'], source_ids)
+            # Determine what to scan for this source
+            if is_full_scan:
+                for f in films:
+                    films_to_scan_set.add(f"{f['title']}_{f['year']}")
+            else:
+                for f in films:
+                    fid = f"{f['title']}_{f['year']}"
+                    if fid not in history:
+                        films_to_scan_set.add(fid)
 
-    # Build deduplicated films_to_scan list
-    films_to_scan = [all_films[fid]['film'] for fid in films_to_scan_set if fid in all_films]
+            # Save history for this source
+            save_history(source['key'], source_ids)
 
-    # --- 4. Query JustWatch with source column (Task 4.4) ---
-    new_rows = []
+        # Build deduplicated films_to_scan list
+        films_to_scan = [all_films[fid]['film'] for fid in films_to_scan_set if fid in all_films]
 
-    if not films_to_scan:
-        print("☕ No new movies to check for streaming offers.")
-    else:
-        print(f"🚀 Processing {len(films_to_scan)} movies...")
-        movie_cache = {}
+        # --- 4. Query JustWatch with source column (Task 4.4) ---
+        new_rows = []
 
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            context = browser.new_context(user_agent="Mozilla/5.0 ...")
-            page = context.new_page()
+        if not films_to_scan:
+            print("☕ No new movies to check for streaming offers.")
+        else:
+            print(f"🚀 Processing {len(films_to_scan)} movies...")
+            movie_cache = {}
 
             for country in COUNTRIES:
                 print(f"\n🌍 SCANNING: {country.upper()}")
@@ -176,7 +177,8 @@ def main():
                                 "source": source_label,
                             })
                     time.sleep(random.uniform(0.1, 0.3))
-            browser.close()
+
+        browser.close()
 
     # --- 5. Pruning with combined multi-source IDs (Task 4.5) ---
     if OUTPUT_FILE.exists():
