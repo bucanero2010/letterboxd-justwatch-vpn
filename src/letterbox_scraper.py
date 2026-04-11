@@ -111,7 +111,13 @@ def discover_lists(username: str, pw_page=None, sleep_time: float = 1, max_pages
 
         list_pattern = re.compile(rf"^/{re.escape(username)}/list/([^/]+)/$")
 
-        for link in soup.find_all("a", href=list_pattern):
+        # Only match links inside <h2> tags to get the actual list name,
+        # not poster overlay links which may contain film titles
+        for h2 in soup.find_all("h2", class_="name"):
+            link = h2.find("a", href=list_pattern)
+            if not link:
+                continue
+
             href = link.get("href", "")
             match = list_pattern.match(href)
             if not match:
