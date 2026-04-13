@@ -95,7 +95,7 @@ def main():
 
         # --- 2. Determine scan mode ---
         today = datetime.today()
-        is_full_scan = True # today.weekday() == 6 or today.day == 1
+        is_full_scan = today.weekday() == 6 or today.day == 1
 
         if is_full_scan:
             print(f"📅 {today.strftime('%Y-%m-%d')}: FULL SCAN TRIGGERED (Sunday/1st of Month)")
