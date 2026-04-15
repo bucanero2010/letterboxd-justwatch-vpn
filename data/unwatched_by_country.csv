@@ -1,8 +1,6 @@
 title,year,country,provider,poster_url,runtime,last_updated,source
 Ben-Hur,1959,ES,Filmin,https://image.tmdb.org/t/p/w500/m4WQ1dBIrEIHZNCoAjdpxwSKWyH.jpg,212.0,2026-04-13,Watchlist
 Ben-Hur,1959,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/m4WQ1dBIrEIHZNCoAjdpxwSKWyH.jpg,212.0,2026-04-13,Watchlist
-Paddington,2014,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-13,Alyssa
-Paddington,2014,ES,HBO Max,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-13,Alyssa
 Lawrence of Arabia,1962,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/AiAm0EtDvyGqNpVoieRw4u65vD1.jpg,228.0,2026-04-13,Watchlist
 Gone with the Wind,1939,ES,Filmin,https://image.tmdb.org/t/p/w500/lNz2Ow0wGCAvzckW7EOjE03KcYv.jpg,233.0,2026-04-13,Watchlist
 Gone with the Wind,1939,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/lNz2Ow0wGCAvzckW7EOjE03KcYv.jpg,233.0,2026-04-13,Watchlist
@@ -25,25 +23,14 @@ Stalker,1979,ES,Filmin,https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFM
 Stalker,1979,ES,Tivify,https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg,162.0,2026-04-13,Tarkovsky
 Stalker,1979,ES,Acontra Plus,https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg,162.0,2026-04-13,Tarkovsky
 My Girl,1991,ES,Netflix,https://image.tmdb.org/t/p/w500/qyJJNHteA7BUwQSey05t7qP4vRV.jpg,103.0,2026-04-13,Watchlist
-The King's Speech,2010,ES,Disney Plus,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-13,Alyssa
-The King's Speech,2010,ES,rtve,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-13,Alyssa
-The King's Speech,2010,ES,Amazon Prime Video,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-13,Alyssa
-The King's Speech,2010,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-13,Alyssa
-The King's Speech,2010,ES,Netflix,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-13,Alyssa
 Once Upon a Time in America,1984,ES,Amazon Prime Video,https://image.tmdb.org/t/p/w500/i0enkzsL5dPeneWnjl1fCWm6L7k.jpg,229.0,2026-04-13,Watchlist
 Once Upon a Time in America,1984,ES,Disney Plus,https://image.tmdb.org/t/p/w500/i0enkzsL5dPeneWnjl1fCWm6L7k.jpg,229.0,2026-04-13,Watchlist
 Barry Lyndon,1975,ES,Filmin,https://image.tmdb.org/t/p/w500/znfLskGQnXYB2xcOGM9eInRHPAV.jpg,188.0,2026-04-13,Watchlist
 Barry Lyndon,1975,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/znfLskGQnXYB2xcOGM9eInRHPAV.jpg,188.0,2026-04-13,Watchlist
 Sirāt,2025,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/bzBtsLi17rK4G6kDvOXfUZfAhca.jpg,115.0,2026-04-13,Watchlist
-Mirror,1975,US,Netflix,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-13,Tarkovsky
-The Human Condition III: A Soldier's Prayer,1961,US,Criterion Channel,https://image.tmdb.org/t/p/w500/pag7gyxSFe7vTl6riHfZ5Xci6q7.jpg,190.0,2026-04-13,Filmin
 8 Mile,2002,US,Starz,https://image.tmdb.org/t/p/w500/7BmQj8qE1FLuLTf7Xjf9sdIHzoa.jpg,111.0,2026-04-13,Watchlist
 8 Mile,2002,US,Philo,https://image.tmdb.org/t/p/w500/7BmQj8qE1FLuLTf7Xjf9sdIHzoa.jpg,111.0,2026-04-13,Watchlist
 8 Mile,2002,US,Starz Roku,https://image.tmdb.org/t/p/w500/7BmQj8qE1FLuLTf7Xjf9sdIHzoa.jpg,111.0,2026-04-13,Watchlist
-Fantastic Mr. Fox,2009,US,Disney Plus,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-13,Alyssa
-Disobedience,2017,US,Hoopla,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-13,Alyssa
-Disobedience,2017,US,Kanopy,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-13,Alyssa
-Disobedience,2017,US,Cinemax,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-13,Alyssa
 Everything Everywhere All at Once,2022,US,HBO Max,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-13,Alyssa
 Seven Samurai,1954,US,Kanopy,https://image.tmdb.org/t/p/w500/lOMGc8bnSwQhS4XyE1S99uH8NXf.jpg,207.0,2026-04-13,Watchlist
 Seven Samurai,1954,US,HBO Max,https://image.tmdb.org/t/p/w500/lOMGc8bnSwQhS4XyE1S99uH8NXf.jpg,207.0,2026-04-13,Watchlist
@@ -55,24 +42,15 @@ The Trial,1962,US,Night Flight Plus,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pX
 The Trial,1962,US,Artiflix,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-13,Filmin
 The Trial,1962,US,Criterion Channel,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-13,Filmin
 Sicario,2015,US,Netflix,https://image.tmdb.org/t/p/w500/lz8vNyXeidqqOdJW9ZjnDAMb5Vr.jpg,122.0,2026-04-13,Watchlist
-Nostalgia,1983,US,Hoopla,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-13,Tarkovsky
-Nostalgia,1983,US,Kanopy,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-13,Tarkovsky
-Nostalgia,1983,US,Klassiki,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-13,Tarkovsky
-Nostalgia,1983,US,Kino Film Collection,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-13,Tarkovsky
 Fanny and Alexander,1982,US,Shout! Factory TV,https://image.tmdb.org/t/p/w500/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg,188.0,2026-04-13,Watchlist
 Fanny and Alexander,1982,US,HBO Max,https://image.tmdb.org/t/p/w500/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg,188.0,2026-04-13,Watchlist
 Fanny and Alexander,1982,US,Criterion Channel,https://image.tmdb.org/t/p/w500/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg,188.0,2026-04-13,Watchlist
-Mysterious Skin,2004,US,Strand Releasing,https://image.tmdb.org/t/p/w500/wgSwDqhl6Rt3cuSCwt5sNpPna3x.jpg,105.0,2026-04-13,Mubi
 Twin Peaks: Fire Walk with Me,1992,US,HBO Max,https://image.tmdb.org/t/p/w500/mxsGXqetGnirf99qapYd5MMY1VL.jpg,135.0,2026-04-13,Watchlist
 Twin Peaks: Fire Walk with Me,1992,US,Criterion Channel,https://image.tmdb.org/t/p/w500/mxsGXqetGnirf99qapYd5MMY1VL.jpg,135.0,2026-04-13,Watchlist
 TÁR,2022,US,Fandango at Home Free,https://image.tmdb.org/t/p/w500/dRVAlaU0vbG6hMf2K45NSiIyoUe.jpg,158.0,2026-04-13,Alyssa
 TÁR,2022,US,USA Network,https://image.tmdb.org/t/p/w500/dRVAlaU0vbG6hMf2K45NSiIyoUe.jpg,158.0,2026-04-13,Alyssa
 TÁR,2022,US,Peacock,https://image.tmdb.org/t/p/w500/dRVAlaU0vbG6hMf2K45NSiIyoUe.jpg,158.0,2026-04-13,Alyssa
 Cunk on Life,2024,US,Netflix,https://image.tmdb.org/t/p/w500/zZx5a595bYuNxd8TdoRflxATFML.jpg,70.0,2026-04-13,Alyssa
-The King's Speech,2010,US,Britbox,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-13,Alyssa
-The King's Speech,2010,US,The Roku Channel,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-13,Alyssa
-The King's Speech,2010,US,Kanopy,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-13,Alyssa
-The King's Speech,2010,US,Hoopla,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-13,Alyssa
 Once Upon a Time in America,1984,US,Amazon Prime Video,https://image.tmdb.org/t/p/w500/i0enkzsL5dPeneWnjl1fCWm6L7k.jpg,229.0,2026-04-13,Watchlist
 Sunset Boulevard,1950,US,fuboTV,https://image.tmdb.org/t/p/w500/zt8aQ6ksqK6p1AopC5zVTDS9pKT.jpg,110.0,2026-04-13,Watchlist
 Sunset Boulevard,1950,US,Philo,https://image.tmdb.org/t/p/w500/zt8aQ6ksqK6p1AopC5zVTDS9pKT.jpg,110.0,2026-04-13,Watchlist
@@ -88,15 +66,7 @@ Terminator 2: Judgment Day,1991,US,Paramount+,https://image.tmdb.org/t/p/w500/jF
 Terminator 2: Judgment Day,1991,US,fuboTV,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
 Terminator 2: Judgment Day,1991,US,Philo,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
 Terminator 2: Judgment Day,1991,US,MGM+,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
-The Count of Monte Cristo,2024,US,MGM Plus Roku,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-13,Prime VPN
-The Count of Monte Cristo,2024,US,fuboTV,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-13,Prime VPN
-The Count of Monte Cristo,2024,US,Philo,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-13,Prime VPN
-The Count of Monte Cristo,2024,US,Kanopy,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-13,Prime VPN
-The Count of Monte Cristo,2024,US,MGM+,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-13,Prime VPN
-The Count of Monte Cristo,2024,US,MGM Plus,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-13,Prime VPN
-The Count of Monte Cristo,2024,US,Hoopla,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-13,Prime VPN
 Lincoln,2012,US,YouTube TV,https://image.tmdb.org/t/p/w500/5KeUqW6DpVtf8G9VMuI2l0XIPCo.jpg,150.0,2026-04-13,Watchlist
-Mirror,1975,UK,Netflix,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-13,Tarkovsky
 Satantango,1994,UK,Curz,https://image.tmdb.org/t/p/w500/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg,432.0,2026-04-13,Filmin
 Eternal Sunshine of the Spotless Mind,2004,UK,Amazon Prime Video,https://image.tmdb.org/t/p/w500/5MwkWH9tYHv3mV9OdYTMR5qreIz.jpg,108.0,2026-04-13,Alyssa
 Eternal Sunshine of the Spotless Mind,2004,UK,MUBI,https://image.tmdb.org/t/p/w500/5MwkWH9tYHv3mV9OdYTMR5qreIz.jpg,108.0,2026-04-13,Alyssa
@@ -108,33 +78,21 @@ I Saw the Devil,2010,UK,Studiocanal Presents,https://image.tmdb.org/t/p/w500/zp5
 The Deer Hunter,1978,UK,Studiocanal Presents,https://image.tmdb.org/t/p/w500/bbGtogDZOg09bm42KIpCXUXICkh.jpg,183.0,2026-04-13,Watchlist
 The Deer Hunter,1978,UK,STUDIOCANAL PRESENTS,https://image.tmdb.org/t/p/w500/bbGtogDZOg09bm42KIpCXUXICkh.jpg,183.0,2026-04-13,Watchlist
 The Deer Hunter,1978,UK,HBO Max,https://image.tmdb.org/t/p/w500/bbGtogDZOg09bm42KIpCXUXICkh.jpg,183.0,2026-04-13,Watchlist
-No Other Choice,2025,UK,MUBI,https://image.tmdb.org/t/p/w500/sBpxTGLzKnvPSVtL5yQYpSxvKEb.jpg,140.0,2026-04-13,Mubi
 My Cousin Vinny,1992,UK,Disney Plus,https://image.tmdb.org/t/p/w500/iwSURa8nS2ujwrU3s1lfxxX7voH.jpg,120.0,2026-04-13,Watchlist
-The Trial,1962,UK,Studiocanal Presents,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-13,Filmin
-The Trial,1962,UK,Artiflix,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-13,Filmin
 Sicario,2015,UK,Lionsgate+,https://image.tmdb.org/t/p/w500/lz8vNyXeidqqOdJW9ZjnDAMb5Vr.jpg,122.0,2026-04-13,Watchlist
 Sicario,2015,UK,ITVX,https://image.tmdb.org/t/p/w500/lz8vNyXeidqqOdJW9ZjnDAMb5Vr.jpg,122.0,2026-04-13,Watchlist
 Sicario,2015,UK,YouTube Free,https://image.tmdb.org/t/p/w500/lz8vNyXeidqqOdJW9ZjnDAMb5Vr.jpg,122.0,2026-04-13,Watchlist
 Fanny and Alexander,1982,UK,BFI,https://image.tmdb.org/t/p/w500/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg,188.0,2026-04-13,Watchlist
 Fanny and Alexander,1982,UK,Sky Go,https://image.tmdb.org/t/p/w500/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg,188.0,2026-04-13,Watchlist
 Fanny and Alexander,1982,UK,Now TV Cinema,https://image.tmdb.org/t/p/w500/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg,188.0,2026-04-13,Watchlist
-Mysterious Skin,2004,UK,MUBI,https://image.tmdb.org/t/p/w500/wgSwDqhl6Rt3cuSCwt5sNpPna3x.jpg,105.0,2026-04-13,Mubi
 Cunk on Life,2024,UK,BBC i,https://image.tmdb.org/t/p/w500/zZx5a595bYuNxd8TdoRflxATFML.jpg,70.0,2026-04-13,Alyssa
 Cunk on Life,2024,UK,Netflix,https://image.tmdb.org/t/p/w500/zZx5a595bYuNxd8TdoRflxATFML.jpg,70.0,2026-04-13,Alyssa
 An Elephant Sitting Still,2018,UK,BFI,https://image.tmdb.org/t/p/w500/3qr9wpaa5dA7AGr5ndgYiioavIn.jpg,230.0,2026-04-13,Watchlist
 Terminator 2: Judgment Day,1991,UK,Studiocanal Presents,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
 Terminator 2: Judgment Day,1991,UK,STUDIOCANAL PRESENTS,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
-Dogville,2003,UK,Curz,https://image.tmdb.org/t/p/w500/lraVawavIXh5geMlVjpzCw9TGwR.jpg,178.0,2026-04-13,"Filmin, Mubi"
 Lawrence of Arabia,1962,AR,Netflix,https://image.tmdb.org/t/p/w500/AiAm0EtDvyGqNpVoieRw4u65vD1.jpg,228.0,2026-04-13,Watchlist
-Triangle of Sadness,2022,AR,MovistarTV,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-13,Alyssa
-Triangle of Sadness,2022,AR,Amazon Prime Video,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-13,Alyssa
-Triangle of Sadness,2022,AR,HBO Max,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-13,Alyssa
-Do Not Expect Too Much from the End of the World,2023,AR,MUBI,https://image.tmdb.org/t/p/w500/y2H7SMzSO0f8KHjCqavUhVfRX0Z.jpg,164.0,2026-04-13,Filmin
 Gone with the Wind,1939,AR,HBO Max,https://image.tmdb.org/t/p/w500/lNz2Ow0wGCAvzckW7EOjE03KcYv.jpg,233.0,2026-04-13,Watchlist
-Platoon,1986,AR,MovistarTV,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-13,"Filmin, Mubi"
-Platoon,1986,AR,MGM+,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-13,"Filmin, Mubi"
 The Iron Giant,1999,AR,HBO Max,https://via.placeholder.com/500x750?text=No+Poster,,2026-04-13,Watchlist
-Sometimes I Think About Dying,2023,AR,MUBI,https://image.tmdb.org/t/p/w500/lp0dtmNtOW88A13GZjGoKZko7S8.jpg,94.0,2026-04-13,"Filmin, Mubi"
 Yi Yi,2000,AR,Disney Plus,https://image.tmdb.org/t/p/w500/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg,174.0,2026-04-13,Filmin
 Sicario,2015,AR,MovistarTV,https://image.tmdb.org/t/p/w500/lz8vNyXeidqqOdJW9ZjnDAMb5Vr.jpg,122.0,2026-04-13,Watchlist
 Arco,2025,AR,MUBI,https://image.tmdb.org/t/p/w500/mWlvHFxTDhq9O5WSOHywa32QIez.jpg,89.0,2026-04-13,Watchlist
@@ -149,23 +107,14 @@ Catch Me If You Can,2002,AR,MovistarTV,https://image.tmdb.org/t/p/w500/ctjEj2xM3
 Catch Me If You Can,2002,AR,Paramount+,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-13,Alyssa
 Catch Me If You Can,2002,AR,Netflix,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-13,Alyssa
 Ben-Hur,1959,JP,HBO Max,https://image.tmdb.org/t/p/w500/m4WQ1dBIrEIHZNCoAjdpxwSKWyH.jpg,212.0,2026-04-13,Watchlist
-Paddington,2014,JP,Amazon Prime Video,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-13,Alyssa
-Paddington,2014,JP,U-NEXT,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-13,Alyssa
-Paddington,2014,JP,kino films+,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-13,Alyssa
-Paddington,2014,JP,Hulu,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-13,Alyssa
-Paddington,2014,JP,Netflix,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-13,Alyssa
-Ocean's Eleven,2001,JP,U-NEXT,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-13,Alyssa
-Ocean's Eleven,2001,JP,HBO Max,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-13,Alyssa
 8 Mile,2002,JP,U-NEXT,https://image.tmdb.org/t/p/w500/7BmQj8qE1FLuLTf7Xjf9sdIHzoa.jpg,111.0,2026-04-13,Watchlist
 Kagemusha,1980,JP,U-NEXT,https://image.tmdb.org/t/p/w500/fJgqj9s8HNZz9zwX6femVJn8HEB.jpg,180.0,2026-04-13,Watchlist
 Lawrence of Arabia,1962,JP,U-NEXT,https://image.tmdb.org/t/p/w500/AiAm0EtDvyGqNpVoieRw4u65vD1.jpg,228.0,2026-04-13,Watchlist
-Do Not Expect Too Much from the End of the World,2023,JP,Netflix,https://image.tmdb.org/t/p/w500/y2H7SMzSO0f8KHjCqavUhVfRX0Z.jpg,164.0,2026-04-13,Filmin
 Gone with the Wind,1939,JP,HBO Max,https://image.tmdb.org/t/p/w500/lNz2Ow0wGCAvzckW7EOjE03KcYv.jpg,233.0,2026-04-13,Watchlist
 Seven Samurai,1954,JP,U-NEXT,https://image.tmdb.org/t/p/w500/lOMGc8bnSwQhS4XyE1S99uH8NXf.jpg,207.0,2026-04-13,Watchlist
 The Grand Budapest Hotel,2014,JP,Amazon Prime Video,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-13,Alyssa
 The Grand Budapest Hotel,2014,JP,Disney Plus,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-13,Alyssa
 The Grand Budapest Hotel,2014,JP,Netflix,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-13,Alyssa
-Close Your Eyes,2023,JP,Amazon Prime Video,https://image.tmdb.org/t/p/w500/czUKm6JUutIg55EcRJ7CRAAzFMU.jpg,169.0,2026-04-13,Mubi
 The Iron Giant,1999,JP,U-NEXT,https://via.placeholder.com/500x750?text=No+Poster,,2026-04-13,Watchlist
 The Iron Giant,1999,JP,HBO Max,https://via.placeholder.com/500x750?text=No+Poster,,2026-04-13,Watchlist
 I Saw the Devil,2010,JP,Amazon Prime Video,https://image.tmdb.org/t/p/w500/zp5NrmYp80axIGiEiYPmm1CW6uH.jpg,144.0,2026-04-13,Watchlist
@@ -177,9 +126,6 @@ The Tree of Life,2011,JP,HBO Max,https://image.tmdb.org/t/p/w500/l8cwuB5WJSoj4uM
 Sicario,2015,JP,Hulu,https://image.tmdb.org/t/p/w500/lz8vNyXeidqqOdJW9ZjnDAMb5Vr.jpg,122.0,2026-04-13,Watchlist
 Sicario,2015,JP,U-NEXT,https://image.tmdb.org/t/p/w500/lz8vNyXeidqqOdJW9ZjnDAMb5Vr.jpg,122.0,2026-04-13,Watchlist
 The Human Condition I: No Greater Love,1959,JP,Disney Plus,https://image.tmdb.org/t/p/w500/q7godavx5XEbeVxEeqi4pmiOKdI.jpg,204.0,2026-04-13,Filmin
-Parasite,2019,JP,Hulu,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-13,Alyssa
-Parasite,2019,JP,U-NEXT,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-13,Alyssa
-Parasite,2019,JP,Netflix,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-13,Alyssa
 Red Beard,1965,JP,U-NEXT,https://image.tmdb.org/t/p/w500/iYNH3Re0JSypoYaWvZtERUnNaJL.jpg,185.0,2026-04-13,Watchlist
 My Girl,1991,JP,U-NEXT,https://image.tmdb.org/t/p/w500/qyJJNHteA7BUwQSey05t7qP4vRV.jpg,103.0,2026-04-13,Watchlist
 Twin Peaks: Fire Walk with Me,1992,JP,KADOKAWA channel,https://image.tmdb.org/t/p/w500/mxsGXqetGnirf99qapYd5MMY1VL.jpg,135.0,2026-04-13,Watchlist
@@ -193,10 +139,7 @@ Barry Lyndon,1975,JP,HBO Max,https://image.tmdb.org/t/p/w500/znfLskGQnXYB2xcOGM9
 Terminator 2: Judgment Day,1991,JP,Hulu,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
 Terminator 2: Judgment Day,1991,JP,U-NEXT,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
 Terminator 2: Judgment Day,1991,JP,Cinefil Wow Plus,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
-Uncut Gems,2019,JP,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-13,Alyssa
 Anastasia,1997,JP,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-13,Alyssa
-Dogville,2003,JP,FOD,https://image.tmdb.org/t/p/w500/lraVawavIXh5geMlVjpzCw9TGwR.jpg,178.0,2026-04-13,"Filmin, Mubi"
-Dogville,2003,JP,U-NEXT,https://image.tmdb.org/t/p/w500/lraVawavIXh5geMlVjpzCw9TGwR.jpg,178.0,2026-04-13,"Filmin, Mubi"
 Mirror,1975,CA,Netflix,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-13,Tarkovsky
 8 Mile,2002,CA,Crave,https://image.tmdb.org/t/p/w500/7BmQj8qE1FLuLTf7Xjf9sdIHzoa.jpg,111.0,2026-04-13,Watchlist
 Fantastic Mr. Fox,2009,CA,Starz,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-13,Alyssa
@@ -206,24 +149,16 @@ Disobedience,2017,CA,Hoopla,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxO
 Disobedience,2017,CA,Paramount+,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-13,Alyssa
 Disobedience,2017,CA,Pluto TV,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-13,Alyssa
 Disobedience,2017,CA,CBC Gem,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-13,Alyssa
-Do Not Expect Too Much from the End of the World,2023,CA,MUBI,https://image.tmdb.org/t/p/w500/y2H7SMzSO0f8KHjCqavUhVfRX0Z.jpg,164.0,2026-04-13,Filmin
 Seven Samurai,1954,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/lOMGc8bnSwQhS4XyE1S99uH8NXf.jpg,207.0,2026-04-13,Watchlist
 Seven Samurai,1954,CA,CTV,https://image.tmdb.org/t/p/w500/lOMGc8bnSwQhS4XyE1S99uH8NXf.jpg,207.0,2026-04-13,Watchlist
 Seven Samurai,1954,CA,Crave,https://image.tmdb.org/t/p/w500/lOMGc8bnSwQhS4XyE1S99uH8NXf.jpg,207.0,2026-04-13,Watchlist
 Seven Samurai,1954,CA,Plex,https://image.tmdb.org/t/p/w500/lOMGc8bnSwQhS4XyE1S99uH8NXf.jpg,207.0,2026-04-13,Watchlist
-La Dolce Vita,1960,CA,Plex,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-13,Mubi
 Sicario,2015,CA,Starz,https://image.tmdb.org/t/p/w500/lz8vNyXeidqqOdJW9ZjnDAMb5Vr.jpg,122.0,2026-04-13,Watchlist
 Sicario,2015,CA,Hollywood Suite,https://image.tmdb.org/t/p/w500/lz8vNyXeidqqOdJW9ZjnDAMb5Vr.jpg,122.0,2026-04-13,Watchlist
-Nostalgia,1983,CA,Hoopla,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-13,Tarkovsky
 Fanny and Alexander,1982,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg,188.0,2026-04-13,Watchlist
 Fanny and Alexander,1982,CA,CTV,https://image.tmdb.org/t/p/w500/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg,188.0,2026-04-13,Watchlist
 Fanny and Alexander,1982,CA,Crave,https://image.tmdb.org/t/p/w500/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg,188.0,2026-04-13,Watchlist
 Fanny and Alexander,1982,CA,Plex,https://image.tmdb.org/t/p/w500/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg,188.0,2026-04-13,Watchlist
-Parasite,2019,CA,Crave,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-13,Alyssa
-Parasite,2019,CA,Paramount+,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-13,Alyssa
-Parasite,2019,CA,Hollywood Suite,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-13,Alyssa
-Parasite,2019,CA,CBC Gem,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-13,Alyssa
-Stalker,1979,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg,162.0,2026-04-13,Tarkovsky
 Red Beard,1965,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/iYNH3Re0JSypoYaWvZtERUnNaJL.jpg,185.0,2026-04-13,Watchlist
 My Girl,1991,CA,Starz,https://image.tmdb.org/t/p/w500/qyJJNHteA7BUwQSey05t7qP4vRV.jpg,103.0,2026-04-13,Watchlist
 My Girl,1991,CA,Crave,https://image.tmdb.org/t/p/w500/qyJJNHteA7BUwQSey05t7qP4vRV.jpg,103.0,2026-04-13,Watchlist
@@ -235,9 +170,6 @@ Once Upon a Time in America,1984,CA,Disney Plus,https://image.tmdb.org/t/p/w500/
 Terminator 2: Judgment Day,1991,CA,Crave,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
 Terminator 2: Judgment Day,1991,CA,Hollywood Suite,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
 The Banshees of Inisherin,2022,CA,Disney Plus,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-13,Alyssa
-Mirror,1975,AU,Netflix,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-13,Tarkovsky
-Ocean's Eleven,2001,AU,Stan,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-13,Alyssa
-Ocean's Eleven,2001,AU,HBO Max,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-13,Alyssa
 8 Mile,2002,AU,Foxtel Now,https://image.tmdb.org/t/p/w500/7BmQj8qE1FLuLTf7Xjf9sdIHzoa.jpg,111.0,2026-04-13,Watchlist
 8 Mile,2002,AU,Paramount+,https://image.tmdb.org/t/p/w500/7BmQj8qE1FLuLTf7Xjf9sdIHzoa.jpg,111.0,2026-04-13,Watchlist
 The Iron Giant,1999,AU,HBO Max,https://via.placeholder.com/500x750?text=No+Poster,,2026-04-13,Watchlist
@@ -258,10 +190,8 @@ Barry Lyndon,1975,AU,HBO Max,https://image.tmdb.org/t/p/w500/znfLskGQnXYB2xcOGM9
 Terminator 2: Judgment Day,1991,AU,Foxtel Now,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
 Terminator 2: Judgment Day,1991,AU,BINGE,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
 Terminator 2: Judgment Day,1991,AU,Stan,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
-The Banshees of Inisherin,2022,AU,Disney Plus,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-13,Alyssa
 About Dry Grasses,2023,DK,Filmstriben,https://image.tmdb.org/t/p/w500/mUFpdQSFAch1fMUb9MqHoESpmLS.jpg,197.0,2026-04-13,Mubi
 The Deer Hunter,1978,DK,Filmstriben,https://image.tmdb.org/t/p/w500/bbGtogDZOg09bm42KIpCXUXICkh.jpg,183.0,2026-04-13,Watchlist
-Yi Yi,2000,DK,DRTV,https://image.tmdb.org/t/p/w500/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg,174.0,2026-04-13,Filmin
 My Cousin Vinny,1992,DK,Disney Plus,https://image.tmdb.org/t/p/w500/iwSURa8nS2ujwrU3s1lfxxX7voH.jpg,120.0,2026-04-13,Watchlist
 The Tree of Life,2011,DK,Filmstriben,https://image.tmdb.org/t/p/w500/l8cwuB5WJSoj4uMAsnzuHBOMaSJ.jpg,139.0,2026-04-13,Watchlist
 Sicario,2015,DK,HBO Max,https://image.tmdb.org/t/p/w500/lz8vNyXeidqqOdJW9ZjnDAMb5Vr.jpg,122.0,2026-04-13,Watchlist
@@ -274,7 +204,6 @@ Fanny and Alexander,1982,DK,DRTV,https://image.tmdb.org/t/p/w500/q8jlA3Wc1Z987hN
 Fanny and Alexander,1982,DK,Allente,https://image.tmdb.org/t/p/w500/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg,188.0,2026-04-13,Watchlist
 Fanny and Alexander,1982,DK,Netflix,https://image.tmdb.org/t/p/w500/q8jlA3Wc1Z987hNKRFA44g5OugC.jpg,188.0,2026-04-13,Watchlist
 Parasite,2019,DK,Filmstriben,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-13,Alyssa
-Mysterious Skin,2004,DK,MUBI,https://image.tmdb.org/t/p/w500/wgSwDqhl6Rt3cuSCwt5sNpPna3x.jpg,105.0,2026-04-13,Mubi
 Twin Peaks: Fire Walk with Me,1992,DK,Filmstriben,https://image.tmdb.org/t/p/w500/mxsGXqetGnirf99qapYd5MMY1VL.jpg,135.0,2026-04-13,Watchlist
 Twin Peaks: Fire Walk with Me,1992,DK,Rakuten TV,https://image.tmdb.org/t/p/w500/mxsGXqetGnirf99qapYd5MMY1VL.jpg,135.0,2026-04-13,Watchlist
 Pi,1998,DK,Filmstriben,https://image.tmdb.org/t/p/w500/fJA22FjlAW8rzrOw9Mwanl6oTc9.jpg,84.0,2026-04-13,Watchlist
@@ -283,132 +212,32 @@ Once Upon a Time in America,1984,DK,Allente,https://image.tmdb.org/t/p/w500/i0en
 Once Upon a Time in America,1984,DK,Amazon Prime Video,https://image.tmdb.org/t/p/w500/i0enkzsL5dPeneWnjl1fCWm6L7k.jpg,229.0,2026-04-13,Watchlist
 Once Upon a Time in America,1984,DK,Disney Plus,https://image.tmdb.org/t/p/w500/i0enkzsL5dPeneWnjl1fCWm6L7k.jpg,229.0,2026-04-13,Watchlist
 Terminator 2: Judgment Day,1991,DK,Amazon Prime Video,https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg,137.0,2026-04-13,Watchlist
-Anastasia,1997,DK,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-13,Alyssa
-Satantango,1994,ZA,Netflix,https://image.tmdb.org/t/p/w500/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg,432.0,2026-04-13,Filmin
 Arco,2025,ZA,Amazon Prime Video,https://image.tmdb.org/t/p/w500/mWlvHFxTDhq9O5WSOHywa32QIez.jpg,89.0,2026-04-13,Watchlist
-Catch Me If You Can,2002,ZA,Netflix,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-13,Alyssa
 Sometimes I Think About Dying,2023,ES,Filmin,https://image.tmdb.org/t/p/w500/lp0dtmNtOW88A13GZjGoKZko7S8.jpg,94.0,2026-04-14,"Filmin, Mubi"
-...And Justice for All,1979,ES,Filmin,https://image.tmdb.org/t/p/w500/32NmJn0p4o9BdWVpEhuyxzwsqhL.jpg,119.0,2026-04-14,Filmin
-Uncut Gems,2019,ES,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-14,Alyssa
 The Human Condition III: A Soldier's Prayer,1961,ES,Filmin,https://image.tmdb.org/t/p/w500/pag7gyxSFe7vTl6riHfZ5Xci6q7.jpg,190.0,2026-04-14,Filmin
-Moana,2016,ES,Disney Plus,https://image.tmdb.org/t/p/w500/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg,107.0,2026-04-14,Alyssa
-The Banshees of Inisherin,2022,ES,Disney Plus,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-14,Alyssa
 Dogville,2003,ES,Filmin,https://image.tmdb.org/t/p/w500/lraVawavIXh5geMlVjpzCw9TGwR.jpg,178.0,2026-04-14,"Filmin, Mubi"
-La Dolce Vita,1960,ES,FlixOlé,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-14,Mubi
-La Dolce Vita,1960,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-14,Mubi
-La Dolce Vita,1960,ES,Plex,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-14,Mubi
-Cunk on Life,2024,ES,Netflix,https://image.tmdb.org/t/p/w500/zZx5a595bYuNxd8TdoRflxATFML.jpg,70.0,2026-04-14,Alyssa
-In Bruges,2008,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/vz3Vd6nfq9YZrVvyYx5RHFaYKV3.jpg,108.0,2026-04-14,Alyssa
-Yi Yi,2000,ES,Filmin,https://image.tmdb.org/t/p/w500/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg,174.0,2026-04-14,Filmin
-Mirror,1975,ES,Tivify,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-14,Tarkovsky
-Mirror,1975,ES,Acontra Plus,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-14,Tarkovsky
-Mirror,1975,ES,Filmin,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-14,Tarkovsky
-Mirror,1975,ES,Plex,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-14,Tarkovsky
-Mysterious Skin,2004,ES,MUBI,https://image.tmdb.org/t/p/w500/wgSwDqhl6Rt3cuSCwt5sNpPna3x.jpg,105.0,2026-04-14,Mubi
 It Was Just an Accident,2025,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg,103.0,2026-04-14,Filmin
 It Was Just an Accident,2025,ES,Filmin,https://image.tmdb.org/t/p/w500/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg,103.0,2026-04-14,Filmin
-Fantastic Mr. Fox,2009,ES,Rakuten TV,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-14,Alyssa
-Fantastic Mr. Fox,2009,ES,Disney Plus,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-14,Alyssa
-The Human Condition II: Road to Eternity,1959,ES,Filmin,https://image.tmdb.org/t/p/w500/7jfv1C4t06VGenQxf3HbmLVmUHZ.jpg,178.0,2026-04-14,Filmin
-Anastasia,1997,ES,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-14,Alyssa
-The White Ribbon,2009,ES,Tivify,https://image.tmdb.org/t/p/w500/54dlnGDexrwAFlDb8HWKfmmX4LB.jpg,144.0,2026-04-14,Filmin
-The White Ribbon,2009,ES,Runtime,https://image.tmdb.org/t/p/w500/54dlnGDexrwAFlDb8HWKfmmX4LB.jpg,144.0,2026-04-14,Filmin
-The White Ribbon,2009,ES,Acontra Plus,https://image.tmdb.org/t/p/w500/54dlnGDexrwAFlDb8HWKfmmX4LB.jpg,144.0,2026-04-14,Filmin
-The White Ribbon,2009,ES,Filmin,https://image.tmdb.org/t/p/w500/54dlnGDexrwAFlDb8HWKfmmX4LB.jpg,144.0,2026-04-14,Filmin
-The Sacrifice,1986,ES,MUBI,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-14,Tarkovsky
-The Sacrifice,1986,ES,Filmin,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-14,Tarkovsky
-Blue Is the Warmest Color,2013,ES,Filmin,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-14,"Filmin, Watchlist"
-No Other Choice,2025,ES,MUBI,https://image.tmdb.org/t/p/w500/sBpxTGLzKnvPSVtL5yQYpSxvKEb.jpg,140.0,2026-04-14,Mubi
 Winter Sleep,2014,ES,Filmin,https://image.tmdb.org/t/p/w500/95j83qOqH3Ivz4RYkaSjGT0VSNr.jpg,196.0,2026-04-14,Filmin
-Birdman or (The Unexpected Virtue of Ignorance),2014,ES,Tivify,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
-Birdman or (The Unexpected Virtue of Ignorance),2014,ES,Rakuten TV,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
-Birdman or (The Unexpected Virtue of Ignorance),2014,ES,Netflix,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
-Birdman or (The Unexpected Virtue of Ignorance),2014,ES,Disney Plus,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
-Do Not Expect Too Much from the End of the World,2023,ES,Filmin,https://image.tmdb.org/t/p/w500/y2H7SMzSO0f8KHjCqavUhVfRX0Z.jpg,164.0,2026-04-14,Filmin
-Solaris,1972,ES,Filmin,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-14,Tarkovsky
-Papillon,1973,ES,Amazon Prime Video,https://image.tmdb.org/t/p/w500/356oqQpug682OERsWV0bGZ0YxwQ.jpg,151.0,2026-04-14,Prime VPN
-Papillon,1973,ES,Atres,https://image.tmdb.org/t/p/w500/356oqQpug682OERsWV0bGZ0YxwQ.jpg,151.0,2026-04-14,Prime VPN
 Ocean's Eleven,2001,ES,Amazon Prime Video,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
 Ocean's Eleven,2001,ES,HBO Max,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
-Platoon,1986,ES,MGM Plus,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-14,"Filmin, Mubi"
-Platoon,1986,ES,Filmin,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-14,"Filmin, Mubi"
-The Grand Budapest Hotel,2014,ES,Netflix,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-14,Alyssa
-The Grand Budapest Hotel,2014,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-14,Alyssa
-The Grand Budapest Hotel,2014,ES,Disney Plus,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-14,Alyssa
-Catch Me If You Can,2002,ES,Tivify,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
-Catch Me If You Can,2002,ES,fuboTV,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
-Catch Me If You Can,2002,ES,Atres,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
-Catch Me If You Can,2002,ES,Netflix,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
-Catch Me If You Can,2002,ES,SkyShowtime,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
-Catch Me If You Can,2002,ES,HBO Max,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
-Catch Me If You Can,2002,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
-The Human Condition I: No Greater Love,1959,ES,Filmin,https://image.tmdb.org/t/p/w500/q7godavx5XEbeVxEeqi4pmiOKdI.jpg,204.0,2026-04-14,Filmin
-Everything Everywhere All at Once,2022,ES,Amazon Prime Video,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-14,Alyssa
-In the Mood for Love,2000,ES,Rakuten TV,https://image.tmdb.org/t/p/w500/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg,99.0,2026-04-14,Alyssa
-In the Mood for Love,2000,ES,Filmin,https://image.tmdb.org/t/p/w500/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg,99.0,2026-04-14,Alyssa
-The Big Lebowski,1998,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/3bv6WAp6BSxxYvB5ozKFUYuRA8C.jpg,117.0,2026-04-14,Alyssa
-The Big Lebowski,1998,ES,SkyShowtime,https://image.tmdb.org/t/p/w500/3bv6WAp6BSxxYvB5ozKFUYuRA8C.jpg,117.0,2026-04-14,Alyssa
-Andrei Rublev,1966,ES,Tivify,https://image.tmdb.org/t/p/w500/910xRIUmNJrWH2hkQifBJtoPp5R.jpg,183.0,2026-04-14,"Tarkovsky, Watchlist"
-Andrei Rublev,1966,ES,Acontra Plus,https://image.tmdb.org/t/p/w500/910xRIUmNJrWH2hkQifBJtoPp5R.jpg,183.0,2026-04-14,"Tarkovsky, Watchlist"
-Andrei Rublev,1966,ES,Filmin,https://image.tmdb.org/t/p/w500/910xRIUmNJrWH2hkQifBJtoPp5R.jpg,183.0,2026-04-14,"Tarkovsky, Watchlist"
-Satantango,1994,ES,Netflix,https://image.tmdb.org/t/p/w500/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg,432.0,2026-04-14,Filmin
-Triangle of Sadness,2022,ES,Filmin,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Triangle of Sadness,2022,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Triangle of Sadness,2022,ES,HBO Max,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Sometimes I Think About Dying,2023,US,Kanopy,https://image.tmdb.org/t/p/w500/lp0dtmNtOW88A13GZjGoKZko7S8.jpg,94.0,2026-04-14,"Filmin, Mubi"
-Sometimes I Think About Dying,2023,US,MUBI,https://image.tmdb.org/t/p/w500/lp0dtmNtOW88A13GZjGoKZko7S8.jpg,94.0,2026-04-14,"Filmin, Mubi"
 Uncut Gems,2019,US,Hulu,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-14,Alyssa
 Uncut Gems,2019,US,HBO Max,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-14,Alyssa
 Moana,2016,US,Disney Plus,https://image.tmdb.org/t/p/w500/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg,107.0,2026-04-14,Alyssa
-The Banshees of Inisherin,2022,US,fuboTV,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-14,Alyssa
-The Banshees of Inisherin,2022,US,YouTube TV,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-14,Alyssa
-The Banshees of Inisherin,2022,US,FXNow,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-14,Alyssa
-La Dolce Vita,1960,US,Plex,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-14,Mubi
 Yi Yi,2000,US,Criterion Channel,https://image.tmdb.org/t/p/w500/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg,174.0,2026-04-14,Filmin
 Yi Yi,2000,US,Kanopy,https://image.tmdb.org/t/p/w500/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg,174.0,2026-04-14,Filmin
 Mirror,1975,US,Criterion Channel,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-14,Tarkovsky
 It Was Just an Accident,2025,US,Hulu,https://image.tmdb.org/t/p/w500/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg,103.0,2026-04-14,Filmin
-Close Your Eyes,2023,US,MUBI,https://image.tmdb.org/t/p/w500/czUKm6JUutIg55EcRJ7CRAAzFMU.jpg,169.0,2026-04-14,Mubi
 The Human Condition II: Road to Eternity,1959,US,Criterion Channel,https://image.tmdb.org/t/p/w500/7jfv1C4t06VGenQxf3HbmLVmUHZ.jpg,178.0,2026-04-14,Filmin
-Anastasia,1997,US,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-14,Alyssa
 The Sacrifice,1986,US,Kanopy,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-14,Tarkovsky
 The Sacrifice,1986,US,Klassiki,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-14,Tarkovsky
 The Sacrifice,1986,US,Hoopla,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-14,Tarkovsky
 The Sacrifice,1986,US,Kino Film Collection,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-14,Tarkovsky
-Blue Is the Warmest Color,2013,US,Philo,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-14,"Filmin, Watchlist"
-Blue Is the Warmest Color,2013,US,AMC+,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-14,"Filmin, Watchlist"
-Blue Is the Warmest Color,2013,US,Kanopy,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-14,"Filmin, Watchlist"
-Blue Is the Warmest Color,2013,US,Netflix,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-14,"Filmin, Watchlist"
-Blue Is the Warmest Color,2013,US,Hulu,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-14,"Filmin, Watchlist"
-Blue Is the Warmest Color,2013,US,Xumo Play,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-14,"Filmin, Watchlist"
-Blue Is the Warmest Color,2013,US,The Roku Channel,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-14,"Filmin, Watchlist"
-Blue Is the Warmest Color,2013,US,Sundance Now,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-14,"Filmin, Watchlist"
-Do Not Expect Too Much from the End of the World,2023,US,MUBI,https://image.tmdb.org/t/p/w500/y2H7SMzSO0f8KHjCqavUhVfRX0Z.jpg,164.0,2026-04-14,Filmin
-Solaris,1972,US,Criterion Channel,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-14,Tarkovsky
-Solaris,1972,US,Kanopy,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-14,Tarkovsky
-Solaris,1972,US,YouTube Free,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-14,Tarkovsky
-Solaris,1972,US,HBO Max,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-14,Tarkovsky
-Solaris,1972,US,Shout! Factory TV,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-14,Tarkovsky
-Papillon,1973,US,Kanopy,https://image.tmdb.org/t/p/w500/356oqQpug682OERsWV0bGZ0YxwQ.jpg,151.0,2026-04-14,Prime VPN
-Paddington,2014,US,The Roku Channel,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
-Paddington,2014,US,BYUtv,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
-Paddington,2014,US,Angel Studios,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
-Paddington,2014,US,Britbox,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
-Ocean's Eleven,2001,US,fuboTV,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
-Ocean's Eleven,2001,US,Philo,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
-Ocean's Eleven,2001,US,AMC+,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
-Ocean's Eleven,2001,US,Starz Roku,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
-Ocean's Eleven,2001,US,Starz,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
-Ocean's Eleven,2001,US,MGM+,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
 Catch Me If You Can,2002,US,fuboTV,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
 Catch Me If You Can,2002,US,Paramount+,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
 Catch Me If You Can,2002,US,Kanopy,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
 Catch Me If You Can,2002,US,Hoopla,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
 Catch Me If You Can,2002,US,YouTube Free,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
-The Human Condition I: No Greater Love,1959,US,Criterion Channel,https://image.tmdb.org/t/p/w500/q7godavx5XEbeVxEeqi4pmiOKdI.jpg,204.0,2026-04-14,Filmin
-Stalker,1979,US,Criterion Channel,https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg,162.0,2026-04-14,Tarkovsky
-Stalker,1979,US,Kanopy,https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg,162.0,2026-04-14,Tarkovsky
-Stalker,1979,US,HBO Max,https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg,162.0,2026-04-14,Tarkovsky
 Parasite,2019,US,Kanopy,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-14,Alyssa
 The Big Lebowski,1998,US,Amazon Prime Video,https://image.tmdb.org/t/p/w500/3bv6WAp6BSxxYvB5ozKFUYuRA8C.jpg,117.0,2026-04-14,Alyssa
 The Big Lebowski,1998,US,Philo,https://image.tmdb.org/t/p/w500/3bv6WAp6BSxxYvB5ozKFUYuRA8C.jpg,117.0,2026-04-14,Alyssa
@@ -418,57 +247,26 @@ About Dry Grasses,2023,US,Criterion Channel,https://image.tmdb.org/t/p/w500/mUFp
 About Dry Grasses,2023,US,Kanopy,https://image.tmdb.org/t/p/w500/mUFpdQSFAch1fMUb9MqHoESpmLS.jpg,197.0,2026-04-14,Mubi
 Triangle of Sadness,2022,US,Kanopy,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
 Triangle of Sadness,2022,US,Netflix,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Nostalgia,1983,UK,Netflix,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-14,Tarkovsky
 Sometimes I Think About Dying,2023,UK,Now TV Cinema,https://image.tmdb.org/t/p/w500/lp0dtmNtOW88A13GZjGoKZko7S8.jpg,94.0,2026-04-14,"Filmin, Mubi"
-Uncut Gems,2019,UK,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-14,Alyssa
-Moana,2016,UK,Disney Plus,https://image.tmdb.org/t/p/w500/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg,107.0,2026-04-14,Alyssa
 The Banshees of Inisherin,2022,UK,Channel 4 Plus,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-14,Alyssa
 The Banshees of Inisherin,2022,UK,Disney Plus,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-14,Alyssa
 La Dolce Vita,1960,UK,Pluto TV,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-14,Mubi
 La Dolce Vita,1960,UK,Plex,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-14,Mubi
 Mirror,1975,UK,Plex,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-14,Tarkovsky
-It Was Just an Accident,2025,UK,MUBI,https://image.tmdb.org/t/p/w500/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg,103.0,2026-04-14,Filmin
-Fantastic Mr. Fox,2009,UK,Disney Plus,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-14,Alyssa
 Close Your Eyes,2023,UK,BFI,https://image.tmdb.org/t/p/w500/czUKm6JUutIg55EcRJ7CRAAzFMU.jpg,169.0,2026-04-14,Mubi
-Anastasia,1997,UK,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-14,Alyssa
-The White Ribbon,2009,UK,BFI,https://image.tmdb.org/t/p/w500/54dlnGDexrwAFlDb8HWKfmmX4LB.jpg,144.0,2026-04-14,Filmin
-The Sacrifice,1986,UK,Klassiki,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-14,Tarkovsky
-The Sacrifice,1986,UK,Curz,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-14,Tarkovsky
-The Sacrifice,1986,UK,Channel 4 Plus,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-14,Tarkovsky
 Birdman or (The Unexpected Virtue of Ignorance),2014,UK,Rakuten TV,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
 Birdman or (The Unexpected Virtue of Ignorance),2014,UK,Netflix,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
 Birdman or (The Unexpected Virtue of Ignorance),2014,UK,Disney Plus,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
-The King's Speech,2010,UK,BBC i,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-14,Alyssa
-The King's Speech,2010,UK,Lionsgate+,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-14,Alyssa
 Papillon,1973,UK,Amazon Prime Video Free,https://image.tmdb.org/t/p/w500/356oqQpug682OERsWV0bGZ0YxwQ.jpg,151.0,2026-04-14,Prime VPN
-Paddington,2014,UK,Now TV Cinema,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
-Paddington,2014,UK,BBC i,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
-Paddington,2014,UK,Studiocanal Presents,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
-Paddington,2014,UK,STUDIOCANAL PRESENTS,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
 Paddington,2014,UK,HBO Max,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
-Paddington,2014,UK,Sky Go,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
 Ocean's Eleven,2001,UK,Now TV Cinema,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
 Ocean's Eleven,2001,UK,Sky Go,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
 Ocean's Eleven,2001,UK,HBO Max,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
-The Grand Budapest Hotel,2014,UK,Netflix,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-14,Alyssa
-The Grand Budapest Hotel,2014,UK,Disney Plus,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-14,Alyssa
-Parasite,2019,UK,ITVX,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-14,Alyssa
-Parasite,2019,UK,MUBI,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-14,Alyssa
-Parasite,2019,UK,Curz,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-14,Alyssa
-Parasite,2019,UK,BFI,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-14,Alyssa
-Satantango,1994,UK,Netflix,https://image.tmdb.org/t/p/w500/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg,432.0,2026-04-14,Filmin
-Moana,2016,AR,Disney Plus,https://image.tmdb.org/t/p/w500/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg,107.0,2026-04-14,Alyssa
-The Banshees of Inisherin,2022,AR,Disney Plus,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-14,Alyssa
-La Dolce Vita,1960,AR,Plex,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-14,Mubi
-In Bruges,2008,AR,MovistarTV,https://image.tmdb.org/t/p/w500/vz3Vd6nfq9YZrVvyYx5RHFaYKV3.jpg,108.0,2026-04-14,Alyssa
 Mirror,1975,AR,Plex,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-14,Tarkovsky
 Mysterious Skin,2004,AR,MUBI,https://image.tmdb.org/t/p/w500/wgSwDqhl6Rt3cuSCwt5sNpPna3x.jpg,105.0,2026-04-14,Mubi
-It Was Just an Accident,2025,AR,MUBI,https://image.tmdb.org/t/p/w500/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg,103.0,2026-04-14,Filmin
 Fantastic Mr. Fox,2009,AR,Disney Plus,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-14,Alyssa
-Anastasia,1997,AR,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-14,Alyssa
 The Count of Monte Cristo,2024,AR,Amazon Prime Video,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-14,Prime VPN
 The Sacrifice,1986,AR,MUBI,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-14,Tarkovsky
-No Other Choice,2025,AR,MUBI,https://image.tmdb.org/t/p/w500/sBpxTGLzKnvPSVtL5yQYpSxvKEb.jpg,140.0,2026-04-14,Mubi
 Birdman or (The Unexpected Virtue of Ignorance),2014,AR,Netflix,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
 Birdman or (The Unexpected Virtue of Ignorance),2014,AR,MovistarTV,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
 Birdman or (The Unexpected Virtue of Ignorance),2014,AR,Disney Plus,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
@@ -476,30 +274,9 @@ Ocean's Eleven,2001,AR,Amazon Prime Video,https://image.tmdb.org/t/p/w500/hQQCdZ
 Ocean's Eleven,2001,AR,HBO Max,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
 The Grand Budapest Hotel,2014,AR,Netflix,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-14,Alyssa
 The Grand Budapest Hotel,2014,AR,Disney Plus,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-14,Alyssa
-Everything Everywhere All at Once,2022,AR,Amazon Prime Video,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-14,Alyssa
-Everything Everywhere All at Once,2022,AR,MovistarTV,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-14,Alyssa
-Everything Everywhere All at Once,2022,AR,HBO Max,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-14,Alyssa
 In the Mood for Love,2000,AR,MUBI,https://image.tmdb.org/t/p/w500/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg,99.0,2026-04-14,Alyssa
-Satantango,1994,AR,Netflix,https://image.tmdb.org/t/p/w500/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg,432.0,2026-04-14,Filmin
-Nostalgia,1983,JP,Amazon Prime Video,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-14,Tarkovsky
-Nostalgia,1983,JP,Cinefil Wow Plus,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-14,Tarkovsky
-Nostalgia,1983,JP,FOD,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-14,Tarkovsky
-Nostalgia,1983,JP,Hulu,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-14,Tarkovsky
-Nostalgia,1983,JP,U-NEXT,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-14,Tarkovsky
-...And Justice for All,1979,JP,U-NEXT,https://image.tmdb.org/t/p/w500/32NmJn0p4o9BdWVpEhuyxzwsqhL.jpg,119.0,2026-04-14,Filmin
-The Banshees of Inisherin,2022,JP,Disney Plus,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-14,Alyssa
-La Dolce Vita,1960,JP,U-NEXT,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-14,Mubi
-La Dolce Vita,1960,JP,Plex,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-14,Mubi
-La Dolce Vita,1960,JP,Cinefil Wow Plus,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-14,Mubi
 Cunk on Life,2024,JP,Netflix,https://image.tmdb.org/t/p/w500/zZx5a595bYuNxd8TdoRflxATFML.jpg,70.0,2026-04-14,Alyssa
-Fantastic Mr. Fox,2009,JP,U-NEXT,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-14,Alyssa
-The Human Condition II: Road to Eternity,1959,JP,Hulu,https://image.tmdb.org/t/p/w500/7jfv1C4t06VGenQxf3HbmLVmUHZ.jpg,178.0,2026-04-14,Filmin
-The Human Condition II: Road to Eternity,1959,JP,U-NEXT,https://image.tmdb.org/t/p/w500/7jfv1C4t06VGenQxf3HbmLVmUHZ.jpg,178.0,2026-04-14,Filmin
-The Human Condition II: Road to Eternity,1959,JP,FOD Channel,https://image.tmdb.org/t/p/w500/7jfv1C4t06VGenQxf3HbmLVmUHZ.jpg,178.0,2026-04-14,Filmin
 The Sacrifice,1986,JP,MUBI,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-14,Tarkovsky
-Blue Is the Warmest Color,2013,JP,FOD,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-14,"Filmin, Watchlist"
-Blue Is the Warmest Color,2013,JP,Hulu,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-14,"Filmin, Watchlist"
-Blue Is the Warmest Color,2013,JP,U-NEXT,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-14,"Filmin, Watchlist"
 Birdman or (The Unexpected Virtue of Ignorance),2014,JP,Netflix,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
 Birdman or (The Unexpected Virtue of Ignorance),2014,JP,U-NEXT,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
 Birdman or (The Unexpected Virtue of Ignorance),2014,JP,Disney Plus,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
@@ -507,131 +284,390 @@ Carlito's Way,1993,JP,U-NEXT,https://image.tmdb.org/t/p/w500/g6D7mjQtndu768cusGm
 Disobedience,2017,JP,U-NEXT,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-14,Alyssa
 Platoon,1986,JP,U-NEXT,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-14,"Filmin, Mubi"
 Platoon,1986,JP,MGM,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-14,"Filmin, Mubi"
-Catch Me If You Can,2002,JP,Amazon Prime Video,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
-Catch Me If You Can,2002,JP,Hulu,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
-Catch Me If You Can,2002,JP,U-NEXT,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
 Everything Everywhere All at Once,2022,JP,FOD,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-14,Alyssa
 Everything Everywhere All at Once,2022,JP,Netflix,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-14,Alyssa
 The Trial,1962,JP,Artiflix,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-14,Filmin
-In the Mood for Love,2000,JP,U-NEXT,https://image.tmdb.org/t/p/w500/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg,99.0,2026-04-14,Alyssa
-The Big Lebowski,1998,JP,U-NEXT,https://image.tmdb.org/t/p/w500/3bv6WAp6BSxxYvB5ozKFUYuRA8C.jpg,117.0,2026-04-14,Alyssa
 Eternal Sunshine of the Spotless Mind,2004,JP,U-NEXT,https://image.tmdb.org/t/p/w500/5MwkWH9tYHv3mV9OdYTMR5qreIz.jpg,108.0,2026-04-14,Alyssa
 Satantango,1994,JP,Netflix,https://image.tmdb.org/t/p/w500/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg,432.0,2026-04-14,Filmin
-Triangle of Sadness,2022,JP,FOD,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Triangle of Sadness,2022,JP,Plus GAGA,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Triangle of Sadness,2022,JP,U-NEXT,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Triangle of Sadness,2022,JP,FOD Channel,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
 Sometimes I Think About Dying,2023,CA,Hoopla,https://image.tmdb.org/t/p/w500/lp0dtmNtOW88A13GZjGoKZko7S8.jpg,94.0,2026-04-14,"Filmin, Mubi"
 Sometimes I Think About Dying,2023,CA,Super Channel,https://image.tmdb.org/t/p/w500/lp0dtmNtOW88A13GZjGoKZko7S8.jpg,94.0,2026-04-14,"Filmin, Mubi"
 Sometimes I Think About Dying,2023,CA,Super Channel Plus,https://image.tmdb.org/t/p/w500/lp0dtmNtOW88A13GZjGoKZko7S8.jpg,94.0,2026-04-14,"Filmin, Mubi"
-Uncut Gems,2019,CA,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-14,Alyssa
-The Human Condition III: A Soldier's Prayer,1961,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/pag7gyxSFe7vTl6riHfZ5Xci6q7.jpg,190.0,2026-04-14,Filmin
-Moana,2016,CA,Disney Plus,https://image.tmdb.org/t/p/w500/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg,107.0,2026-04-14,Alyssa
 Dogville,2003,CA,MUBI,https://image.tmdb.org/t/p/w500/lraVawavIXh5geMlVjpzCw9TGwR.jpg,178.0,2026-04-14,"Filmin, Mubi"
-Cunk on Life,2024,CA,Netflix,https://image.tmdb.org/t/p/w500/zZx5a595bYuNxd8TdoRflxATFML.jpg,70.0,2026-04-14,Alyssa
-Yi Yi,2000,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg,174.0,2026-04-14,Filmin
 Mirror,1975,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-14,Tarkovsky
 Mirror,1975,CA,Plex,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-14,Tarkovsky
-It Was Just an Accident,2025,CA,MUBI,https://image.tmdb.org/t/p/w500/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg,103.0,2026-04-14,Filmin
 Close Your Eyes,2023,CA,MUBI,https://image.tmdb.org/t/p/w500/czUKm6JUutIg55EcRJ7CRAAzFMU.jpg,169.0,2026-04-14,Mubi
 Anastasia,1997,CA,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-14,Alyssa
-The Count of Monte Cristo,2024,CA,Crave,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-14,Prime VPN
-Love,2015,CA,MUBI,https://image.tmdb.org/t/p/w500/vfgp5PkmMkLaqKTRAEweHxMmXJN.jpg,134.0,2026-04-14,Mubi
-Carlito's Way,1993,CA,Paramount+,https://image.tmdb.org/t/p/w500/g6D7mjQtndu768cusGmoEQY9fTB.jpg,144.0,2026-04-14,Filmin
 The King's Speech,2010,CA,Plex,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-14,Alyssa
 The King's Speech,2010,CA,Lionsgate+,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-14,Alyssa
-Solaris,1972,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-14,Tarkovsky
-Solaris,1972,CA,CTV,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-14,Tarkovsky
-Solaris,1972,CA,Plex,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-14,Tarkovsky
-Solaris,1972,CA,Crave,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-14,Tarkovsky
-TÁR,2022,CA,Crave,https://image.tmdb.org/t/p/w500/dRVAlaU0vbG6hMf2K45NSiIyoUe.jpg,158.0,2026-04-14,Alyssa
 Paddington,2014,CA,Crave,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
 Paddington,2014,CA,Tele Quebec,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
-Ocean's Eleven,2001,CA,Amazon Prime Video,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
-Ocean's Eleven,2001,CA,Starz,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
-Ocean's Eleven,2001,CA,Paramount+,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
-Platoon,1986,CA,Hoopla,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-14,"Filmin, Mubi"
-Platoon,1986,CA,MGM,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-14,"Filmin, Mubi"
-Catch Me If You Can,2002,CA,Netflix,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
 Everything Everywhere All at Once,2022,CA,Crave,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-14,Alyssa
-The Trial,1962,CA,Artiflix,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-14,Filmin
-The Trial,1962,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-14,Filmin
-In the Mood for Love,2000,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg,99.0,2026-04-14,Alyssa
-The Big Lebowski,1998,CA,Crave,https://image.tmdb.org/t/p/w500/3bv6WAp6BSxxYvB5ozKFUYuRA8C.jpg,117.0,2026-04-14,Alyssa
-Andrei Rublev,1966,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/910xRIUmNJrWH2hkQifBJtoPp5R.jpg,183.0,2026-04-14,"Tarkovsky, Watchlist"
-Satantango,1994,CA,Netflix,https://image.tmdb.org/t/p/w500/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg,432.0,2026-04-14,Filmin
-Triangle of Sadness,2022,CA,Crave,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Uncut Gems,2019,AU,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-14,Alyssa
-Moana,2016,AU,Disney Plus,https://image.tmdb.org/t/p/w500/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg,107.0,2026-04-14,Alyssa
 La Dolce Vita,1960,AU,Plex,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-14,Mubi
-Cunk on Life,2024,AU,Netflix,https://image.tmdb.org/t/p/w500/zZx5a595bYuNxd8TdoRflxATFML.jpg,70.0,2026-04-14,Alyssa
 Fantastic Mr. Fox,2009,AU,Stan,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-14,Alyssa
 Fantastic Mr. Fox,2009,AU,Disney Plus,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-14,Alyssa
-Anastasia,1997,AU,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-14,Alyssa
-The Count of Monte Cristo,2024,AU,Stan,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-14,Prime VPN
 The White Ribbon,2009,AU,Beamafilm,https://image.tmdb.org/t/p/w500/54dlnGDexrwAFlDb8HWKfmmX4LB.jpg,144.0,2026-04-14,Filmin
-Blue Is the Warmest Color,2013,AU,Beamafilm,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-14,"Filmin, Watchlist"
 No Other Choice,2025,AU,MUBI,https://image.tmdb.org/t/p/w500/sBpxTGLzKnvPSVtL5yQYpSxvKEb.jpg,140.0,2026-04-14,Mubi
-Birdman or (The Unexpected Virtue of Ignorance),2014,AU,Stan,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
-Birdman or (The Unexpected Virtue of Ignorance),2014,AU,Netflix,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
-Birdman or (The Unexpected Virtue of Ignorance),2014,AU,Disney Plus,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
 Do Not Expect Too Much from the End of the World,2023,AU,MUBI,https://image.tmdb.org/t/p/w500/y2H7SMzSO0f8KHjCqavUhVfRX0Z.jpg,164.0,2026-04-14,Filmin
-Carlito's Way,1993,AU,Foxtel Now,https://image.tmdb.org/t/p/w500/g6D7mjQtndu768cusGmoEQY9fTB.jpg,144.0,2026-04-14,Filmin
-Carlito's Way,1993,AU,BINGE,https://image.tmdb.org/t/p/w500/g6D7mjQtndu768cusGmoEQY9fTB.jpg,144.0,2026-04-14,Filmin
-Papillon,1973,AU,7plus,https://image.tmdb.org/t/p/w500/356oqQpug682OERsWV0bGZ0YxwQ.jpg,151.0,2026-04-14,Prime VPN
 Paddington,2014,AU,Foxtel Now,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
 Paddington,2014,AU,Stan,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
 Paddington,2014,AU,HBO Max,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-14,Alyssa
-Disobedience,2017,AU,Amazon Prime Video,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-14,Alyssa
-Disobedience,2017,AU,Stan,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-14,Alyssa
 Platoon,1986,AU,SBS On Demand,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-14,"Filmin, Mubi"
-Platoon,1986,AU,Stan,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-14,"Filmin, Mubi"
-Platoon,1986,AU,MGM,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-14,"Filmin, Mubi"
-Catch Me If You Can,2002,AU,10,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
-Catch Me If You Can,2002,AU,Stan,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
-Catch Me If You Can,2002,AU,Netflix,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
-Catch Me If You Can,2002,AU,Paramount+,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-14,Alyssa
 Everything Everywhere All at Once,2022,AU,Stan,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-14,Alyssa
 Everything Everywhere All at Once,2022,AU,Netflix,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-14,Alyssa
-The Trial,1962,AU,Artiflix,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-14,Filmin
-Triangle of Sadness,2022,AU,SBS On Demand,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Uncut Gems,2019,DK,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-14,Alyssa
-Moana,2016,DK,Disney Plus,https://image.tmdb.org/t/p/w500/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg,107.0,2026-04-14,Alyssa
-The Banshees of Inisherin,2022,DK,Disney Plus,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-14,Alyssa
-The Banshees of Inisherin,2022,DK,HBO Max,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-14,Alyssa
 La Dolce Vita,1960,DK,Filmstriben,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-14,Mubi
 In Bruges,2008,DK,Netflix,https://image.tmdb.org/t/p/w500/vz3Vd6nfq9YZrVvyYx5RHFaYKV3.jpg,108.0,2026-04-14,Alyssa
 In Bruges,2008,DK,Filmstriben,https://image.tmdb.org/t/p/w500/vz3Vd6nfq9YZrVvyYx5RHFaYKV3.jpg,108.0,2026-04-14,Alyssa
-Mirror,1975,DK,Netflix,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-14,Tarkovsky
-The Sacrifice,1986,DK,MUBI,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-14,Tarkovsky
-Winter Sleep,2014,DK,Filmstriben,https://image.tmdb.org/t/p/w500/95j83qOqH3Ivz4RYkaSjGT0VSNr.jpg,196.0,2026-04-14,Filmin
-Birdman or (The Unexpected Virtue of Ignorance),2014,DK,Rakuten TV,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
-Birdman or (The Unexpected Virtue of Ignorance),2014,DK,Netflix,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
-Birdman or (The Unexpected Virtue of Ignorance),2014,DK,Disney Plus,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
-Solaris,1972,DK,Filmstriben,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-14,Tarkovsky
-Papillon,1973,DK,Rakuten TV,https://image.tmdb.org/t/p/w500/356oqQpug682OERsWV0bGZ0YxwQ.jpg,151.0,2026-04-14,Prime VPN
-Papillon,1973,DK,Filmstriben,https://image.tmdb.org/t/p/w500/356oqQpug682OERsWV0bGZ0YxwQ.jpg,151.0,2026-04-14,Prime VPN
 Ocean's Eleven,2001,DK,Amazon Prime Video,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-14,Alyssa
-The Grand Budapest Hotel,2014,DK,Netflix,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-14,Alyssa
-The Grand Budapest Hotel,2014,DK,Disney Plus,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-14,Alyssa
-The Human Condition I: No Greater Love,1959,DK,Disney Plus,https://image.tmdb.org/t/p/w500/q7godavx5XEbeVxEeqi4pmiOKdI.jpg,204.0,2026-04-14,Filmin
-Everything Everywhere All at Once,2022,DK,Amazon Prime Video,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-14,Alyssa
-Everything Everywhere All at Once,2022,DK,Viaplay,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-14,Alyssa
-Everything Everywhere All at Once,2022,DK,Filmstriben,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-14,Alyssa
-Stalker,1979,DK,Filmstriben,https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg,162.0,2026-04-14,Tarkovsky
 In the Mood for Love,2000,DK,Filmstriben,https://image.tmdb.org/t/p/w500/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg,99.0,2026-04-14,Alyssa
 The Big Lebowski,1998,DK,SkyShowtime,https://image.tmdb.org/t/p/w500/3bv6WAp6BSxxYvB5ozKFUYuRA8C.jpg,117.0,2026-04-14,Alyssa
 Andrei Rublev,1966,DK,Filmstriben,https://image.tmdb.org/t/p/w500/910xRIUmNJrWH2hkQifBJtoPp5R.jpg,183.0,2026-04-14,"Tarkovsky, Watchlist"
 Satantango,1994,DK,Netflix,https://image.tmdb.org/t/p/w500/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg,432.0,2026-04-14,Filmin
-Triangle of Sadness,2022,DK,Viaplay,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Triangle of Sadness,2022,DK,Netflix,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Triangle of Sadness,2022,DK,Filmstriben,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Triangle of Sadness,2022,DK,HBO Max,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Triangle of Sadness,2022,DK,Allente,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
-Triangle of Sadness,2022,DK,TV 2,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-14,Alyssa
 Cunk on Life,2024,ZA,Netflix,https://image.tmdb.org/t/p/w500/zZx5a595bYuNxd8TdoRflxATFML.jpg,70.0,2026-04-14,Alyssa
 Mirror,1975,ZA,Netflix,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-14,Tarkovsky
-Birdman or (The Unexpected Virtue of Ignorance),2014,ZA,Netflix,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-14,Alyssa
-Do Not Expect Too Much from the End of the World,2023,ZA,MUBI,https://image.tmdb.org/t/p/w500/y2H7SMzSO0f8KHjCqavUhVfRX0Z.jpg,164.0,2026-04-14,Filmin
-The Grand Budapest Hotel,2014,ZA,Netflix,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-14,Alyssa
-The Trial,1962,ZA,Artiflix,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-14,Filmin
+Yi Yi,2000,ES,Filmin,https://image.tmdb.org/t/p/w500/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg,174.0,2026-04-15,Filmin
+Platoon,1986,ES,MGM Plus,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-15,"Filmin, Mubi"
+Platoon,1986,ES,Filmin,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-15,"Filmin, Mubi"
+The Big Lebowski,1998,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/3bv6WAp6BSxxYvB5ozKFUYuRA8C.jpg,117.0,2026-04-15,Alyssa
+The Big Lebowski,1998,ES,SkyShowtime,https://image.tmdb.org/t/p/w500/3bv6WAp6BSxxYvB5ozKFUYuRA8C.jpg,117.0,2026-04-15,Alyssa
+...And Justice for All,1979,ES,Filmin,https://image.tmdb.org/t/p/w500/32NmJn0p4o9BdWVpEhuyxzwsqhL.jpg,119.0,2026-04-15,Filmin
+The Grand Budapest Hotel,2014,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-15,Alyssa
+The Grand Budapest Hotel,2014,ES,Netflix,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-15,Alyssa
+The Grand Budapest Hotel,2014,ES,Disney Plus,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-15,Alyssa
+The Banshees of Inisherin,2022,ES,Disney Plus,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-15,Alyssa
+In the Mood for Love,2000,ES,Rakuten TV,https://image.tmdb.org/t/p/w500/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg,99.0,2026-04-15,Alyssa
+In the Mood for Love,2000,ES,Filmin,https://image.tmdb.org/t/p/w500/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg,99.0,2026-04-15,Alyssa
+Blue Is the Warmest Color,2013,ES,Filmin,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Satantango,1994,ES,Netflix,https://image.tmdb.org/t/p/w500/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg,432.0,2026-04-15,Filmin
+Cunk on Life,2024,ES,Netflix,https://image.tmdb.org/t/p/w500/zZx5a595bYuNxd8TdoRflxATFML.jpg,70.0,2026-04-15,Alyssa
+Andrei Rublev,1966,ES,Filmin,https://image.tmdb.org/t/p/w500/910xRIUmNJrWH2hkQifBJtoPp5R.jpg,183.0,2026-04-15,"Tarkovsky, Watchlist"
+Andrei Rublev,1966,ES,Tivify,https://image.tmdb.org/t/p/w500/910xRIUmNJrWH2hkQifBJtoPp5R.jpg,183.0,2026-04-15,"Tarkovsky, Watchlist"
+Andrei Rublev,1966,ES,Acontra Plus,https://image.tmdb.org/t/p/w500/910xRIUmNJrWH2hkQifBJtoPp5R.jpg,183.0,2026-04-15,"Tarkovsky, Watchlist"
+Fantastic Mr. Fox,2009,ES,Rakuten TV,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-15,Alyssa
+Fantastic Mr. Fox,2009,ES,Disney Plus,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-15,Alyssa
+No Other Choice,2025,ES,MUBI,https://image.tmdb.org/t/p/w500/sBpxTGLzKnvPSVtL5yQYpSxvKEb.jpg,140.0,2026-04-15,Mubi
+Uncut Gems,2019,ES,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-15,Alyssa
+In Bruges,2008,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/vz3Vd6nfq9YZrVvyYx5RHFaYKV3.jpg,108.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,ES,HBO Max,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,ES,Filmin,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+La Dolce Vita,1960,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-15,Mubi
+La Dolce Vita,1960,ES,Plex,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-15,Mubi
+La Dolce Vita,1960,ES,FlixOlé,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-15,Mubi
+Mysterious Skin,2004,ES,MUBI,https://image.tmdb.org/t/p/w500/wgSwDqhl6Rt3cuSCwt5sNpPna3x.jpg,105.0,2026-04-15,Mubi
+Papillon,1973,ES,Amazon Prime Video,https://image.tmdb.org/t/p/w500/356oqQpug682OERsWV0bGZ0YxwQ.jpg,151.0,2026-04-15,Prime VPN
+Papillon,1973,ES,Atres,https://image.tmdb.org/t/p/w500/356oqQpug682OERsWV0bGZ0YxwQ.jpg,151.0,2026-04-15,Prime VPN
+Moana,2016,ES,Disney Plus,https://image.tmdb.org/t/p/w500/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg,107.0,2026-04-15,Alyssa
+Paddington,2014,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Paddington,2014,ES,HBO Max,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+The Sacrifice,1986,ES,MUBI,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-15,Tarkovsky
+The Sacrifice,1986,ES,Filmin,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-15,Tarkovsky
+Do Not Expect Too Much from the End of the World,2023,ES,Filmin,https://image.tmdb.org/t/p/w500/y2H7SMzSO0f8KHjCqavUhVfRX0Z.jpg,164.0,2026-04-15,Filmin
+Birdman or (The Unexpected Virtue of Ignorance),2014,ES,Rakuten TV,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-15,Alyssa
+Birdman or (The Unexpected Virtue of Ignorance),2014,ES,Netflix,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-15,Alyssa
+Birdman or (The Unexpected Virtue of Ignorance),2014,ES,Disney Plus,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-15,Alyssa
+Birdman or (The Unexpected Virtue of Ignorance),2014,ES,Tivify,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-15,Alyssa
+Mirror,1975,ES,Filmin,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-15,Tarkovsky
+Mirror,1975,ES,Plex,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-15,Tarkovsky
+Mirror,1975,ES,Tivify,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-15,Tarkovsky
+Mirror,1975,ES,Acontra Plus,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-15,Tarkovsky
+Catch Me If You Can,2002,ES,Netflix,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,ES,Atres,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,ES,Tivify,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,ES,fuboTV,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,ES,SkyShowtime,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,ES,HBO Max,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Anastasia,1997,ES,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-15,Alyssa
+Everything Everywhere All at Once,2022,ES,Amazon Prime Video,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-15,Alyssa
+The Human Condition II: Road to Eternity,1959,ES,Filmin,https://image.tmdb.org/t/p/w500/7jfv1C4t06VGenQxf3HbmLVmUHZ.jpg,178.0,2026-04-15,Filmin
+The Human Condition I: No Greater Love,1959,ES,Filmin,https://image.tmdb.org/t/p/w500/q7godavx5XEbeVxEeqi4pmiOKdI.jpg,204.0,2026-04-15,Filmin
+The White Ribbon,2009,ES,Tivify,https://image.tmdb.org/t/p/w500/54dlnGDexrwAFlDb8HWKfmmX4LB.jpg,144.0,2026-04-15,Filmin
+The White Ribbon,2009,ES,Filmin,https://image.tmdb.org/t/p/w500/54dlnGDexrwAFlDb8HWKfmmX4LB.jpg,144.0,2026-04-15,Filmin
+The White Ribbon,2009,ES,Runtime,https://image.tmdb.org/t/p/w500/54dlnGDexrwAFlDb8HWKfmmX4LB.jpg,144.0,2026-04-15,Filmin
+The White Ribbon,2009,ES,Acontra Plus,https://image.tmdb.org/t/p/w500/54dlnGDexrwAFlDb8HWKfmmX4LB.jpg,144.0,2026-04-15,Filmin
+"Salò, or the 120 Days of Sodom",1975,ES,Filmin,https://image.tmdb.org/t/p/w500/xnaDdiRfZlJaTf6JRc4in40eaeI.jpg,117.0,2026-04-15,Filmin
+Solaris,1972,ES,Filmin,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-15,Tarkovsky
+The King's Speech,2010,ES,rtve,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-15,Alyssa
+The King's Speech,2010,ES,Amazon Prime Video,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-15,Alyssa
+The King's Speech,2010,ES,Netflix,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-15,Alyssa
+The King's Speech,2010,ES,Movistar Plus+,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-15,Alyssa
+The King's Speech,2010,ES,Disney Plus,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-15,Alyssa
+Platoon,1986,US,The Roku Channel,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-15,"Filmin, Mubi"
+Platoon,1986,US,Hoopla,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-15,"Filmin, Mubi"
+Platoon,1986,US,Kanopy,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-15,"Filmin, Mubi"
+...And Justice for All,1979,US,The Roku Channel,https://image.tmdb.org/t/p/w500/32NmJn0p4o9BdWVpEhuyxzwsqhL.jpg,119.0,2026-04-15,Filmin
+The Banshees of Inisherin,2022,US,FXNow,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-15,Alyssa
+The Banshees of Inisherin,2022,US,YouTube TV,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-15,Alyssa
+The Banshees of Inisherin,2022,US,fuboTV,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-15,Alyssa
+Blue Is the Warmest Color,2013,US,Netflix,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Blue Is the Warmest Color,2013,US,The Roku Channel,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Blue Is the Warmest Color,2013,US,Sundance Now,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Blue Is the Warmest Color,2013,US,Kanopy,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Blue Is the Warmest Color,2013,US,Philo,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Blue Is the Warmest Color,2013,US,Xumo Play,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Blue Is the Warmest Color,2013,US,Hulu,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Blue Is the Warmest Color,2013,US,AMC+,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Nostalgia,1983,US,Kanopy,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-15,Tarkovsky
+Nostalgia,1983,US,Klassiki,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-15,Tarkovsky
+Nostalgia,1983,US,Hoopla,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-15,Tarkovsky
+Nostalgia,1983,US,Kino Film Collection,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-15,Tarkovsky
+Andrei Rublev,1966,US,Darkroom,https://image.tmdb.org/t/p/w500/910xRIUmNJrWH2hkQifBJtoPp5R.jpg,183.0,2026-04-15,"Tarkovsky, Watchlist"
+Andrei Rublev,1966,US,Criterion Channel,https://image.tmdb.org/t/p/w500/910xRIUmNJrWH2hkQifBJtoPp5R.jpg,183.0,2026-04-15,"Tarkovsky, Watchlist"
+Fantastic Mr. Fox,2009,US,Disney Plus,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-15,Alyssa
+The Count of Monte Cristo,2024,US,Philo,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-15,Prime VPN
+The Count of Monte Cristo,2024,US,Hoopla,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-15,Prime VPN
+The Count of Monte Cristo,2024,US,Kanopy,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-15,Prime VPN
+The Count of Monte Cristo,2024,US,MGM Plus Roku,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-15,Prime VPN
+The Count of Monte Cristo,2024,US,MGM+,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-15,Prime VPN
+The Count of Monte Cristo,2024,US,MGM Plus,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-15,Prime VPN
+The Count of Monte Cristo,2024,US,fuboTV,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-15,Prime VPN
+Close Your Eyes,2023,US,MUBI,https://image.tmdb.org/t/p/w500/czUKm6JUutIg55EcRJ7CRAAzFMU.jpg,169.0,2026-04-15,Mubi
+La Dolce Vita,1960,US,Plex,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-15,Mubi
+Mysterious Skin,2004,US,Strand Releasing,https://image.tmdb.org/t/p/w500/wgSwDqhl6Rt3cuSCwt5sNpPna3x.jpg,105.0,2026-04-15,Mubi
+Papillon,1973,US,Kanopy,https://image.tmdb.org/t/p/w500/356oqQpug682OERsWV0bGZ0YxwQ.jpg,151.0,2026-04-15,Prime VPN
+Paddington,2014,US,Britbox,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Paddington,2014,US,Angel Studios,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Paddington,2014,US,BYUtv,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Paddington,2014,US,The Roku Channel,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Do Not Expect Too Much from the End of the World,2023,US,MUBI,https://image.tmdb.org/t/p/w500/y2H7SMzSO0f8KHjCqavUhVfRX0Z.jpg,164.0,2026-04-15,Filmin
+Mirror,1975,US,Netflix,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-15,Tarkovsky
+Anastasia,1997,US,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-15,Alyssa
+Ocean's Eleven,2001,US,Philo,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-15,Alyssa
+Ocean's Eleven,2001,US,MGM+,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-15,Alyssa
+Ocean's Eleven,2001,US,Starz Roku,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-15,Alyssa
+Ocean's Eleven,2001,US,Starz,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-15,Alyssa
+Ocean's Eleven,2001,US,fuboTV,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-15,Alyssa
+Ocean's Eleven,2001,US,AMC+,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-15,Alyssa
+Stalker,1979,US,HBO Max,https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg,162.0,2026-04-15,Tarkovsky
+Stalker,1979,US,Criterion Channel,https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg,162.0,2026-04-15,Tarkovsky
+Stalker,1979,US,Kanopy,https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg,162.0,2026-04-15,Tarkovsky
+The Human Condition III: A Soldier's Prayer,1961,US,Criterion Channel,https://image.tmdb.org/t/p/w500/pag7gyxSFe7vTl6riHfZ5Xci6q7.jpg,190.0,2026-04-15,Filmin
+The Human Condition I: No Greater Love,1959,US,Criterion Channel,https://image.tmdb.org/t/p/w500/q7godavx5XEbeVxEeqi4pmiOKdI.jpg,204.0,2026-04-15,Filmin
+Disobedience,2017,US,Kanopy,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-15,Alyssa
+Disobedience,2017,US,Hoopla,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-15,Alyssa
+Disobedience,2017,US,Cinemax,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-15,Alyssa
+Sometimes I Think About Dying,2023,US,MUBI,https://image.tmdb.org/t/p/w500/lp0dtmNtOW88A13GZjGoKZko7S8.jpg,94.0,2026-04-15,"Filmin, Mubi"
+Sometimes I Think About Dying,2023,US,Kanopy,https://image.tmdb.org/t/p/w500/lp0dtmNtOW88A13GZjGoKZko7S8.jpg,94.0,2026-04-15,"Filmin, Mubi"
+Dogville,2003,US,MUBI,https://image.tmdb.org/t/p/w500/lraVawavIXh5geMlVjpzCw9TGwR.jpg,178.0,2026-04-15,"Filmin, Mubi"
+Solaris,1972,US,YouTube Free,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-15,Tarkovsky
+Solaris,1972,US,Kanopy,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-15,Tarkovsky
+Solaris,1972,US,Shout! Factory TV,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-15,Tarkovsky
+Solaris,1972,US,Criterion Channel,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-15,Tarkovsky
+Solaris,1972,US,HBO Max,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-15,Tarkovsky
+The King's Speech,2010,US,Britbox,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-15,Alyssa
+The King's Speech,2010,US,The Roku Channel,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-15,Alyssa
+The King's Speech,2010,US,Hoopla,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-15,Alyssa
+The King's Speech,2010,US,Kanopy,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-15,Alyssa
+About Dry Grasses,2023,UK,MUBI,https://image.tmdb.org/t/p/w500/mUFpdQSFAch1fMUb9MqHoESpmLS.jpg,197.0,2026-04-15,Mubi
+Platoon,1986,UK,MGM Plus,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-15,"Filmin, Mubi"
+Platoon,1986,UK,BBC i,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-15,"Filmin, Mubi"
+The Grand Budapest Hotel,2014,UK,Netflix,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-15,Alyssa
+The Grand Budapest Hotel,2014,UK,Disney Plus,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-15,Alyssa
+Satantango,1994,UK,Netflix,https://image.tmdb.org/t/p/w500/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg,432.0,2026-04-15,Filmin
+Nostalgia,1983,UK,Netflix,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-15,Tarkovsky
+Fantastic Mr. Fox,2009,UK,Disney Plus,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-15,Alyssa
+No Other Choice,2025,UK,MUBI,https://image.tmdb.org/t/p/w500/sBpxTGLzKnvPSVtL5yQYpSxvKEb.jpg,140.0,2026-04-15,Mubi
+Uncut Gems,2019,UK,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-15,Alyssa
+Mysterious Skin,2004,UK,MUBI,https://image.tmdb.org/t/p/w500/wgSwDqhl6Rt3cuSCwt5sNpPna3x.jpg,105.0,2026-04-15,Mubi
+Moana,2016,UK,Disney Plus,https://image.tmdb.org/t/p/w500/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg,107.0,2026-04-15,Alyssa
+Paddington,2014,UK,Now TV Cinema,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Paddington,2014,UK,STUDIOCANAL PRESENTS,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Paddington,2014,UK,Sky Go,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Paddington,2014,UK,BBC i,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Paddington,2014,UK,Studiocanal Presents,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+The Sacrifice,1986,UK,Curz,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-15,Tarkovsky
+The Sacrifice,1986,UK,Klassiki,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-15,Tarkovsky
+The Sacrifice,1986,UK,Channel 4 Plus,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-15,Tarkovsky
+It Was Just an Accident,2025,UK,MUBI,https://image.tmdb.org/t/p/w500/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg,103.0,2026-04-15,Filmin
+Mirror,1975,UK,Netflix,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-15,Tarkovsky
+Catch Me If You Can,2002,UK,YouTube Free,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,UK,Netflix,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,UK,ITVX,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Anastasia,1997,UK,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-15,Alyssa
+The White Ribbon,2009,UK,BFI,https://image.tmdb.org/t/p/w500/54dlnGDexrwAFlDb8HWKfmmX4LB.jpg,144.0,2026-04-15,Filmin
+The Trial,1962,UK,Artiflix,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-15,Filmin
+The Trial,1962,UK,Studiocanal Presents,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-15,Filmin
+Dogville,2003,UK,Curz,https://image.tmdb.org/t/p/w500/lraVawavIXh5geMlVjpzCw9TGwR.jpg,178.0,2026-04-15,"Filmin, Mubi"
+Parasite,2019,UK,MUBI,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+Parasite,2019,UK,BFI,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+Parasite,2019,UK,Curz,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+Parasite,2019,UK,ITVX,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+The King's Speech,2010,UK,Lionsgate+,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-15,Alyssa
+The King's Speech,2010,UK,BBC i,https://image.tmdb.org/t/p/w500/pVNKXVQFukBaCz6ML7GH3kiPlQP.jpg,118.0,2026-04-15,Alyssa
+Platoon,1986,AR,MovistarTV,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-15,"Filmin, Mubi"
+Platoon,1986,AR,MGM+,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-15,"Filmin, Mubi"
+The Banshees of Inisherin,2022,AR,Disney Plus,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-15,Alyssa
+Satantango,1994,AR,Netflix,https://image.tmdb.org/t/p/w500/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg,432.0,2026-04-15,Filmin
+Cunk on Life,2024,AR,Netflix,https://image.tmdb.org/t/p/w500/zZx5a595bYuNxd8TdoRflxATFML.jpg,70.0,2026-04-15,Alyssa
+No Other Choice,2025,AR,MUBI,https://image.tmdb.org/t/p/w500/sBpxTGLzKnvPSVtL5yQYpSxvKEb.jpg,140.0,2026-04-15,Mubi
+Uncut Gems,2019,AR,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-15,Alyssa
+Close Your Eyes,2023,AR,Amazon Prime Video,https://image.tmdb.org/t/p/w500/czUKm6JUutIg55EcRJ7CRAAzFMU.jpg,169.0,2026-04-15,Mubi
+In Bruges,2008,AR,MovistarTV,https://image.tmdb.org/t/p/w500/vz3Vd6nfq9YZrVvyYx5RHFaYKV3.jpg,108.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,AR,Amazon Prime Video,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,AR,MovistarTV,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,AR,HBO Max,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+La Dolce Vita,1960,AR,Plex,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-15,Mubi
+Moana,2016,AR,Disney Plus,https://image.tmdb.org/t/p/w500/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg,107.0,2026-04-15,Alyssa
+Do Not Expect Too Much from the End of the World,2023,AR,MUBI,https://image.tmdb.org/t/p/w500/y2H7SMzSO0f8KHjCqavUhVfRX0Z.jpg,164.0,2026-04-15,Filmin
+It Was Just an Accident,2025,AR,MUBI,https://image.tmdb.org/t/p/w500/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg,103.0,2026-04-15,Filmin
+Anastasia,1997,AR,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-15,Alyssa
+Everything Everywhere All at Once,2022,AR,Amazon Prime Video,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-15,Alyssa
+Everything Everywhere All at Once,2022,AR,MovistarTV,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-15,Alyssa
+Everything Everywhere All at Once,2022,AR,HBO Max,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-15,Alyssa
+Eternal Sunshine of the Spotless Mind,2004,AR,HBO Max,https://image.tmdb.org/t/p/w500/5MwkWH9tYHv3mV9OdYTMR5qreIz.jpg,108.0,2026-04-15,Alyssa
+Sometimes I Think About Dying,2023,AR,MUBI,https://image.tmdb.org/t/p/w500/lp0dtmNtOW88A13GZjGoKZko7S8.jpg,94.0,2026-04-15,"Filmin, Mubi"
+Dogville,2003,AR,MUBI,https://image.tmdb.org/t/p/w500/lraVawavIXh5geMlVjpzCw9TGwR.jpg,178.0,2026-04-15,"Filmin, Mubi"
+Parasite,2019,AR,Netflix,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+Parasite,2019,AR,MovistarTV,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+The Big Lebowski,1998,JP,U-NEXT,https://image.tmdb.org/t/p/w500/3bv6WAp6BSxxYvB5ozKFUYuRA8C.jpg,117.0,2026-04-15,Alyssa
+...And Justice for All,1979,JP,U-NEXT,https://image.tmdb.org/t/p/w500/32NmJn0p4o9BdWVpEhuyxzwsqhL.jpg,119.0,2026-04-15,Filmin
+The Banshees of Inisherin,2022,JP,Disney Plus,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-15,Alyssa
+In the Mood for Love,2000,JP,U-NEXT,https://image.tmdb.org/t/p/w500/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg,99.0,2026-04-15,Alyssa
+Blue Is the Warmest Color,2013,JP,FOD,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Blue Is the Warmest Color,2013,JP,U-NEXT,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Blue Is the Warmest Color,2013,JP,Hulu,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Nostalgia,1983,JP,Amazon Prime Video,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-15,Tarkovsky
+Nostalgia,1983,JP,U-NEXT,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-15,Tarkovsky
+Nostalgia,1983,JP,FOD,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-15,Tarkovsky
+Nostalgia,1983,JP,Hulu,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-15,Tarkovsky
+Nostalgia,1983,JP,Cinefil Wow Plus,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-15,Tarkovsky
+Fantastic Mr. Fox,2009,JP,U-NEXT,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-15,Alyssa
+Uncut Gems,2019,JP,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-15,Alyssa
+Close Your Eyes,2023,JP,Amazon Prime Video,https://image.tmdb.org/t/p/w500/czUKm6JUutIg55EcRJ7CRAAzFMU.jpg,169.0,2026-04-15,Mubi
+Triangle of Sadness,2022,JP,FOD Channel,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,JP,FOD,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,JP,Plus GAGA,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,JP,U-NEXT,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+La Dolce Vita,1960,JP,Plex,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-15,Mubi
+La Dolce Vita,1960,JP,U-NEXT,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-15,Mubi
+La Dolce Vita,1960,JP,Cinefil Wow Plus,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-15,Mubi
+Paddington,2014,JP,Amazon Prime Video,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Paddington,2014,JP,Netflix,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Paddington,2014,JP,kino films+,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Paddington,2014,JP,Hulu,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Paddington,2014,JP,U-NEXT,https://image.tmdb.org/t/p/w500/wpchRGhRhvhtU083PfX2yixXtiw.jpg,95.0,2026-04-15,Alyssa
+Do Not Expect Too Much from the End of the World,2023,JP,Netflix,https://image.tmdb.org/t/p/w500/y2H7SMzSO0f8KHjCqavUhVfRX0Z.jpg,164.0,2026-04-15,Filmin
+Catch Me If You Can,2002,JP,Amazon Prime Video,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,JP,U-NEXT,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,JP,Hulu,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Ocean's Eleven,2001,JP,HBO Max,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-15,Alyssa
+Ocean's Eleven,2001,JP,U-NEXT,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-15,Alyssa
+The Human Condition II: Road to Eternity,1959,JP,FOD Channel,https://image.tmdb.org/t/p/w500/7jfv1C4t06VGenQxf3HbmLVmUHZ.jpg,178.0,2026-04-15,Filmin
+The Human Condition II: Road to Eternity,1959,JP,U-NEXT,https://image.tmdb.org/t/p/w500/7jfv1C4t06VGenQxf3HbmLVmUHZ.jpg,178.0,2026-04-15,Filmin
+The Human Condition II: Road to Eternity,1959,JP,Hulu,https://image.tmdb.org/t/p/w500/7jfv1C4t06VGenQxf3HbmLVmUHZ.jpg,178.0,2026-04-15,Filmin
+Dogville,2003,JP,FOD,https://image.tmdb.org/t/p/w500/lraVawavIXh5geMlVjpzCw9TGwR.jpg,178.0,2026-04-15,"Filmin, Mubi"
+Dogville,2003,JP,U-NEXT,https://image.tmdb.org/t/p/w500/lraVawavIXh5geMlVjpzCw9TGwR.jpg,178.0,2026-04-15,"Filmin, Mubi"
+Parasite,2019,JP,Netflix,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+Parasite,2019,JP,U-NEXT,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+Parasite,2019,JP,Hulu,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+Yi Yi,2000,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg,174.0,2026-04-15,Filmin
+Platoon,1986,CA,MGM,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-15,"Filmin, Mubi"
+Platoon,1986,CA,Hoopla,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-15,"Filmin, Mubi"
+The Big Lebowski,1998,CA,Crave,https://image.tmdb.org/t/p/w500/3bv6WAp6BSxxYvB5ozKFUYuRA8C.jpg,117.0,2026-04-15,Alyssa
+The Grand Budapest Hotel,2014,CA,Netflix,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-15,Alyssa
+The Grand Budapest Hotel,2014,CA,Disney Plus,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-15,Alyssa
+The Grand Budapest Hotel,2014,CA,Hollywood Suite,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-15,Alyssa
+In the Mood for Love,2000,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/iYypPT4bhqXfq1b6EnmxvRt6b2Y.jpg,99.0,2026-04-15,Alyssa
+Satantango,1994,CA,Netflix,https://image.tmdb.org/t/p/w500/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg,432.0,2026-04-15,Filmin
+Nostalgia,1983,CA,Hoopla,https://image.tmdb.org/t/p/w500/fCYSidPXp3LpDa9wlLNv0gZvjyF.jpg,124.0,2026-04-15,Tarkovsky
+Cunk on Life,2024,CA,Netflix,https://image.tmdb.org/t/p/w500/zZx5a595bYuNxd8TdoRflxATFML.jpg,70.0,2026-04-15,Alyssa
+Andrei Rublev,1966,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/910xRIUmNJrWH2hkQifBJtoPp5R.jpg,183.0,2026-04-15,"Tarkovsky, Watchlist"
+Love,2015,CA,MUBI,https://image.tmdb.org/t/p/w500/vfgp5PkmMkLaqKTRAEweHxMmXJN.jpg,134.0,2026-04-15,Mubi
+The Count of Monte Cristo,2024,CA,Crave,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-15,Prime VPN
+Uncut Gems,2019,CA,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-15,Alyssa
+Carlito's Way,1993,CA,Paramount+,https://image.tmdb.org/t/p/w500/g6D7mjQtndu768cusGmoEQY9fTB.jpg,144.0,2026-04-15,Filmin
+Triangle of Sadness,2022,CA,Crave,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+La Dolce Vita,1960,CA,Plex,https://image.tmdb.org/t/p/w500/dZ2v0DAX4aCZartCzZdg4ZinSW2.jpg,176.0,2026-04-15,Mubi
+Moana,2016,CA,Disney Plus,https://image.tmdb.org/t/p/w500/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg,107.0,2026-04-15,Alyssa
+Do Not Expect Too Much from the End of the World,2023,CA,MUBI,https://image.tmdb.org/t/p/w500/y2H7SMzSO0f8KHjCqavUhVfRX0Z.jpg,164.0,2026-04-15,Filmin
+It Was Just an Accident,2025,CA,MUBI,https://image.tmdb.org/t/p/w500/eNYGj2DG3n8OrVPTfYunpPW9uas.jpg,103.0,2026-04-15,Filmin
+Catch Me If You Can,2002,CA,Netflix,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Ocean's Eleven,2001,CA,Amazon Prime Video,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-15,Alyssa
+Ocean's Eleven,2001,CA,Starz,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-15,Alyssa
+Ocean's Eleven,2001,CA,Paramount+,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-15,Alyssa
+Stalker,1979,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg,162.0,2026-04-15,Tarkovsky
+The Human Condition II: Road to Eternity,1959,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/7jfv1C4t06VGenQxf3HbmLVmUHZ.jpg,178.0,2026-04-15,Filmin
+The Human Condition III: A Soldier's Prayer,1961,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/pag7gyxSFe7vTl6riHfZ5Xci6q7.jpg,190.0,2026-04-15,Filmin
+The Human Condition I: No Greater Love,1959,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/q7godavx5XEbeVxEeqi4pmiOKdI.jpg,204.0,2026-04-15,Filmin
+TÁR,2022,CA,Crave,https://image.tmdb.org/t/p/w500/dRVAlaU0vbG6hMf2K45NSiIyoUe.jpg,158.0,2026-04-15,Alyssa
+The Trial,1962,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-15,Filmin
+The Trial,1962,CA,Artiflix,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-15,Filmin
+Solaris,1972,CA,Crave,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-15,Tarkovsky
+Solaris,1972,CA,Plex,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-15,Tarkovsky
+Solaris,1972,CA,Criterion Channel,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-15,Tarkovsky
+Solaris,1972,CA,CTV,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-15,Tarkovsky
+Parasite,2019,CA,Paramount+,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+Parasite,2019,CA,CBC Gem,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+Parasite,2019,CA,Crave,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+Parasite,2019,CA,Hollywood Suite,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+Platoon,1986,AU,Stan,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-15,"Filmin, Mubi"
+Platoon,1986,AU,MGM,https://image.tmdb.org/t/p/w500/m3mmFkPQKvPZq5exmh0bDuXlD9T.jpg,120.0,2026-04-15,"Filmin, Mubi"
+The Grand Budapest Hotel,2014,AU,Netflix,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-15,Alyssa
+The Grand Budapest Hotel,2014,AU,Disney Plus,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-15,Alyssa
+The Banshees of Inisherin,2022,AU,Disney Plus,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-15,Alyssa
+Blue Is the Warmest Color,2013,AU,Beamafilm,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Cunk on Life,2024,AU,Netflix,https://image.tmdb.org/t/p/w500/zZx5a595bYuNxd8TdoRflxATFML.jpg,70.0,2026-04-15,Alyssa
+The Count of Monte Cristo,2024,AU,Stan,https://image.tmdb.org/t/p/w500/sAT1P3FGhtJ68anUyJScnMu8t1l.jpg,178.0,2026-04-15,Prime VPN
+Uncut Gems,2019,AU,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-15,Alyssa
+Carlito's Way,1993,AU,Foxtel Now,https://image.tmdb.org/t/p/w500/g6D7mjQtndu768cusGmoEQY9fTB.jpg,144.0,2026-04-15,Filmin
+Carlito's Way,1993,AU,BINGE,https://image.tmdb.org/t/p/w500/g6D7mjQtndu768cusGmoEQY9fTB.jpg,144.0,2026-04-15,Filmin
+Triangle of Sadness,2022,AU,SBS On Demand,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Papillon,1973,AU,7plus,https://image.tmdb.org/t/p/w500/356oqQpug682OERsWV0bGZ0YxwQ.jpg,151.0,2026-04-15,Prime VPN
+Moana,2016,AU,Disney Plus,https://image.tmdb.org/t/p/w500/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg,107.0,2026-04-15,Alyssa
+The Sacrifice,1986,AU,MUBI,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-15,Tarkovsky
+Birdman or (The Unexpected Virtue of Ignorance),2014,AU,Stan,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-15,Alyssa
+Birdman or (The Unexpected Virtue of Ignorance),2014,AU,Netflix,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-15,Alyssa
+Birdman or (The Unexpected Virtue of Ignorance),2014,AU,Disney Plus,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-15,Alyssa
+Mirror,1975,AU,Netflix,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-15,Tarkovsky
+Catch Me If You Can,2002,AU,Stan,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,AU,Paramount+,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,AU,10,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,AU,Netflix,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Anastasia,1997,AU,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-15,Alyssa
+Ocean's Eleven,2001,AU,Stan,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-15,Alyssa
+Ocean's Eleven,2001,AU,HBO Max,https://image.tmdb.org/t/p/w500/hQQCdZrsHtZyR6NbKH2YyCqd2fR.jpg,116.0,2026-04-15,Alyssa
+Disobedience,2017,AU,Stan,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-15,Alyssa
+Disobedience,2017,AU,Amazon Prime Video,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-15,Alyssa
+The Trial,1962,AU,Artiflix,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-15,Filmin
+Parasite,2019,AU,Netflix,https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg,133.0,2026-04-15,Alyssa
+Yi Yi,2000,DK,DRTV,https://image.tmdb.org/t/p/w500/mR8dSQZI8X6Z1NClJhFrtJp636z.jpg,174.0,2026-04-15,Filmin
+The Grand Budapest Hotel,2014,DK,Netflix,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-15,Alyssa
+The Grand Budapest Hotel,2014,DK,Disney Plus,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-15,Alyssa
+The Banshees of Inisherin,2022,DK,HBO Max,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-15,Alyssa
+The Banshees of Inisherin,2022,DK,Disney Plus,https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD1lgh.jpg,114.0,2026-04-15,Alyssa
+Blue Is the Warmest Color,2013,DK,Filmstriben,https://image.tmdb.org/t/p/w500/kgUk1wti2cvrptIgUz0VTAtSF6w.jpg,180.0,2026-04-15,"Filmin, Watchlist"
+Fantastic Mr. Fox,2009,DK,Rakuten TV,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-15,Alyssa
+Fantastic Mr. Fox,2009,DK,Disney Plus,https://image.tmdb.org/t/p/w500/euZyZb6iGreujYKrGyZHRddhUYh.jpg,87.0,2026-04-15,Alyssa
+Uncut Gems,2019,DK,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,DK,Netflix,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,DK,TV 2,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,DK,Viaplay,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,DK,Filmstriben,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,DK,Allente,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Triangle of Sadness,2022,DK,HBO Max,https://image.tmdb.org/t/p/w500/k9eLozCgCed5FGTSdHu0bBElAV8.jpg,147.0,2026-04-15,Alyssa
+Mysterious Skin,2004,DK,MUBI,https://image.tmdb.org/t/p/w500/wgSwDqhl6Rt3cuSCwt5sNpPna3x.jpg,105.0,2026-04-15,Mubi
+Papillon,1973,DK,Rakuten TV,https://image.tmdb.org/t/p/w500/356oqQpug682OERsWV0bGZ0YxwQ.jpg,151.0,2026-04-15,Prime VPN
+Papillon,1973,DK,Filmstriben,https://image.tmdb.org/t/p/w500/356oqQpug682OERsWV0bGZ0YxwQ.jpg,151.0,2026-04-15,Prime VPN
+Moana,2016,DK,Disney Plus,https://image.tmdb.org/t/p/w500/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg,107.0,2026-04-15,Alyssa
+The Sacrifice,1986,DK,MUBI,https://image.tmdb.org/t/p/w500/8JMh27z075ZHbFE85XYkdXF2QkK.jpg,149.0,2026-04-15,Tarkovsky
+Birdman or (The Unexpected Virtue of Ignorance),2014,DK,Rakuten TV,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-15,Alyssa
+Birdman or (The Unexpected Virtue of Ignorance),2014,DK,Netflix,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-15,Alyssa
+Birdman or (The Unexpected Virtue of Ignorance),2014,DK,Disney Plus,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-15,Alyssa
+Mirror,1975,DK,Netflix,https://image.tmdb.org/t/p/w500/AttDP5OEsMxtHPPN7Z92p2Ntnmd.jpg,107.0,2026-04-15,Tarkovsky
+Anastasia,1997,DK,Disney Plus,https://image.tmdb.org/t/p/w500/bppGWGA8zq1sRvTdDJnUzVW9GcH.jpg,94.0,2026-04-15,Alyssa
+Everything Everywhere All at Once,2022,DK,Amazon Prime Video,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-15,Alyssa
+Everything Everywhere All at Once,2022,DK,Viaplay,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-15,Alyssa
+Everything Everywhere All at Once,2022,DK,Filmstriben,https://image.tmdb.org/t/p/w500/u68AjlvlutfEIcpmbYpKcdi09ut.jpg,140.0,2026-04-15,Alyssa
+Stalker,1979,DK,Filmstriben,https://image.tmdb.org/t/p/w500/1qhOyf5C4s9ZdvY8d5JDx9DFMeT.jpg,162.0,2026-04-15,Tarkovsky
+The Human Condition I: No Greater Love,1959,DK,Disney Plus,https://image.tmdb.org/t/p/w500/q7godavx5XEbeVxEeqi4pmiOKdI.jpg,204.0,2026-04-15,Filmin
+Winter Sleep,2014,DK,Filmstriben,https://image.tmdb.org/t/p/w500/95j83qOqH3Ivz4RYkaSjGT0VSNr.jpg,196.0,2026-04-15,Filmin
+Solaris,1972,DK,Filmstriben,https://image.tmdb.org/t/p/w500/pgqj7QoBPWFLLKtLEpPmFYFRMgB.jpg,167.0,2026-04-15,Tarkovsky
+The Grand Budapest Hotel,2014,ZA,Netflix,https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg,100.0,2026-04-15,Alyssa
+Satantango,1994,ZA,Netflix,https://image.tmdb.org/t/p/w500/y38z0v4HJ12MHiKddLEoFlvPiBt.jpg,432.0,2026-04-15,Filmin
+Uncut Gems,2019,ZA,Netflix,https://image.tmdb.org/t/p/w500/6XN1vxHc7kUSqNWtaQKN45J5x2v.jpg,136.0,2026-04-15,Alyssa
+Mysterious Skin,2004,ZA,MUBI,https://image.tmdb.org/t/p/w500/wgSwDqhl6Rt3cuSCwt5sNpPna3x.jpg,105.0,2026-04-15,Mubi
+Do Not Expect Too Much from the End of the World,2023,ZA,MUBI,https://image.tmdb.org/t/p/w500/y2H7SMzSO0f8KHjCqavUhVfRX0Z.jpg,164.0,2026-04-15,Filmin
+Birdman or (The Unexpected Virtue of Ignorance),2014,ZA,Netflix,https://image.tmdb.org/t/p/w500/rHUg2AuIuLSIYMYFgavVwqt1jtc.jpg,120.0,2026-04-15,Alyssa
+Catch Me If You Can,2002,ZA,Netflix,https://image.tmdb.org/t/p/w500/ctjEj2xM32OvBXCq8zAdK3ZrsAj.jpg,141.0,2026-04-15,Alyssa
+Disobedience,2017,ZA,ShowMax,https://image.tmdb.org/t/p/w500/skPT4ffWhlmmDOMNEdxOiP6Emfz.jpg,114.0,2026-04-15,Alyssa
+The Trial,1962,ZA,Artiflix,https://image.tmdb.org/t/p/w500/4qDUe5HqB8pXNplSBlsoyVjNP3r.jpg,119.0,2026-04-15,Filmin
