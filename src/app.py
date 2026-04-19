@@ -9,10 +9,124 @@ st.set_page_config(
 )
 
 # =========================
+# 🎨 CUSTOM CSS
+# =========================
+st.markdown("""
+<style>
+/* Dark card styling */
+div[data-testid="stVerticalBlock"] > div[data-testid="stVerticalBlock"] {
+    border-radius: 12px;
+}
+
+/* Movie title styling */
+.movie-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 6px 0 2px 0;
+    color: inherit;
+}
+
+.movie-meta {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin-bottom: 6px;
+}
+
+/* Provider badge */
+.provider-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 2px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    color: inherit;
+}
+
+/* Country header in availability */
+.country-header {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 8px 0 4px 0;
+}
+
+/* Stats bar */
+.stats-bar {
+    display: flex;
+    gap: 24px;
+    padding: 12px 0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #6366f1;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Poster hover effect */
+div[data-testid="stImage"] img {
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+div[data-testid="stImage"] img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Search input */
+div[data-testid="stTextInput"] input {
+    border-radius: 20px !important;
+    padding-left: 16px !important;
+}
+
+/* Filter tags */
+.filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 0;
+}
+
+.filter-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 14px;
+    font-size: 0.72rem;
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    color: inherit;
+    opacity: 0.85;
+}
+
+/* Expander styling */
+div[data-testid="stExpander"] {
+    border-radius: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.15);
+}
+</style>
+""", unsafe_allow_html=True)
+
+# =========================
 # 🍿 HEADER
 # =========================
 st.markdown("## 🍿 Watchlist Availability")
-st.markdown("**Where your watchlist is streaming worldwide**")
+st.caption("Where your watchlist is streaming worldwide")
 
 # =========================
 # 📁 PATHING
@@ -31,20 +145,18 @@ df = pd.read_csv(file_path)
 # =========================
 def country_to_flag(code: str) -> str:
     code = code.upper()
-    
-    # FIX: The UK flag is tied to the GB ISO code
     if code == "UK":
         code = "GB"
-        
     if len(code) != 2:
         return code
-        
-    # Standard Regional Indicator Symbol formula
-    # Offset 127397 is sometimes used, but 127462 - ord('A') is safer
     return "".join(chr(ord(c) + 127397) for c in code)
 
 def format_runtime(runtime):
-    return f"⏱️ {runtime} min" if pd.notna(runtime) else ""
+    if pd.notna(runtime):
+        hours = int(runtime) // 60
+        mins = int(runtime) % 60
+        return f"{hours}h {mins}m" if hours else f"{mins}m"
+    return ""
 
 # =========================
 # 🏠 OWNED SERVICES MAP
@@ -64,17 +176,14 @@ OWNED_SERVICES_MAP: dict[str, list[str]] = {
 # =========================
 st.sidebar.markdown("## Filters")
 
-# --- Helper: toggle all checkboxes in a group via session state ---
 def toggle_all(group_prefix, items, select_all_key):
-    """Callback: sync individual checkboxes to the select-all state."""
     val = st.session_state[select_all_key]
     for item in items:
         st.session_state[f"{group_prefix}_{item}"] = val
 
-# --- 🌍 Countries (popover with checkboxes) ---
+# --- 🌍 Countries ---
 countries = sorted(df["country"].unique().tolist())
 
-# Initialize session state for countries on first run
 if "all_countries" not in st.session_state:
     st.session_state["all_countries"] = True
     for c in countries:
@@ -86,18 +195,16 @@ with st.sidebar.popover("🌍 Countries", use_container_width=True):
         on_change=toggle_all, args=("country", countries, "all_countries")
     )
     for c in countries:
-        label = f"{country_to_flag(c)} {c}"
-        st.checkbox(label, key=f"country_{c}")
+        st.checkbox(f"{country_to_flag(c)} {c}", key=f"country_{c}")
 
 selected_countries = [c for c in countries if st.session_state.get(f"country_{c}", True)]
 if not selected_countries:
     selected_countries = countries
 
-# --- 📺 Services (cascaded from country, popover with scrollable checkboxes) ---
+# --- 📺 Services ---
 country_filtered_df = df[df["country"].isin(selected_countries)]
 services = sorted(country_filtered_df["provider"].unique().tolist())
 
-# Initialize session state for services on first run
 if "all_services" not in st.session_state:
     st.session_state["all_services"] = True
     for s in services:
@@ -108,7 +215,6 @@ with st.sidebar.popover("📺 Streaming services", use_container_width=True):
         "Select all", key="all_services",
         on_change=toggle_all, args=("service", services, "all_services")
     )
-    # Scrollable container so the list doesn't overflow upward
     with st.container(height=300):
         for s in services:
             st.checkbox(s, key=f"service_{s}")
@@ -117,10 +223,9 @@ selected_services = [s for s in services if st.session_state.get(f"service_{s}",
 if not selected_services:
     selected_services = services
 
-# --- 🏠 Services I own (popover with checkboxes, opt-in) ---
+# --- 🏠 Services I own ---
 owned_labels = list(OWNED_SERVICES_MAP.keys())
 
-# Initialize session state for owned services on first run (all unchecked)
 if "all_owned" not in st.session_state:
     st.session_state["all_owned"] = False
     for label in owned_labels:
@@ -136,21 +241,32 @@ with st.sidebar.popover("🏠 Services I own", use_container_width=True):
 
 selected_owned_services = [label for label in owned_labels if st.session_state.get(f"owned_{label}", False)]
 
-# --- 📋 Sources (cascaded, only if column exists) ---
+# --- 📋 Sources (multi-select) ---
 has_source_column = "source" in df.columns
-selected_source = "📋 All sources"
+selected_sources = []
 
 if has_source_column:
     source_filtered_df = country_filtered_df[country_filtered_df["provider"].isin(selected_services)]
     all_sources = sorted(
         {s.strip() for val in source_filtered_df["source"].dropna() for s in str(val).split(",")}
     )
-    source_options = ["📋 All sources"] + all_sources
-    selected_source = st.sidebar.selectbox(
-        "📋 Source",
-        options=source_options,
-        index=0
-    )
+
+    if "all_sources" not in st.session_state:
+        st.session_state["all_sources"] = True
+        for s in all_sources:
+            st.session_state[f"source_{s}"] = True
+
+    with st.sidebar.popover("📋 Sources", use_container_width=True):
+        st.checkbox(
+            "Select all", key="all_sources",
+            on_change=toggle_all, args=("source", all_sources, "all_sources")
+        )
+        for s in all_sources:
+            st.checkbox(s, key=f"source_{s}")
+
+    selected_sources = [s for s in all_sources if st.session_state.get(f"source_{s}", True)]
+    if not selected_sources:
+        selected_sources = all_sources
 
 # =========================
 # 🔎 FILTERING
@@ -160,7 +276,6 @@ filtered_df = df[
     (df["provider"].isin(selected_services))
 ]
 
-# Apply owned services filter
 if selected_owned_services:
     patterns = []
     for label in selected_owned_services:
@@ -170,20 +285,20 @@ if selected_owned_services:
         mask = mask | filtered_df["provider"].str.contains(pattern, regex=False)
     filtered_df = filtered_df[mask]
 
-# Apply source filter
-if has_source_column and selected_source != "📋 All sources":
-    filtered_df = filtered_df[
-        filtered_df["source"].fillna("").str.contains(selected_source, regex=False)
-    ]
+if has_source_column and selected_sources:
+    all_selected = has_source_column and len(selected_sources) == len(all_sources)
+    if not all_selected:
+        source_mask = filtered_df["source"].fillna("").apply(
+            lambda val: any(s in val for s in selected_sources)
+        )
+        filtered_df = filtered_df[source_mask]
 
-# Deduplicate by (title, year) when showing all sources
-if has_source_column and selected_source == "📋 All sources":
+if has_source_column:
     filtered_df = filtered_df.drop_duplicates(subset=["title", "year", "country", "provider"], keep="first")
 
 # =========================
 # 🎬 GRID DISPLAY
 # =========================
-# Group by movie to avoid duplicates
 movies = filtered_df.groupby(["title", "year"]).agg({
     "country": list,
     "provider": list,
@@ -191,37 +306,101 @@ movies = filtered_df.groupby(["title", "year"]).agg({
     "runtime": "first"
 }).reset_index()
 
-# 🔍 Search above grid
-search_query = st.text_input(
-    "",
-    placeholder="🔍 Search movie titles..."
-)
+# 🏷️ Active filter tags
+filter_tags = []
+
+# Countries (only show if not all selected)
+if len(selected_countries) < len(countries):
+    for c in selected_countries:
+        filter_tags.append(f"{country_to_flag(c)} {c}")
+
+# Owned services
+for label in selected_owned_services:
+    filter_tags.append(f"🏠 {label}")
+
+# Sources (only show if not all selected)
+if has_source_column and selected_sources and len(selected_sources) < len(all_sources):
+    for s in selected_sources:
+        filter_tags.append(f"📋 {s}")
+
+if filter_tags:
+    tags_html = "".join(f'<span class="filter-tag">{t}</span>' for t in filter_tags)
+    st.markdown(f'<div class="filter-tags">{tags_html}</div>', unsafe_allow_html=True)
+
+# 🔍 Search
+search_query = st.text_input("", placeholder="🔍 Search movie titles...")
 if search_query:
     movies = movies[movies["title"].str.contains(search_query, case=False, na=False)]
 
-# 🔢 SORTING by runtime ascending by default
-movies = movies.sort_values("runtime", na_position="last")  # shortest → longest
+# Sort options
+sort_col1, sort_col2 = st.columns([3, 1])
+with sort_col2:
+    sort_option = st.selectbox("Sort by", ["Runtime ↑", "Runtime ↓", "Title A-Z", "Year ↓", "Year ↑"], label_visibility="collapsed")
+
+if sort_option == "Runtime ↑":
+    movies = movies.sort_values("runtime", na_position="last")
+elif sort_option == "Runtime ↓":
+    movies = movies.sort_values("runtime", ascending=False, na_position="last")
+elif sort_option == "Title A-Z":
+    movies = movies.sort_values("title")
+elif sort_option == "Year ↓":
+    movies = movies.sort_values("year", ascending=False)
+elif sort_option == "Year ↑":
+    movies = movies.sort_values("year")
+
+# 📊 Stats bar
+unique_countries = set()
+unique_providers = set()
+for _, m in movies.iterrows():
+    unique_countries.update(m["country"])
+    unique_providers.update(m["provider"])
+
+st.markdown(f"""
+<div class="stats-bar">
+    <div class="stat-item">
+        <div class="stat-value">{len(movies)}</div>
+        <div class="stat-label">Movies</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-value">{len(unique_countries)}</div>
+        <div class="stat-label">Countries</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-value">{len(unique_providers)}</div>
+        <div class="stat-label">Providers</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 if movies.empty:
     st.info("😕 No movies match your filters.")
 else:
     n_cols = 5
     for i in range(0, len(movies), n_cols):
-        cols = st.columns(n_cols)
+        cols = st.columns(n_cols, gap="medium")
         for j, col in enumerate(cols):
             if i + j < len(movies):
                 movie = movies.iloc[i + j]
                 with col:
                     st.image(movie["poster_url"], use_container_width=True)
-                    runtime_text = format_runtime(movie.get("runtime"))
-                    st.markdown(f"**{movie['title']}** ({int(movie['year'])}) {runtime_text}")
 
-                    availability = sorted(
-                        set(
-                            f"{country_to_flag(c)} {c}: {p}"
-                            for c, p in zip(movie["country"], movie["provider"])
-                        )
-                    )
-                    with st.expander(f"📍 Available in {len(availability)} places"):
-                        for item in availability:
-                            st.caption(item)
+                    runtime_text = format_runtime(movie.get("runtime"))
+                    year_text = int(movie["year"])
+                    st.markdown(f'<div class="movie-title">{movie["title"]}</div>', unsafe_allow_html=True)
+                    st.markdown(f'<div class="movie-meta">{year_text} · {runtime_text}</div>', unsafe_allow_html=True)
+
+                    # Group providers by country
+                    country_providers: dict[str, list[str]] = {}
+                    for c, p in zip(movie["country"], movie["provider"]):
+                        country_providers.setdefault(c, []).append(p)
+
+                    n_places = sum(len(v) for v in country_providers.values())
+                    with st.expander(f"📍 {len(country_providers)} countries · {n_places} offers"):
+                        for country in sorted(country_providers.keys()):
+                            flag = country_to_flag(country)
+                            st.markdown(f'<div class="country-header">{flag} {country}</div>', unsafe_allow_html=True)
+                            badges = "".join(
+                                f'<span class="provider-badge">{p}</span>'
+                                for p in sorted(set(country_providers[country]))
+                            )
+                            st.markdown(badges, unsafe_allow_html=True)
