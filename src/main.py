@@ -9,7 +9,7 @@ from playwright.sync_api import sync_playwright
 
 # --- LOCAL MODULES ---
 from letterbox_scraper import scrape_films, discover_lists
-from justwatch_query import get_film_offers
+from justwatch_query import get_film_offers_api
 from poster_service import get_movie_metadata, get_localized_title
 
 # --- PATHS ---
@@ -142,50 +142,46 @@ def main():
         # Build deduplicated films_to_scan list
         films_to_scan = [all_films[fid]['film'] for fid in films_to_scan_set if fid in all_films]
 
-        # --- 4. Query JustWatch with source column (Task 4.4) ---
+        # --- 4. Query JustWatch via API (all countries per movie in one call) ---
         new_rows = []
 
         if not films_to_scan:
             print("☕ No new movies to check for streaming offers.")
         else:
-            print(f"🚀 Processing {len(films_to_scan)} movies...")
+            print(f"🚀 Processing {len(films_to_scan)} movies across {len(COUNTRIES)} countries...")
             movie_cache = {}
-            localized_cache = {}  # (movie_id, country) -> localized title
 
-            for country in COUNTRIES:
-                print(f"\n🌍 SCANNING: {country.upper()}")
-                for film in films_to_scan:
-                    movie_id = f"{film['title']}_{film['year']}"
+            for film in films_to_scan:
+                movie_id = f"{film['title']}_{film['year']}"
 
-                    if movie_id not in movie_cache:
-                        poster, runtime = get_movie_metadata(film["title"], film["year"], TMDB_TOKEN)
-                        movie_cache[movie_id] = {"poster_url": poster, "runtime": runtime}
+                if movie_id not in movie_cache:
+                    poster, runtime = get_movie_metadata(film["title"], film["year"], TMDB_TOKEN)
+                    movie_cache[movie_id] = {"poster_url": poster, "runtime": runtime}
 
-                    # Get localized title for this country
-                    cache_key = (movie_id, country.lower())
-                    if cache_key not in localized_cache:
-                        localized_cache[cache_key] = get_localized_title(
-                            film["title"], film["year"], country, TMDB_TOKEN
-                        )
-                    local_title = localized_cache[cache_key]
+                # Get localized title (use first non-English country for search hint)
+                local_title = get_localized_title(film["title"], film["year"], COUNTRIES[0], TMDB_TOKEN)
 
-                    offers = get_film_offers(page, film["title"], film["year"], country.lower(), local_title=local_title)
+                # Single API call gets offers for ALL countries
+                offers_by_country = get_film_offers_api(
+                    film["title"], film["year"], COUNTRIES, local_title=local_title
+                )
 
-                    if offers:
-                        unique_cleaned_providers = {clean_provider_name(o) for o in offers}
-                        source_label = ", ".join(sorted(all_films[movie_id]['sources']))
-                        for provider in unique_cleaned_providers:
-                            new_rows.append({
-                                "title": film["title"],
-                                "year": film["year"],
-                                "country": country.upper(),
-                                "provider": provider,
-                                "poster_url": movie_cache[movie_id]["poster_url"],
-                                "runtime": movie_cache[movie_id]["runtime"],
-                                "last_updated": today.strftime("%Y-%m-%d"),
-                                "source": source_label,
-                            })
-                    time.sleep(random.uniform(0.1, 0.3))
+                source_label = ", ".join(sorted(all_films[movie_id]['sources']))
+                for country, providers in offers_by_country.items():
+                    unique_cleaned = {clean_provider_name(p) for p in providers}
+                    for provider in unique_cleaned:
+                        new_rows.append({
+                            "title": film["title"],
+                            "year": film["year"],
+                            "country": country.upper(),
+                            "provider": provider,
+                            "poster_url": movie_cache[movie_id]["poster_url"],
+                            "runtime": movie_cache[movie_id]["runtime"],
+                            "last_updated": today.strftime("%Y-%m-%d"),
+                            "source": source_label,
+                        })
+
+                time.sleep(random.uniform(0.1, 0.3))
 
         browser.close()
 

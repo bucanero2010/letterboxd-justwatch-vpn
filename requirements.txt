@@ -4,3 +4,4 @@ beautifulsoup4
 cloudscraper
 playwright
 requests
+simple-justwatch-python-api
