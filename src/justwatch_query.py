@@ -102,24 +102,32 @@ def get_film_offers(page, title, year, country):
         if "Verify" in page.title() or "Cloudflare" in page.title():
             return []
 
-        # 1. Scroll Down (Vital for lazy loading offers)
+        # 1. Scroll down to trigger lazy loading, then wait
         page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-        time.sleep(0.5)
+        time.sleep(1)
 
         # 2. Switch to Grid
         ensure_grid_view(page)
 
-        # 3. Wait for Content
-        try:
-            page.wait_for_selector(".buybox-row, .price-comparison__grid__row", timeout=8000)
-        except:
+        # 3. Wait for Content with retry
+        rows = []
+        for attempt in range(3):
+            try:
+                page.wait_for_selector(".buybox-row, .price-comparison__grid__row", timeout=5000)
+            except:
+                pass
+            final_soup = BeautifulSoup(page.content(), 'html.parser')
+            rows = final_soup.select(".buybox-row, .price-comparison__grid__row")
+            if rows:
+                break
+            # Scroll again and wait before retry
+            page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+            time.sleep(1.5)
+
+        if not rows:
             return []
 
-        final_soup = BeautifulSoup(page.content(), 'html.parser')
         providers = []
-        
-        # 4. Extract (Universal Logic)
-        rows = final_soup.select(".buybox-row, .price-comparison__grid__row")
         
         for row in rows:
             is_streaming = False
