@@ -10,7 +10,7 @@ from playwright.sync_api import sync_playwright
 # --- LOCAL MODULES ---
 from letterbox_scraper import scrape_films, discover_lists
 from justwatch_query import get_film_offers
-from poster_service import get_movie_metadata
+from poster_service import get_movie_metadata, get_localized_title
 
 # --- PATHS ---
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -150,6 +150,7 @@ def main():
         else:
             print(f"🚀 Processing {len(films_to_scan)} movies...")
             movie_cache = {}
+            localized_cache = {}  # (movie_id, country) -> localized title
 
             for country in COUNTRIES:
                 print(f"\n🌍 SCANNING: {country.upper()}")
@@ -160,7 +161,15 @@ def main():
                         poster, runtime = get_movie_metadata(film["title"], film["year"], TMDB_TOKEN)
                         movie_cache[movie_id] = {"poster_url": poster, "runtime": runtime}
 
-                    offers = get_film_offers(page, film["title"], film["year"], country.lower())
+                    # Get localized title for this country
+                    cache_key = (movie_id, country.lower())
+                    if cache_key not in localized_cache:
+                        localized_cache[cache_key] = get_localized_title(
+                            film["title"], film["year"], country, TMDB_TOKEN
+                        )
+                    local_title = localized_cache[cache_key]
+
+                    offers = get_film_offers(page, film["title"], film["year"], country.lower(), local_title=local_title)
 
                     if offers:
                         unique_cleaned_providers = {clean_provider_name(o) for o in offers}

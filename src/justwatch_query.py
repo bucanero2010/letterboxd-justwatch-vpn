@@ -9,14 +9,41 @@ SEARCH_SLUGS = {
     "dk": "search", "za": "search", "es": "buscar", "ar": "buscar", "jp": "検索"
 }
 
+def normalize(text):
+    """Lowercase, strip accents, remove punctuation for fuzzy comparison."""
+    import unicodedata
+    text = unicodedata.normalize('NFD', text.lower())
+    text = ''.join(c for c in text if unicodedata.category(c) != 'Mn')
+    text = re.sub(r'[^\w\s]', '', text)
+    return text.strip()
+
 def validate_match(target_title, target_year, found_text):
     if not found_text: return False
+    # Check year (allow ±1 year tolerance)
     match = re.search(r'(?:^|\s|\()(\d{4})(?:\)|\s|$)', found_text)
     if not match: return False
     if abs(target_year - int(match.group(1))) > 1: return False
-    return True 
+    # Check title word overlap
+    target_words = set(normalize(target_title).split())
+    found_norm = normalize(found_text)
+    found_words = set(found_norm.split())
+    # Remove very short/common words
+    stopwords = {'the', 'a', 'an', 'of', 'in', 'on', 'at', 'to', 'and', 'or',
+                 'el', 'la', 'los', 'las', 'de', 'del', 'en', 'un', 'una', 'y',
+                 'le', 'les', 'des', 'du', 'et', 'der', 'die', 'das', 'und'}
+    significant = {w for w in target_words if len(w) > 2 and w not in stopwords}
+    if not significant:
+        significant = target_words
+    # For short titles (1-2 significant words), require all to match
+    # For longer titles, require at least half
+    matched = sum(1 for w in significant if w in found_words or w in found_norm)
+    if len(significant) <= 2:
+        return matched >= len(significant)
+    return matched >= max(2, len(significant) // 2)
 
-def perform_search(page, country, query, target_year):
+def perform_search(page, country, query, target_year, original_title=None):
+    """Search JustWatch. original_title is used for match validation (defaults to query)."""
+    match_title = original_title or query
     slug = SEARCH_SLUGS.get(country.lower(), "search")
     encoded_query = urllib.parse.quote(query)
     search_url = f"https://www.justwatch.com/{country}/{slug}?q={encoded_query}"
@@ -46,7 +73,7 @@ def perform_search(page, country, query, target_year):
             if not any(kw in path for kw in movie_keywords):
                 continue
             link_text = header_link.get_text(" ", strip=True)
-            if validate_match(query.split()[0], target_year, link_text):
+            if validate_match(match_title, target_year, link_text):
                 return f"https://www.justwatch.com{path}"
 
         # FALLBACK: Legacy approach for older layouts
@@ -56,7 +83,7 @@ def perform_search(page, country, query, target_year):
             if re.match(rf"^/{country}/[^/]+/[^/]+$", path):
                 if any(x in path for x in ["movie", "pelicula", "film", "filme", "映画"]):
                     link_text = a.get_text(" ", strip=True) or (a.find("img").get("alt") if a.find("img") else "")
-                    if validate_match(query.split()[0], target_year, link_text):
+                    if validate_match(match_title, target_year, link_text):
                         return f"https://www.justwatch.com{path}"
     except:
         pass
@@ -81,15 +108,24 @@ def ensure_grid_view(page):
             continue
     return False
 
-def get_film_offers(page, title, year, country):
+def get_film_offers(page, title, year, country, local_title=None):
     try:
         target_year = int(year)
     except:
         return []
 
-    target_url = perform_search(page, country, f"{title} {target_year}", target_year)
+    # Try localized title first if available and different from English
+    target_url = None
+    if local_title and local_title.lower() != title.lower():
+        target_url = perform_search(page, country, f"{local_title} {target_year}", target_year, original_title=local_title)
+        if not target_url:
+            target_url = perform_search(page, country, local_title, target_year, original_title=local_title)
+
+    # Fall back to English title
     if not target_url:
-        target_url = perform_search(page, country, title, target_year)
+        target_url = perform_search(page, country, f"{title} {target_year}", target_year, original_title=title)
+    if not target_url:
+        target_url = perform_search(page, country, title, target_year, original_title=title)
 
     if not target_url:
         return []
