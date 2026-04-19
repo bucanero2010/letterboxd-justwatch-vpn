@@ -4,8 +4,28 @@ Replaces the previous Playwright-based scraping approach for much faster lookups
 """
 
 import re
+import time
 import unicodedata
 from simplejustwatchapi import search, offers_for_countries
+
+# Rate limit config
+MAX_RETRIES = 5
+BASE_DELAY = 3  # seconds
+
+
+def _retry_on_429(func, *args, **kwargs):
+    """Retry a function call with exponential backoff on 429 errors."""
+    for attempt in range(MAX_RETRIES):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            if "429" in str(e):
+                delay = BASE_DELAY * (2 ** attempt)
+                print(f"   ⏳ Rate limited, waiting {delay}s (attempt {attempt + 1}/{MAX_RETRIES})...")
+                time.sleep(delay)
+            else:
+                raise
+    raise Exception(f"Rate limited after {MAX_RETRIES} retries")
 
 
 def normalize(text):
@@ -44,7 +64,7 @@ def find_movie_id(title, year, local_title=None):
     # Try localized title first
     if local_title and local_title.lower() != title.lower():
         try:
-            results = search(local_title, country="US", language="en", count=5)
+            results = _retry_on_429(search, local_title, country="US", language="en", count=5)
             for r in results:
                 if r.object_type == "MOVIE" and validate_match(local_title, target_year, r.title, r.release_year):
                     print(f"   ✅ Found: {r.title} ({r.release_year}) [id={r.entry_id}]")
@@ -55,7 +75,7 @@ def find_movie_id(title, year, local_title=None):
     # Fall back to English title
     try:
         print(f"   🔎 Searching for: '{title} ({year})'...")
-        results = search(title, country="US", language="en", count=5)
+        results = _retry_on_429(search, title, country="US", language="en", count=5)
         for r in results:
             if r.object_type == "MOVIE" and validate_match(title, target_year, r.title, r.release_year):
                 print(f"   ✅ Found: {r.title} ({r.release_year}) [id={r.entry_id}]")
@@ -72,7 +92,7 @@ def get_streaming_offers(node_id, countries):
     Returns dict: {country_code: [provider_name, ...]}
     """
     try:
-        all_offers = offers_for_countries(node_id, countries)
+        all_offers = _retry_on_429(offers_for_countries, node_id, countries)
     except Exception as e:
         print(f"   ⚠️ Offers error: {e}")
         return {}

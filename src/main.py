@@ -181,7 +181,7 @@ def main():
                             "source": source_label,
                         })
 
-                time.sleep(random.uniform(0.1, 0.3))
+                time.sleep(random.uniform(1.0, 2.0))
 
         browser.close()
 
