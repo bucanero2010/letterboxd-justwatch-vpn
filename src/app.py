@@ -123,10 +123,9 @@ div[data-testid="stExpander"] {
 """, unsafe_allow_html=True)
 
 # =========================
-# 🍿 HEADER
+# 🍿 HEADER + TABS
 # =========================
-st.markdown("## 🍿 Watchlist Availability")
-st.caption("Where your watchlist is streaming worldwide")
+tab_watchlist, tab_lookup = st.tabs(["🍿 Watchlist", "🔍 Quick Lookup"])
 
 # =========================
 # 📁 PATHING
@@ -227,9 +226,9 @@ if not selected_services:
 owned_labels = list(OWNED_SERVICES_MAP.keys())
 
 if "all_owned" not in st.session_state:
-    st.session_state["all_owned"] = False
+    st.session_state["all_owned"] = True
     for label in owned_labels:
-        st.session_state[f"owned_{label}"] = False
+        st.session_state[f"owned_{label}"] = True
 
 with st.sidebar.popover("🏠 Services I own", use_container_width=True):
     st.checkbox(
@@ -252,9 +251,9 @@ if has_source_column:
     )
 
     if "all_sources" not in st.session_state:
-        st.session_state["all_sources"] = True
+        st.session_state["all_sources"] = False
         for s in all_sources:
-            st.session_state[f"source_{s}"] = True
+            st.session_state[f"source_{s}"] = s != "Alyssa"
 
     with st.sidebar.popover("📋 Sources", use_container_width=True):
         st.checkbox(
@@ -268,139 +267,205 @@ if has_source_column:
     if not selected_sources:
         selected_sources = all_sources
 
-# =========================
-# 🔎 FILTERING
-# =========================
-filtered_df = df[
-    (df["country"].isin(selected_countries)) &
-    (df["provider"].isin(selected_services))
-]
+# --- ⚡ Actions ---
+st.sidebar.markdown("---")
+if "last_updated" in df.columns:
+    last_date = df["last_updated"].max()
+    st.sidebar.caption(f"📅 Data last updated: {last_date}")
 
-if selected_owned_services:
-    patterns = []
+st.sidebar.link_button(
+    "⚡ Trigger data refresh",
+    "https://github.com/bucanero2010/letterboxd-justwatch-vpn/actions/workflows/scrape.yml",
+    use_container_width=True,
+)
+
+# =========================
+# 🔎 TAB 1: WATCHLIST
+# =========================
+with tab_watchlist:
+    st.markdown("## 🍿 Watchlist Availability")
+    st.caption("Where your watchlist is streaming worldwide")
+
+    filtered_df = df[
+        (df["country"].isin(selected_countries)) &
+        (df["provider"].isin(selected_services))
+    ]
+
+    if selected_owned_services:
+        patterns = []
+        for label in selected_owned_services:
+            patterns.extend(OWNED_SERVICES_MAP[label])
+        mask = pd.Series(False, index=filtered_df.index)
+        for pattern in patterns:
+            mask = mask | filtered_df["provider"].str.contains(pattern, regex=False)
+        filtered_df = filtered_df[mask]
+
+    if has_source_column and selected_sources:
+        all_selected = has_source_column and len(selected_sources) == len(all_sources)
+        if not all_selected:
+            source_mask = filtered_df["source"].fillna("").apply(
+                lambda val: any(s in val for s in selected_sources)
+            )
+            filtered_df = filtered_df[source_mask]
+
+    if has_source_column:
+        filtered_df = filtered_df.drop_duplicates(subset=["title", "year", "country", "provider"], keep="first")
+
+    movies = filtered_df.groupby(["title", "year"]).agg({
+        "country": list,
+        "provider": list,
+        "poster_url": "first",
+        "runtime": "first"
+    }).reset_index()
+
+    # Active filter tags
+    filter_tags = []
+    if len(selected_countries) < len(countries):
+        for c in selected_countries:
+            filter_tags.append(f"{country_to_flag(c)} {c}")
     for label in selected_owned_services:
-        patterns.extend(OWNED_SERVICES_MAP[label])
-    mask = pd.Series(False, index=filtered_df.index)
-    for pattern in patterns:
-        mask = mask | filtered_df["provider"].str.contains(pattern, regex=False)
-    filtered_df = filtered_df[mask]
+        filter_tags.append(f"🏠 {label}")
+    if has_source_column and selected_sources and len(selected_sources) < len(all_sources):
+        for s in selected_sources:
+            filter_tags.append(f"📋 {s}")
+    if filter_tags:
+        tags_html = "".join(f'<span class="filter-tag">{t}</span>' for t in filter_tags)
+        st.markdown(f'<div class="filter-tags">{tags_html}</div>', unsafe_allow_html=True)
 
-if has_source_column and selected_sources:
-    all_selected = has_source_column and len(selected_sources) == len(all_sources)
-    if not all_selected:
-        source_mask = filtered_df["source"].fillna("").apply(
-            lambda val: any(s in val for s in selected_sources)
-        )
-        filtered_df = filtered_df[source_mask]
+    search_query = st.text_input("Search", placeholder="🔍 Search movie titles...", key="watchlist_search", label_visibility="collapsed")
+    if search_query:
+        movies = movies[movies["title"].str.contains(search_query, case=False, na=False)]
 
-if has_source_column:
-    filtered_df = filtered_df.drop_duplicates(subset=["title", "year", "country", "provider"], keep="first")
+    sort_col1, sort_col2 = st.columns([3, 1])
+    with sort_col2:
+        sort_option = st.selectbox("Sort by", ["Runtime ↑", "Runtime ↓", "Title A-Z", "Year ↓", "Year ↑"], label_visibility="collapsed")
+
+    if sort_option == "Runtime ↑":
+        movies = movies.sort_values("runtime", na_position="last")
+    elif sort_option == "Runtime ↓":
+        movies = movies.sort_values("runtime", ascending=False, na_position="last")
+    elif sort_option == "Title A-Z":
+        movies = movies.sort_values("title")
+    elif sort_option == "Year ↓":
+        movies = movies.sort_values("year", ascending=False)
+    elif sort_option == "Year ↑":
+        movies = movies.sort_values("year")
+
+    unique_countries = set()
+    unique_providers = set()
+    for _, m in movies.iterrows():
+        unique_countries.update(m["country"])
+        unique_providers.update(m["provider"])
+
+    st.markdown(f"""
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-value">{len(movies)}</div>
+            <div class="stat-label">Movies</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">{len(unique_countries)}</div>
+            <div class="stat-label">Countries</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">{len(unique_providers)}</div>
+            <div class="stat-label">Providers</div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    if movies.empty:
+        st.info("😕 No movies match your filters.")
+    else:
+        n_cols = 5
+        for i in range(0, len(movies), n_cols):
+            cols = st.columns(n_cols, gap="medium")
+            for j, col in enumerate(cols):
+                if i + j < len(movies):
+                    movie = movies.iloc[i + j]
+                    with col:
+                        st.image(movie["poster_url"], use_container_width=True)
+                        runtime_text = format_runtime(movie.get("runtime"))
+                        year_text = int(movie["year"])
+                        st.markdown(f'<div class="movie-title">{movie["title"]}</div>', unsafe_allow_html=True)
+                        st.markdown(f'<div class="movie-meta">{year_text} · {runtime_text}</div>', unsafe_allow_html=True)
+
+                        country_providers: dict[str, list[str]] = {}
+                        for c, p in zip(movie["country"], movie["provider"]):
+                            country_providers.setdefault(c, []).append(p)
+
+                        n_places = sum(len(v) for v in country_providers.values())
+                        with st.expander(f"📍 {len(country_providers)} countries · {n_places} offers"):
+                            for country in sorted(country_providers.keys()):
+                                flag = country_to_flag(country)
+                                st.markdown(f'<div class="country-header">{flag} {country}</div>', unsafe_allow_html=True)
+                                badges = "".join(
+                                    f'<span class="provider-badge">{p}</span>'
+                                    for p in sorted(set(country_providers[country]))
+                                )
+                                st.markdown(badges, unsafe_allow_html=True)
+
 
 # =========================
-# 🎬 GRID DISPLAY
+# 🔍 TAB 2: QUICK LOOKUP
 # =========================
-movies = filtered_df.groupby(["title", "year"]).agg({
-    "country": list,
-    "provider": list,
-    "poster_url": "first",
-    "runtime": "first"
-}).reset_index()
+with tab_lookup:
+    st.markdown("## 🔍 Quick Lookup")
+    st.caption("Search any movie and see where it's streaming right now")
 
-# 🏷️ Active filter tags
-filter_tags = []
+    lookup_col1, lookup_col2 = st.columns([3, 1])
+    with lookup_col1:
+        lookup_query = st.text_input("Movie name", placeholder="Type a movie name...", key="lookup_input", label_visibility="collapsed")
+    with lookup_col2:
+        lookup_year = st.number_input("Year (optional)", min_value=1900, max_value=2030, value=None, key="lookup_year")
 
-# Countries (only show if not all selected)
-if len(selected_countries) < len(countries):
-    for c in selected_countries:
-        filter_tags.append(f"{country_to_flag(c)} {c}")
+    if lookup_query:
+        with st.spinner("Searching JustWatch..."):
+            try:
+                from simplejustwatchapi import search as jw_search, offers_for_countries as jw_offers
+                import json
 
-# Owned services
-for label in selected_owned_services:
-    filter_tags.append(f"🏠 {label}")
+                # Load countries from config
+                config_path = BASE_DIR / "src" / "config.json"
+                if config_path.exists():
+                    with open(config_path) as f:
+                        config = json.load(f)
+                    lookup_countries = config.get("country_scan", ["US"])
+                else:
+                    lookup_countries = ["US"]
 
-# Sources (only show if not all selected)
-if has_source_column and selected_sources and len(selected_sources) < len(all_sources):
-    for s in selected_sources:
-        filter_tags.append(f"📋 {s}")
+                # Search
+                results = jw_search(lookup_query, country="US", language="en", count=5)
 
-if filter_tags:
-    tags_html = "".join(f'<span class="filter-tag">{t}</span>' for t in filter_tags)
-    st.markdown(f'<div class="filter-tags">{tags_html}</div>', unsafe_allow_html=True)
+                # Filter by year if provided
+                movie_results = [r for r in results if r.object_type == "MOVIE"]
+                if lookup_year:
+                    year_filtered = [r for r in movie_results if r.release_year and abs(r.release_year - lookup_year) <= 1]
+                    if year_filtered:
+                        movie_results = year_filtered
 
-# 🔍 Search
-search_query = st.text_input("", placeholder="🔍 Search movie titles...")
-if search_query:
-    movies = movies[movies["title"].str.contains(search_query, case=False, na=False)]
+                if not movie_results:
+                    st.warning("No movies found. Try a different search term.")
+                else:
+                    match = movie_results[0]
+                    st.markdown(f"### {match.title} ({match.release_year})")
 
-# Sort options
-sort_col1, sort_col2 = st.columns([3, 1])
-with sort_col2:
-    sort_option = st.selectbox("Sort by", ["Runtime ↑", "Runtime ↓", "Title A-Z", "Year ↓", "Year ↑"], label_visibility="collapsed")
+                    # Get offers
+                    offers = jw_offers(match.entry_id, [c.upper() for c in lookup_countries])
 
-if sort_option == "Runtime ↑":
-    movies = movies.sort_values("runtime", na_position="last")
-elif sort_option == "Runtime ↓":
-    movies = movies.sort_values("runtime", ascending=False, na_position="last")
-elif sort_option == "Title A-Z":
-    movies = movies.sort_values("title")
-elif sort_option == "Year ↓":
-    movies = movies.sort_values("year", ascending=False)
-elif sort_option == "Year ↑":
-    movies = movies.sort_values("year")
-
-# 📊 Stats bar
-unique_countries = set()
-unique_providers = set()
-for _, m in movies.iterrows():
-    unique_countries.update(m["country"])
-    unique_providers.update(m["provider"])
-
-st.markdown(f"""
-<div class="stats-bar">
-    <div class="stat-item">
-        <div class="stat-value">{len(movies)}</div>
-        <div class="stat-label">Movies</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-value">{len(unique_countries)}</div>
-        <div class="stat-label">Countries</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-value">{len(unique_providers)}</div>
-        <div class="stat-label">Providers</div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
-
-if movies.empty:
-    st.info("😕 No movies match your filters.")
-else:
-    n_cols = 5
-    for i in range(0, len(movies), n_cols):
-        cols = st.columns(n_cols, gap="medium")
-        for j, col in enumerate(cols):
-            if i + j < len(movies):
-                movie = movies.iloc[i + j]
-                with col:
-                    st.image(movie["poster_url"], use_container_width=True)
-
-                    runtime_text = format_runtime(movie.get("runtime"))
-                    year_text = int(movie["year"])
-                    st.markdown(f'<div class="movie-title">{movie["title"]}</div>', unsafe_allow_html=True)
-                    st.markdown(f'<div class="movie-meta">{year_text} · {runtime_text}</div>', unsafe_allow_html=True)
-
-                    # Group providers by country
-                    country_providers: dict[str, list[str]] = {}
-                    for c, p in zip(movie["country"], movie["provider"]):
-                        country_providers.setdefault(c, []).append(p)
-
-                    n_places = sum(len(v) for v in country_providers.values())
-                    with st.expander(f"📍 {len(country_providers)} countries · {n_places} offers"):
-                        for country in sorted(country_providers.keys()):
-                            flag = country_to_flag(country)
-                            st.markdown(f'<div class="country-header">{flag} {country}</div>', unsafe_allow_html=True)
-                            badges = "".join(
-                                f'<span class="provider-badge">{p}</span>'
-                                for p in sorted(set(country_providers[country]))
-                            )
+                    has_offers = False
+                    for country_code, country_offers in sorted(offers.items()):
+                        streaming = [o for o in country_offers if o.monetization_type in ('FLATRATE', 'FREE', 'ADS')]
+                        if streaming:
+                            has_offers = True
+                            flag = country_to_flag(country_code)
+                            st.markdown(f'<div class="country-header">{flag} {country_code}</div>', unsafe_allow_html=True)
+                            providers = sorted({o.package.name for o in streaming})
+                            badges = "".join(f'<span class="provider-badge">{p}</span>' for p in providers)
                             st.markdown(badges, unsafe_allow_html=True)
+
+                    if not has_offers:
+                        st.info("😕 No streaming offers found in your countries.")
+
+            except Exception as e:
+                st.error(f"Lookup failed: {e}")
