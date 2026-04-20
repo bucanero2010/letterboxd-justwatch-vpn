@@ -11,6 +11,7 @@ from playwright.sync_api import sync_playwright
 from letterbox_scraper import scrape_films, discover_lists
 from justwatch_query import get_film_offers_api
 from poster_service import get_movie_metadata, get_localized_title
+from alert_service import find_new_availability, send_alert_email
 
 # --- PATHS ---
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -186,6 +187,12 @@ def main():
         browser.close()
 
     # --- 5. Pruning with combined multi-source IDs (Task 4.5) ---
+    # Save snapshot of old CSV for alert comparison
+    OLD_SNAPSHOT = DATA_DIR / "unwatched_by_country.old.csv"
+    if OUTPUT_FILE.exists():
+        import shutil
+        shutil.copy2(OUTPUT_FILE, OLD_SNAPSHOT)
+
     if OUTPUT_FILE.exists():
         df_existing = pd.read_csv(OUTPUT_FILE)
         df_existing['temp_id'] = df_existing['title'] + "_" + df_existing['year'].astype(str)
@@ -217,6 +224,12 @@ def main():
         df_pruned.to_csv(OUTPUT_FILE, index=False)
 
     print(f"✅ Sync complete. Results: {OUTPUT_FILE}")
+
+    # --- 7. Check for new availability and send alerts ---
+    if OLD_SNAPSHOT.exists():
+        newly_available = find_new_availability(OLD_SNAPSHOT, OUTPUT_FILE)
+        send_alert_email(newly_available)
+        OLD_SNAPSHOT.unlink()  # Clean up snapshot
 
 if __name__ == "__main__":
     main()
