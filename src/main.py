@@ -1,4 +1,5 @@
 import json
+import os
 import pandas as pd
 import time
 import random
@@ -22,11 +23,21 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 def load_config():
     paths = [SCRIPT_DIR / "config.json", BASE_DIR / "config.json"]
+    config = None
     for p in paths:
         if p.exists():
             with open(p, "r") as f:
-                return json.load(f)
-    raise FileNotFoundError("❌ config.json not found")
+                config = json.load(f)
+            break
+    if config is None:
+        raise FileNotFoundError("❌ config.json not found")
+
+    # Allow environment variable to override sensitive config (for CI/production)
+    env_tmdb = os.environ.get("TMDB_TOKEN")
+    if env_tmdb:
+        config["tmdb_key"] = env_tmdb
+
+    return config
 
 def get_history_path(source_key: str) -> Path:
     """Return the history file path for a given source key."""

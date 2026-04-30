@@ -1,5 +1,5 @@
 {
   "letterboxd_user": "bucanero2010",
   "country_scan": ["ES", "US", "UK", "AR", "JP", "CA", "AU", "DK", "ZA"],
-  "tmdb_key": "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NWMzZGM2YTYyOTE3OGQ5ZmZlZjc1MjU0Mzg2MDNiZiIsIm5iZiI6MTc3MDM0MjY4NC41MzMsInN1YiI6IjY5ODU0OTFjMmY0MTYxNzU3ZTYxYTNkYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OYLXRAazslDlAQ3akzB9VKhB9Zi-Gkhr-HlJ5JfF3e0"
+  "tmdb_key": "REPLACE_WITH_YOUR_TMDB_TOKEN_OR_SET_TMDB_TOKEN_ENV_VAR"
 }
