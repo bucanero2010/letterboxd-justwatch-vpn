@@ -213,3 +213,8 @@ test.py
 # data
 
 data/
+
+
+# Local config with secrets (use config.example.json as template)
+# Uncomment if you put real tokens in config.json locally:
+# src/config.json

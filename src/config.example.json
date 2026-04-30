@@ -1,0 +1,5 @@
+{
+  "letterboxd_user": "your_letterboxd_username",
+  "country_scan": ["ES", "US", "UK", "AR", "JP", "CA", "AU", "DK", "ZA"],
+  "tmdb_key": "SET_VIA_TMDB_TOKEN_ENV_VAR_OR_REPLACE_HERE"
+}
