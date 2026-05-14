@@ -588,10 +588,14 @@ with tab_recommend:
         st.session_state["rec_streaming_cache"] = {}
 
     if st.session_state["rec_results"] is None:
-        if _results_path.exists():
+        # If model exists, always run recommend() fresh (ensures exclusion logic is current)
+        if _model_exists:
             try:
-                st.session_state["rec_results"] = _recommender.deserialize_results(_results_path)
-            except Exception:
+                _recommender._load_cached_model()
+                st.session_state["rec_results"] = _recommender.recommend(n=50)
+                _recommender.serialize_results(st.session_state["rec_results"], _results_path)
+            except Exception as _e:
+                logger.warning(f"Failed to generate recommendations from cached model: {_e}")
                 _need_generation = True
         else:
             _need_generation = True

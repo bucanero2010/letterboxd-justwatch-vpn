@@ -390,6 +390,10 @@ class HybridRecommender:
             self._watch_history_hash = cached.get("watch_history_hash")
             self._user_index = cached.get("user_index")
 
+            # Also load the interaction matrix for watch history exclusion
+            if self._interaction_matrix_path.exists():
+                self._interaction_matrix = sp.load_npz(self._interaction_matrix_path)
+
             logger.info("Loaded cached LightFM model from %s", self._model_path)
             return True
 
@@ -782,9 +786,10 @@ class HybridRecommender:
         watched_internal_ids = set()
         for tmdb_id, internal_id in self._tmdb_id_to_internal.items():
             # Check if this item was watched by looking at the interaction matrix
+            # Any non-zero value means the user interacted with it (positive or negative)
             if (self._interaction_matrix is not None
                     and internal_id < self._interaction_matrix.shape[1]
-                    and self._interaction_matrix[self._user_index, internal_id] > 0):
+                    and self._interaction_matrix[self._user_index, internal_id] != 0):
                 watched_internal_ids.add(internal_id)
 
         # Construct candidate item IDs (exclude watched)
