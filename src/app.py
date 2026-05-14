@@ -125,7 +125,7 @@ div[data-testid="stExpander"] {
 # =========================
 # 🍿 HEADER + TABS
 # =========================
-tab_watchlist, tab_lookup = st.tabs(["🍿 Watchlist", "🔍 Quick Lookup"])
+tab_watchlist, tab_lookup, tab_recommend = st.tabs(["🍿 Watchlist", "🔍 Quick Lookup", "🎯 Recommendations"])
 
 # =========================
 # 📁 PATHING
@@ -469,3 +469,414 @@ with tab_lookup:
 
             except Exception as e:
                 st.error(f"Lookup failed: {e}")
+
+
+# =========================
+# 🎯 TAB 3: RECOMMENDATIONS
+# =========================
+with tab_recommend:
+    import json as _json
+    from recommender import HybridRecommender, RecommendationResult
+    from letterbox_scraper import scrape_films, scrape_ratings
+    from justwatch_query import get_film_offers_api
+
+    st.markdown("## 🎯 Recommendations")
+    st.caption("Personalized movie recommendations powered by your watch history")
+
+    # Load config
+    _config_path = BASE_DIR / "src" / "config.json"
+    if _config_path.exists():
+        with open(_config_path) as _f:
+            _config = _json.load(_f)
+    else:
+        _config = {}
+
+    _data_dir = BASE_DIR / "data"
+    _username = _config.get("letterboxd_user", "")
+    _countries = _config.get("country_scan", ["US"])
+
+    if not _username:
+        st.warning("⚠️ No Letterboxd username configured in `src/config.json`.")
+        st.stop()
+
+    # Initialize recommender
+    _recommender = HybridRecommender(config=_config, data_dir=_data_dir)
+
+    # Initialize session state for recommendations
+    if "rec_results" not in st.session_state:
+        st.session_state["rec_results"] = None
+    if "rec_page" not in st.session_state:
+        st.session_state["rec_page"] = 1
+    if "rec_streaming_filter" not in st.session_state:
+        st.session_state["rec_streaming_filter"] = False
+    if "rec_streaming_cache" not in st.session_state:
+        st.session_state["rec_streaming_cache"] = {}
+
+    RECS_PER_PAGE = 20
+
+    # --- Status Panel ---
+    _results_path = _data_dir / "recommendations.json"
+    _model_exists = (_data_dir / "lightfm_model.pkl").exists()
+    _metadata_cached = (_data_dir / "tmdb_metadata_cache.json").exists()
+    _embeddings_cached = (_data_dir / "plot_embeddings.npz").exists()
+    _watch_cache_exists = (_data_dir / "watch_history_cache.json").exists()
+    _unmapped_path = _data_dir / "unmapped_films.json"
+    _n_unmapped = 0
+    if _unmapped_path.exists():
+        try:
+            _n_unmapped = len(_json.load(open(_unmapped_path)))
+        except Exception:
+            pass
+
+    with st.expander("📊 System Status", expanded=not _model_exists):
+        _col_s1, _col_s2, _col_s3 = st.columns(3)
+        with _col_s1:
+            if _model_exists:
+                import datetime
+                _model_age = (datetime.datetime.now().timestamp() - (_data_dir / "lightfm_model.pkl").stat().st_mtime) / 3600
+                st.metric("Model", f"✅ {_model_age:.0f}h old")
+            else:
+                st.metric("Model", "❌ Not trained")
+        with _col_s2:
+            if _metadata_cached:
+                _n_meta = len(_json.load(open(_data_dir / "tmdb_metadata_cache.json"))) if _metadata_cached else 0
+                st.metric("Metadata", f"✅ {_n_meta:,} movies")
+            else:
+                st.metric("Metadata", "❌ Not cached")
+        with _col_s3:
+            st.metric("Unmapped", f"⚠️ {_n_unmapped} films" if _n_unmapped else "✅ All mapped")
+
+    # --- Action Buttons ---
+    st.markdown("**Actions:**")
+    _btn_col1, _btn_col2, _btn_col3 = st.columns(3)
+
+    with _btn_col1:
+        _quick_update = st.button(
+            "⚡ Quick Update",
+            help="Incremental update — adjusts model for new ratings (seconds). Use when you've watched/rated a few new movies.",
+            use_container_width=True,
+            disabled=not _model_exists,
+        )
+    with _btn_col2:
+        _full_retrain = st.button(
+            "🏗️ Full Retrain",
+            help="Rebuilds everything from scratch including new movies not in the dataset (~10 min). Use for first run or major changes.",
+            use_container_width=True,
+        )
+    with _btn_col3:
+        _expand_dataset = st.button(
+            "📥 Expand & Retrain",
+            help=f"Adds {_n_unmapped} missing movies to the training matrix and retrains. Use to include recent films.",
+            use_container_width=True,
+            disabled=_n_unmapped == 0,
+        )
+
+    # Determine which action to take
+    retrain_clicked = _full_retrain or _expand_dataset
+    _incremental_clicked = _quick_update
+
+    # Check if model is fresh and we have cached results
+    _model_is_fresh = _recommender.is_model_fresh()
+
+    # Determine if we need to generate recommendations
+    _need_generation = False
+
+    if retrain_clicked or _incremental_clicked:
+        _need_generation = True
+        st.session_state["rec_results"] = None
+        st.session_state["rec_page"] = 1
+        st.session_state["rec_streaming_cache"] = {}
+
+    if st.session_state["rec_results"] is None:
+        if _results_path.exists():
+            try:
+                st.session_state["rec_results"] = _recommender.deserialize_results(_results_path)
+            except Exception:
+                _need_generation = True
+        else:
+            _need_generation = True
+
+    # Show generate button or run generation
+    if _need_generation and not retrain_clicked and not _incremental_clicked:
+        st.info(
+            "🎬 No recommendations available yet. Use one of the action buttons above to generate "
+            "personalized recommendations based on your Letterboxd watch history."
+        )
+
+    if _incremental_clicked and _model_exists:
+        _progress_placeholder = st.empty()
+        _log_placeholder = st.empty()
+        _log_messages = []
+
+        def _inc_progress_cb(msg):
+            import datetime
+            timestamp = datetime.datetime.now().strftime("%H:%M:%S")
+            _log_messages.append(f"[{timestamp}] {msg}")
+            _progress_placeholder.info(f"⚡ {msg}")
+            _log_placeholder.code("\n".join(_log_messages[-10:]), language=None)
+
+        with st.spinner("Quick update..."):
+            _watch_history_cache = _data_dir / "watch_history_cache.json"
+            if _watch_history_cache.exists():
+                _watch_history = _json.load(open(_watch_history_cache))
+            else:
+                _watch_history = []
+
+            if _watch_history:
+                _recommender.train(_watch_history, progress_callback=_inc_progress_cb)
+                _recs = _recommender.recommend(n=50)
+                _recommender.serialize_results(_recs, _results_path)
+                st.session_state["rec_results"] = _recs
+                _progress_placeholder.success(f"⚡ Quick update complete! {len(_recs)} recommendations.")
+            else:
+                st.warning("No cached watch history. Use Full Retrain instead.")
+    if retrain_clicked:
+        _progress_placeholder = st.empty()
+        _progress_bar = st.progress(0)
+        _log_placeholder = st.empty()
+        _log_messages = []
+
+        def _progress_cb(msg):
+            import datetime
+            timestamp = datetime.datetime.now().strftime("%H:%M:%S")
+            _log_messages.append(f"[{timestamp}] {msg}")
+            _progress_placeholder.info(f"🔄 {msg}")
+            # Show last 15 log entries
+            _log_placeholder.code("\n".join(_log_messages[-15:]), language=None)
+
+        with st.spinner("Training recommendation model... This may take a few minutes on first run."):
+            _progress_cb("Scraping watch history from Letterboxd...")
+            _progress_bar.progress(5)
+
+            # Try to load cached watch history first, scrape only if missing
+            _watch_history_cache = _data_dir / "watch_history_cache.json"
+            _watch_history = None
+
+            if _watch_history_cache.exists() and not retrain_clicked:
+                try:
+                    with open(_watch_history_cache, "r") as _f:
+                        _watch_history = _json.load(_f)
+                    _progress_cb(f"Loaded {len(_watch_history)} films from cache")
+                except Exception:
+                    _watch_history = None
+
+            if not _watch_history:
+                # Scrape the user's FULL watch history with ratings using Playwright
+                from playwright.sync_api import sync_playwright
+                _watch_history_url = f"https://letterboxd.com/{_username}/films/ratings/"
+                try:
+                    with sync_playwright() as _pw:
+                        _browser = _pw.chromium.launch(headless=True, channel="chromium")
+                        _ctx = _browser.new_context(user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+                        _ctx.add_init_script('Object.defineProperty(navigator, "webdriver", {get: () => undefined})')
+                        _pw_page = _ctx.new_page()
+                        _watch_history = scrape_ratings(_watch_history_url, pw_page=_pw_page, max_pages=100)
+                        _browser.close()
+                except Exception as _e:
+                    st.error(f"❌ Failed to launch browser: {_e}")
+                    st.stop()
+
+                # Cache the watch history for next time
+                if _watch_history:
+                    with open(_watch_history_cache, "w") as _f:
+                        _json.dump(_watch_history, _f)
+
+            if not _watch_history:
+                st.error("❌ No Letterboxd watch history found. Make sure your profile is public.")
+                st.stop()
+
+            _progress_bar.progress(15)
+            _progress_cb(f"Found {len(_watch_history)} watched films. Training model...")
+
+            try:
+                _recommender.retrain(
+                    watch_history=_watch_history,
+                    progress_callback=_progress_cb,
+                )
+                _progress_bar.progress(85)
+                _progress_cb("Generating recommendations...")
+
+                _recs = _recommender.recommend(n=50)
+                _recommender.serialize_results(_recs, _results_path)
+                st.session_state["rec_results"] = _recs
+                st.session_state["rec_page"] = 1
+                st.session_state["rec_streaming_cache"] = {}
+
+                _progress_bar.progress(100)
+                _progress_placeholder.success(f"✅ Generated {len(_recs)} recommendations!")
+
+            except Exception as e:
+                _progress_bar.empty()
+                _progress_placeholder.empty()
+                st.error(f"❌ Recommendation generation failed: {e}")
+                st.stop()
+
+    # --- Display Recommendations ---
+    _recs_to_display = st.session_state.get("rec_results")
+
+    # Show unmapped films if available
+    _unmapped_path = _data_dir / "unmapped_films.json"
+    if _unmapped_path.exists():
+        try:
+            with open(_unmapped_path, "r") as _f:
+                _unmapped = _json.load(_f)
+            if _unmapped:
+                with st.expander(f"⚠️ {len(_unmapped)} watched films not included in training (not in MovieLens)"):
+                    for film in _unmapped:
+                        st.caption(film)
+        except Exception:
+            pass
+
+    if _recs_to_display:
+        # Load TMDB metadata for enriching cards
+        _tmdb_meta_path = _data_dir / "tmdb_metadata_cache.json"
+        _tmdb_meta = {}
+        if _tmdb_meta_path.exists():
+            try:
+                with open(_tmdb_meta_path, "r") as _f:
+                    _tmdb_meta_raw = _json.load(_f)
+                _tmdb_meta = {int(k): v for k, v in _tmdb_meta_raw.items()}
+            except Exception:
+                pass
+
+        # Streaming filter toggle
+        st.checkbox(
+            "📺 Filter by my streaming services",
+            key="rec_streaming_filter",
+            help="Show only movies available on your owned streaming services",
+        )
+
+        _filtered_recs = _recs_to_display
+
+        # Apply streaming filter if enabled
+        if st.session_state["rec_streaming_filter"] and selected_owned_services:
+            _owned_provider_names = []
+            for label in selected_owned_services:
+                _owned_provider_names.extend(OWNED_SERVICES_MAP[label])
+
+            _streaming_filtered = []
+            _cache = st.session_state["rec_streaming_cache"]
+
+            with st.spinner("Checking streaming availability..."):
+                for rec in _recs_to_display:
+                    _cache_key = rec.tmdb_id
+                    if _cache_key not in _cache:
+                        # Query JustWatch for this movie
+                        offers = get_film_offers_api(
+                            title=rec.title,
+                            year=rec.year,
+                            countries=_countries,
+                        )
+                        _cache[_cache_key] = offers
+                    else:
+                        offers = _cache[_cache_key]
+
+                    # Check if any offer matches owned services
+                    if offers:
+                        all_providers = set()
+                        for providers_list in offers.values():
+                            all_providers.update(providers_list)
+                        if any(
+                            owned_p.lower() in p.lower()
+                            for p in all_providers
+                            for owned_p in _owned_provider_names
+                        ):
+                            _streaming_filtered.append(rec)
+
+            st.session_state["rec_streaming_cache"] = _cache
+            _filtered_recs = _streaming_filtered
+
+        # Stats bar
+        _current_page = st.session_state["rec_page"]
+        _total_recs = len(_filtered_recs)
+        _display_count = min(_current_page * RECS_PER_PAGE, _total_recs)
+
+        st.markdown(f"""
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value">{_total_recs}</div>
+                <div class="stat-label">Recommendations</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">{_display_count}</div>
+                <div class="stat-label">Showing</div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+        if not _filtered_recs:
+            st.info("😕 No recommendations match your streaming filter. Try disabling the filter or adding more services.")
+        else:
+            # Display paginated results in grid
+            _page_recs = _filtered_recs[:_display_count]
+            n_cols = 5
+
+            for i in range(0, len(_page_recs), n_cols):
+                cols = st.columns(n_cols, gap="medium")
+                for j, col in enumerate(cols):
+                    if i + j < len(_page_recs):
+                        rec = _page_recs[i + j]
+                        with col:
+                            # Poster
+                            if rec.poster_url:
+                                st.image(rec.poster_url, use_container_width=True)
+                            else:
+                                st.markdown("🎬", unsafe_allow_html=True)
+
+                            # Title and metadata
+                            st.markdown(f'<div class="movie-title">{rec.title}</div>', unsafe_allow_html=True)
+                            runtime_text = format_runtime(rec.runtime)
+                            year_text = rec.year if rec.year else "—"
+                            st.markdown(f'<div class="movie-meta">{year_text} · {runtime_text}</div>', unsafe_allow_html=True)
+
+                            # Score as percentage bar
+                            score_pct = int(rec.score * 100)
+                            st.progress(rec.score, text=f"Match: {score_pct}%")
+
+                            # Genre badges
+                            if rec.genres:
+                                genre_badges = "".join(
+                                    f'<span class="provider-badge">{g}</span>'
+                                    for g in rec.genres[:3]
+                                )
+                                st.markdown(genre_badges, unsafe_allow_html=True)
+
+                            # Director, cast, and plot from metadata
+                            _meta = _tmdb_meta.get(rec.tmdb_id, {})
+                            _directors = _meta.get("directors", [])
+                            _cast = _meta.get("cast", [])
+                            _overview = _meta.get("overview", "")
+
+                            _info_parts = []
+                            if _directors:
+                                _info_parts.append(f"🎬 {', '.join(_directors[:2])}")
+                            if _cast:
+                                _info_parts.append(f"🎭 {', '.join(_cast[:3])}")
+                            if _info_parts:
+                                st.caption(" · ".join(_info_parts))
+                            if _overview:
+                                # Show first ~100 chars of plot
+                                _short_plot = _overview[:120] + "..." if len(_overview) > 120 else _overview
+                                st.caption(_short_plot)
+
+                            # Streaming availability (from cache if available)
+                            _cache = st.session_state["rec_streaming_cache"]
+                            if rec.tmdb_id in _cache and _cache[rec.tmdb_id]:
+                                offers = _cache[rec.tmdb_id]
+                                n_countries_with_offers = len(offers)
+                                n_total_offers = sum(len(v) for v in offers.values())
+                                with st.expander(f"📍 {n_countries_with_offers} countries · {n_total_offers} offers"):
+                                    for country_code in sorted(offers.keys()):
+                                        flag = country_to_flag(country_code)
+                                        st.markdown(f'<div class="country-header">{flag} {country_code}</div>', unsafe_allow_html=True)
+                                        badges = "".join(
+                                            f'<span class="provider-badge">{p}</span>'
+                                            for p in sorted(offers[country_code])
+                                        )
+                                        st.markdown(badges, unsafe_allow_html=True)
+
+            # Load more button
+            if _display_count < _total_recs:
+                if st.button(f"📥 Load more ({_total_recs - _display_count} remaining)", key="load_more_btn", use_container_width=True):
+                    st.session_state["rec_page"] += 1
+                    st.rerun()

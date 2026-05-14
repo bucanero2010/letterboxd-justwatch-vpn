@@ -85,9 +85,16 @@ def main():
     # --- 1. Discover sources (Task 4.1) ---
     print(f"--- Fetching Letterboxd data for {USERNAME} ---")
 
+    # Use full Chromium locally (bypasses Cloudflare), default headless in CI
+    _is_ci = os.environ.get("CI", "").lower() in ("true", "1")
+    _launch_args = {"headless": True}
+    if not _is_ci:
+        _launch_args["channel"] = "chromium"
+
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        context = browser.new_context(user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+        browser = p.chromium.launch(**_launch_args)
+        context = browser.new_context(user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+        context.add_init_script('Object.defineProperty(navigator, "webdriver", {get: () => undefined})')
         page = context.new_page()
 
         sources = [{'name': 'Watchlist', 'url': f'https://letterboxd.com/{USERNAME}/watchlist/', 'key': 'watchlist'}]
@@ -241,6 +248,43 @@ def main():
         newly_available = find_new_availability(OLD_SNAPSHOT, OUTPUT_FILE)
         send_alert_email(newly_available)
         OLD_SNAPSHOT.unlink()  # Clean up snapshot
+
+    # --- 8. Weekly recommendation model update ---
+    if today.weekday() == 0:  # Monday
+        print("📊 Monday — updating recommendation model...")
+        try:
+            from recommender import HybridRecommender
+            from letterbox_scraper import scrape_ratings
+            from playwright.sync_api import sync_playwright
+
+            # Scrape ratings
+            with sync_playwright() as pw:
+                browser = pw.chromium.launch(**_launch_args)
+                ctx = browser.new_context(user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+                ctx.add_init_script('Object.defineProperty(navigator, "webdriver", {get: () => undefined})')
+                pw_page = ctx.new_page()
+                watch_history = scrape_ratings(
+                    f"https://letterboxd.com/{USERNAME}/films/ratings/",
+                    pw_page=pw_page, max_pages=100
+                )
+                browser.close()
+
+            if watch_history:
+                # Save watch history cache
+                import json as _json
+                with open(DATA_DIR / "watch_history_cache.json", "w") as f:
+                    _json.dump(watch_history, f)
+
+                # Train and generate recommendations
+                recommender = HybridRecommender(config=config, data_dir=DATA_DIR)
+                recommender.retrain(watch_history, progress_callback=lambda msg: print(f"  🎯 {msg}"))
+                results = recommender.recommend(n=50)
+                recommender.serialize_results(results, DATA_DIR / "recommendations.json")
+                print(f"✅ Generated {len(results)} recommendations.")
+            else:
+                print("⚠️ No watch history found, skipping recommendations.")
+        except Exception as e:
+            print(f"⚠️ Recommendation update failed: {e}")
 
 if __name__ == "__main__":
     main()

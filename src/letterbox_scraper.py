@@ -14,7 +14,17 @@ def _get_page_html(url: str, pw_page=None) -> str | None:
     """Fetch page HTML using Playwright if available, else cloudscraper."""
     if pw_page:
         try:
-            pw_page.goto(url, wait_until="domcontentloaded", timeout=15000)
+            pw_page.goto(url, wait_until="domcontentloaded", timeout=30000)
+
+            # Handle Cloudflare challenge ("Just a moment...")
+            for _ in range(10):
+                if "Just a moment" in pw_page.title():
+                    pw_page.wait_for_timeout(3000)
+                else:
+                    break
+
+            # Wait for content to render
+            pw_page.wait_for_timeout(1000)
             return pw_page.content()
         except Exception as e:
             logger.warning(f"Playwright failed for {url}: {e}")
@@ -144,3 +154,75 @@ def discover_lists(username: str, pw_page=None, sleep_time: float = 1, max_pages
         logger.info(f"No lists found for user '{username}'.")
 
     return lists
+
+
+def scrape_ratings(base_url, pw_page=None, sleep=1, max_pages=100):
+    """
+    Scrape films with their ratings from a Letterboxd ratings page.
+    
+    Args:
+        base_url: Letterboxd ratings URL (e.g., /username/films/ratings/)
+        pw_page: Optional Playwright page for browser-based fetching
+        sleep: Delay between pages
+        max_pages: Max pages to paginate
+    
+    Returns:
+        List of dicts with keys: title, year, slug, rating (0.5-5.0 scale)
+    """
+    import re as _re
+
+    films = []
+    seen_slugs = set()
+    next_path = base_url.replace("https://letterboxd.com", "")
+
+    page = 1
+    while next_path and page <= max_pages:
+        url = urljoin("https://letterboxd.com", next_path)
+        print(f"Scraping ratings: {url}")
+
+        html = _get_page_html(url, pw_page)
+        if not html:
+            print(f"Failed to fetch {url}")
+            break
+
+        soup = BeautifulSoup(html, "html.parser")
+
+        components = soup.find_all("div", class_="react-component")
+        for comp in components:
+            slug = comp.get("data-item-slug")
+            title_raw = comp.get("data-item-name") or ""
+
+            if not slug or slug in seen_slugs:
+                continue
+
+            # Extract year from title
+            year_match = YEAR_RE.search(title_raw)
+            year = int(year_match.group(1)) if year_match else None
+            title = YEAR_RE.sub("", title_raw).strip()
+
+            # Find rating in parent element
+            rating = None
+            parent = comp.parent
+            if parent:
+                rating_span = parent.find("span", class_=_re.compile(r"rated-\d+"))
+                if rating_span:
+                    classes = rating_span.get("class", [])
+                    rated_class = [c for c in classes if c.startswith("rated-")]
+                    if rated_class:
+                        rating = int(rated_class[0].replace("rated-", "")) / 2.0
+
+            films.append({
+                "title": title,
+                "year": year,
+                "slug": slug,
+                "rating": rating,
+            })
+            seen_slugs.add(slug)
+
+        next_link = soup.find("a", class_="next")
+        next_path = next_link.get("href") if next_link else None
+
+        page += 1
+        time.sleep(sleep)
+
+    return films
