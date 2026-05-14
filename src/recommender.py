@@ -658,7 +658,7 @@ class HybridRecommender:
                 len(feature_metadata),
             )
 
-        item_feature_matrix, tmdb_id_order = feature_engineer.build_item_feature_matrix(feature_metadata, use_embeddings=False)
+        item_feature_matrix, tmdb_id_order = feature_engineer.build_item_feature_matrix(feature_metadata)
 
         # Build the LightFM-compatible item features matrix
         # Using side features only (no identity matrix) for fast training.
