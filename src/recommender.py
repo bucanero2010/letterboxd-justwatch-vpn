@@ -632,8 +632,8 @@ class HybridRecommender:
         metadata = metadata_fetcher.fetch_batch(
             all_tmdb_ids,
             progress_callback=lambda cur, tot: (
-                progress_callback(f"Fetching metadata: {cur}/{tot}")
-                if progress_callback and cur % 5000 == 0 else None
+                progress_callback(f"Fetching metadata: {cur}/{tot} ({cur*100//tot}%)")
+                if progress_callback and (cur % 10000 == 0 or cur == tot) else None
             ),
         )
         metadata_fetcher.save_cache()
