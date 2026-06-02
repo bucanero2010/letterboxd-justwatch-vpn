@@ -755,6 +755,272 @@ class HybridRecommender:
         # Run full training pipeline
         self.train(watch_history, progress_callback)
 
+    def expand_and_retrain(self, watch_history: list[dict], progress_callback=None) -> None:
+        """Expand the training matrix with unmapped films and retrain from scratch.
+
+        Adds films that have TMDB IDs but are not in MovieLens as new columns
+        in the interaction matrix, inserts the user's z-score ratings for them,
+        rebuilds item features for the expanded set, and does a full retrain.
+
+        Steps:
+        1. Load MovieLens ratings → base interaction matrix
+        2. Build standard index mappings from links.csv
+        3. Resolve ALL watch history slugs to TMDB IDs
+        4. Identify unmapped films (have TMDB ID but no MovieLens mapping)
+        5. Expand interaction matrix with new columns for unmapped films
+        6. Update index mappings with new column indices
+        7. Insert user watch history (now including previously unmapped films)
+        8. Delete stale feature caches (item_features.npz, plot_embeddings.npz)
+        9. Fetch metadata and rebuild features for the expanded item set
+        10. Train LightFM (5 epochs, WARP, 64 components)
+        11. Save model + caches
+
+        Args:
+            watch_history: List of dicts with keys: title, year, slug, rating.
+            progress_callback: Optional callable(message) for status updates.
+        """
+        from lightfm import LightFM
+
+        from feature_engineer import FeatureEngineer
+        from id_mapper import IDMapper
+        from tmdb_metadata import TMDBMetadataFetcher
+
+        if progress_callback:
+            progress_callback("Expand & Retrain: starting...")
+
+        # Step 1: Download MovieLens 25M if needed
+        self._download_movielens_25m(progress_callback)
+
+        # Step 2: Load ratings as implicit feedback
+        if progress_callback:
+            progress_callback("Loading MovieLens 25M ratings...")
+        ml_matrix, movielens_id_to_col, col_to_movielens_id = self._load_ratings_as_implicit(progress_callback)
+
+        # Subsample to top 5K most active users
+        if progress_callback:
+            progress_callback("Subsampling to most active users...")
+        max_users = 5000
+        if ml_matrix.shape[0] > max_users:
+            user_activity = np.array(ml_matrix.sum(axis=1)).flatten()
+            top_indices = np.argsort(-user_activity)[:max_users]
+            ml_matrix = ml_matrix[top_indices]
+            logger.info(
+                "Subsampled to %d most active users (%d interactions)",
+                ml_matrix.shape[0], ml_matrix.nnz,
+            )
+
+        # Step 3: Build base index mappings (MovieLens only)
+        if progress_callback:
+            progress_callback("Building ID mappings...")
+        self._build_index_mappings(movielens_id_to_col, col_to_movielens_id)
+
+        # Step 4: Resolve ALL watch history to TMDB IDs
+        if progress_callback:
+            progress_callback("Resolving watch history to TMDB IDs...")
+
+        tmdb_token = self.config.get("tmdb_key", "")
+        id_mapper = IDMapper(tmdb_token, self.data_dir)
+
+        watch_tmdb_ids = []
+        ratings_map = {}
+        unmapped_tmdb_ids = []  # TMDB IDs not in MovieLens
+        unmapped_ratings = {}   # ratings for unmapped films
+
+        for film in watch_history:
+            tmdb_id = id_mapper.resolve_slug_to_tmdb_id(
+                slug=film.get("slug", ""),
+                title=film.get("title", ""),
+                year=film.get("year", 0),
+            )
+            if tmdb_id is None:
+                continue
+
+            if tmdb_id in self._tmdb_id_to_internal:
+                # Already in MovieLens — normal path
+                watch_tmdb_ids.append(tmdb_id)
+                if film.get("rating") is not None:
+                    ratings_map[tmdb_id] = film["rating"]
+            else:
+                # Not in MovieLens — candidate for expansion
+                unmapped_tmdb_ids.append(tmdb_id)
+                if film.get("rating") is not None:
+                    unmapped_ratings[tmdb_id] = film["rating"]
+
+        id_mapper.save_cache()
+
+        # Deduplicate unmapped IDs
+        unmapped_tmdb_ids = list(dict.fromkeys(unmapped_tmdb_ids))
+
+        logger.info(
+            "Expand & Retrain: %d mapped films, %d unmapped films to expand",
+            len(watch_tmdb_ids), len(unmapped_tmdb_ids),
+        )
+        if progress_callback:
+            progress_callback(
+                f"Found {len(unmapped_tmdb_ids)} unmapped films to add to training matrix"
+            )
+
+        # Step 5: Expand interaction matrix with new columns
+        if unmapped_tmdb_ids:
+            n_existing_items = ml_matrix.shape[1]
+            n_new_items = len(unmapped_tmdb_ids)
+            n_total_items = n_existing_items + n_new_items
+
+            if progress_callback:
+                progress_callback(
+                    f"Expanding matrix: {n_existing_items} → {n_total_items} items "
+                    f"(+{n_new_items} new)"
+                )
+
+            # Pad the interaction matrix with zero columns for new items
+            # MovieLens users have no interactions with these new films
+            padding = sp.csr_matrix(
+                (ml_matrix.shape[0], n_new_items), dtype=np.float32
+            )
+            ml_matrix = sp.hstack([ml_matrix, padding], format="csr")
+
+            # Step 6: Update index mappings with new column indices
+            for i, tmdb_id in enumerate(unmapped_tmdb_ids):
+                col_idx = n_existing_items + i
+                self._tmdb_id_to_internal[tmdb_id] = col_idx
+                self._internal_to_tmdb_id[col_idx] = tmdb_id
+
+            # Now these films are "mapped" — move them to the normal watch list
+            watch_tmdb_ids.extend(unmapped_tmdb_ids)
+            ratings_map.update(unmapped_ratings)
+
+            logger.info(
+                "Expanded interaction matrix to %d items (%d new columns added)",
+                n_total_items, n_new_items,
+            )
+
+        # Step 7: Insert user watch history (now includes expanded films)
+        if progress_callback:
+            progress_callback("Building interaction matrix with user history...")
+        self._interaction_matrix = self._insert_user_watch_history(
+            ml_matrix, watch_tmdb_ids, ratings=ratings_map if ratings_map else None
+        )
+        self._cache_interaction_matrix(self._interaction_matrix)
+
+        # Step 8: Delete stale feature caches so they get rebuilt
+        stale_caches = [
+            self.data_dir / "item_features.npz",
+            self.data_dir / "plot_embeddings.npz",
+            self.data_dir / "item_features_aligned.npz",
+        ]
+        for cache_file in stale_caches:
+            if cache_file.exists():
+                try:
+                    cache_file.unlink()
+                    logger.info("Deleted stale cache: %s", cache_file.name)
+                except OSError as e:
+                    logger.warning("Failed to delete %s: %s", cache_file.name, e)
+
+        # Step 9: Fetch TMDB metadata and rebuild features
+        if progress_callback:
+            progress_callback("Fetching TMDB metadata for expanded item set...")
+
+        metadata_fetcher = TMDBMetadataFetcher(
+            api_token=tmdb_token,
+            cache_path=self.data_dir / "tmdb_metadata_cache.json",
+        )
+
+        all_tmdb_ids = list(self._tmdb_id_to_internal.keys())
+        metadata = metadata_fetcher.fetch_batch(
+            all_tmdb_ids,
+            progress_callback=lambda cur, tot: (
+                progress_callback(f"Fetching metadata: {cur}/{tot} ({cur*100//tot}%)")
+                if progress_callback and (cur % 10000 == 0 or cur == tot) else None
+            ),
+        )
+        metadata_fetcher.save_cache()
+
+        if progress_callback:
+            progress_callback("Engineering features (TF-IDF + embeddings) for expanded set...")
+
+        feature_engineer = FeatureEngineer(cache_dir=self.data_dir, min_feature_count=20)
+
+        feature_metadata = {
+            tmdb_id: meta
+            for tmdb_id, meta in metadata.items()
+            if tmdb_id in self._tmdb_id_to_internal
+        }
+
+        item_feature_matrix, tmdb_id_order = feature_engineer.build_item_feature_matrix(feature_metadata)
+
+        # Build aligned item features matrix
+        n_items = self._interaction_matrix.shape[1]
+        n_side_features = item_feature_matrix.shape[1]
+
+        item_features_aligned = sp.lil_matrix((n_items, n_side_features), dtype=np.float32)
+        for row_idx, tmdb_id in enumerate(tmdb_id_order):
+            col_idx = self._tmdb_id_to_internal.get(tmdb_id)
+            if col_idx is not None and col_idx < n_items:
+                item_features_aligned[col_idx] = item_feature_matrix[row_idx]
+
+        item_features_aligned = item_features_aligned.tocsr()
+
+        logger.info(
+            "Expanded item features: %d items × %d side features",
+            item_features_aligned.shape[0], item_features_aligned.shape[1],
+        )
+
+        try:
+            sp.save_npz(self.data_dir / "item_features_aligned.npz", item_features_aligned)
+        except OSError as e:
+            logger.warning("Failed to cache aligned item features: %s", e)
+
+        # Step 10: Train LightFM model
+        if progress_callback:
+            progress_callback("Training LightFM (WARP loss, 64 components, 5 epochs)...")
+
+        self._model = LightFM(
+            loss="warp",
+            no_components=64,
+            learning_rate=0.05,
+            random_state=42,
+        )
+
+        logger.info(
+            "Training LightFM (expanded): %d users × %d items, %d item features",
+            self._interaction_matrix.shape[0],
+            self._interaction_matrix.shape[1],
+            item_features_aligned.shape[1],
+        )
+
+        n_epochs = 5
+        for epoch in range(n_epochs):
+            if progress_callback:
+                progress_callback(f"Training LightFM (epoch {epoch + 1}/{n_epochs})...")
+            self._model.fit_partial(
+                interactions=self._interaction_matrix,
+                item_features=item_features_aligned,
+                epochs=1,
+                num_threads=os.cpu_count() or 2,
+                verbose=False,
+            )
+
+        logger.info("LightFM training complete (expanded dataset).")
+
+        # Step 11: Save model and artifacts
+        current_hash = self._compute_watch_history_hash(watch_history)
+        self._watch_history_hash = current_hash
+        self._save_model(current_hash)
+
+        # Clear the unmapped films list since they're now included
+        unmapped_path = self.data_dir / "unmapped_films.json"
+        if unmapped_path.exists():
+            try:
+                with open(unmapped_path, "w") as f:
+                    json.dump([], f)
+            except OSError:
+                pass
+
+        if progress_callback:
+            progress_callback(
+                f"Expand & Retrain complete! {len(unmapped_tmdb_ids)} new films added to model."
+            )
+
     def recommend(self, n: int = 50) -> list[RecommendationResult]:
         """Score candidates and return top-N ranked recommendations.
 

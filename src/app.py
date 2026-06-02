@@ -572,7 +572,8 @@ with tab_recommend:
         )
 
     # Determine which action to take
-    retrain_clicked = _full_retrain or _expand_dataset
+    retrain_clicked = _full_retrain
+    _expand_clicked = _expand_dataset
     _incremental_clicked = _quick_update
 
     # Check if model is fresh and we have cached results
@@ -581,7 +582,7 @@ with tab_recommend:
     # Determine if we need to generate recommendations
     _need_generation = False
 
-    if retrain_clicked or _incremental_clicked:
+    if retrain_clicked or _incremental_clicked or _expand_clicked:
         _need_generation = True
         st.session_state["rec_results"] = None
         st.session_state["rec_page"] = 1
@@ -601,7 +602,7 @@ with tab_recommend:
             _need_generation = True
 
     # Show generate button or run generation
-    if _need_generation and not retrain_clicked and not _incremental_clicked:
+    if _need_generation and not retrain_clicked and not _incremental_clicked and not _expand_clicked:
         st.info(
             "🎬 No recommendations available yet. Use one of the action buttons above to generate "
             "personalized recommendations based on your Letterboxd watch history."
@@ -713,6 +714,60 @@ with tab_recommend:
                 _progress_bar.empty()
                 _progress_placeholder.empty()
                 st.error(f"❌ Recommendation generation failed: {e}")
+                st.stop()
+
+    if _expand_clicked:
+        _progress_placeholder = st.empty()
+        _progress_bar = st.progress(0)
+        _log_placeholder = st.empty()
+        _log_messages = []
+
+        def _progress_cb(msg):
+            import datetime
+            timestamp = datetime.datetime.now().strftime("%H:%M:%S")
+            _log_messages.append(f"[{timestamp}] {msg}")
+            _progress_placeholder.info(f"📥 {msg}")
+            _log_placeholder.code("\n".join(_log_messages[-15:]), language=None)
+
+        with st.spinner("Expanding dataset and retraining... This may take several minutes."):
+            _progress_cb("Loading watch history...")
+            _progress_bar.progress(5)
+
+            _watch_history_cache = _data_dir / "watch_history_cache.json"
+            if _watch_history_cache.exists():
+                _watch_history = _json.load(open(_watch_history_cache))
+            else:
+                _watch_history = []
+
+            if not _watch_history:
+                st.warning("No cached watch history. Use Full Retrain instead.")
+                st.stop()
+
+            _progress_bar.progress(10)
+
+            try:
+                _recommender.expand_and_retrain(
+                    watch_history=_watch_history,
+                    progress_callback=_progress_cb,
+                )
+                _progress_bar.progress(85)
+                _progress_cb("Generating recommendations...")
+
+                _recs = _recommender.recommend(n=50)
+                _recommender.serialize_results(_recs, _results_path)
+                st.session_state["rec_results"] = _recs
+                st.session_state["rec_page"] = 1
+                st.session_state["rec_streaming_cache"] = {}
+
+                _progress_bar.progress(100)
+                _progress_placeholder.success(
+                    f"✅ Expand & Retrain complete! {len(_recs)} recommendations generated."
+                )
+
+            except Exception as e:
+                _progress_bar.empty()
+                _progress_placeholder.empty()
+                st.error(f"❌ Expand & Retrain failed: {e}")
                 st.stop()
 
     # --- Display Recommendations ---

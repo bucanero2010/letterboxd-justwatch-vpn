@@ -184,16 +184,47 @@ class FeatureEngineer:
                 f"Encoding {len(texts_to_encode)} plot overviews "
                 f"({n_movies - len(texts_to_encode)} movies have empty plots)"
             )
-            model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
-            encoded = model.encode(
-                texts_to_encode,
-                show_progress_bar=False,
-                convert_to_numpy=True,
-                normalize_embeddings=False,
+
+            # Run encoding in a subprocess to avoid PyTorch segfault in Streamlit
+            import subprocess
+            import sys
+            import json
+            import tempfile
+
+            texts_path = self.cache_dir / "_texts_to_encode.json"
+            output_path = self.cache_dir / "_encoded_embeddings.npy"
+
+            with open(texts_path, "w") as f:
+                json.dump(texts_to_encode, f)
+
+            encode_script = f"""
+import os, json, numpy as np
+os.environ['TOKENIZERS_PARALLELISM'] = 'false'
+from sentence_transformers import SentenceTransformer
+model = SentenceTransformer('all-MiniLM-L6-v2', device='cpu')
+texts = json.load(open('{texts_path}'))
+encoded = model.encode(texts, show_progress_bar=False, convert_to_numpy=True, batch_size=64)
+np.save('{output_path}', encoded)
+print(f'Encoded {{len(texts)}} texts, shape: {{encoded.shape}}')
+"""
+            result = subprocess.run(
+                [sys.executable, "-c", encode_script],
+                capture_output=True, text=True, timeout=600
             )
-            # Place encoded embeddings at the correct row indices
-            for idx, embedding in zip(indices_with_text, encoded):
-                embeddings[idx] = embedding
+
+            if result.returncode != 0:
+                logger.error(f"Embedding subprocess failed: {result.stderr[-500:]}")
+                logger.warning("Falling back to zero embeddings")
+            elif output_path.exists():
+                encoded = np.load(output_path)
+                for idx, embedding in zip(indices_with_text, encoded):
+                    embeddings[idx] = embedding
+                output_path.unlink()
+                logger.info(f"Encoded {len(texts_to_encode)} texts via subprocess")
+
+            # Cleanup
+            if texts_path.exists():
+                texts_path.unlink()
         else:
             logger.info("No plot overviews to encode, using zero vectors for all movies")
 
