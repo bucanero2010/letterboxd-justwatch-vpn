@@ -168,6 +168,7 @@ OWNED_SERVICES_MAP: dict[str, list[str]] = {
     "Disney":   ["Disney Plus"],
     "Youtube":  ["YouTube"],
     "RTVE":     ["RTVE"],
+    "Filmin":   ["Filmin"],
 }
 
 # =========================
