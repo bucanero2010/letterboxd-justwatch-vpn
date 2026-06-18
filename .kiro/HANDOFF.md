@@ -68,12 +68,49 @@ Per request, all of that was moved to `feature/expand-and-retrain` and `main` wa
 reset to match `origin/main`. Then Filmin was committed onto a fresh `main`,
 rebased on top of new remote commits, and pushed.
 
+## Full Contents of `feature/expand-and-retrain`
+
+This branch is the source of truth for the recommender work. Compared to `main`
+it adds ~3,900 lines across 19 files. `main` only has the streaming-availability
+app + the Filmin tweak + this handoff; **none of the recommender code is on `main`.**
+
+Branch commits (oldest → newest), on top of base `88451cf`:
+- `1fd45fe` feat: add hybrid movie recommender (LightFM) — the bulk of the work
+- `2cbe357` fix: reduce metadata log frequency to every 10K movies
+- `98746e6` fix: disable embeddings in training to prevent macOS segfault
+- `b8cecc0` Revert "fix: disable embeddings..." (embeddings re-enabled)
+- `e9dcada` fix: always run recommend() fresh from model + watch-history exclusion
+- `9b64d3c` feat: implement expand_and_retrain (this session)
+
+Files the branch adds or changes that are NOT on `main`:
+
+| File | Notes |
+|---|---|
+| `src/recommender.py` | NEW (~1320 lines). `HybridRecommender` core. |
+| `src/feature_engineer.py` | NEW. TF-IDF + PCA embeddings. |
+| `src/id_mapper.py` | NEW. slug↔TMDB↔MovieLens resolution. |
+| `src/tmdb_metadata.py` | NEW. TMDB fetch + cache. |
+| `src/train_recommender.py` | NEW. Standalone CLI training script (run outside Streamlit). |
+| `src/app.py` | MODIFIED (~470 lines). Recommendations tab + buttons. |
+| `src/letterbox_scraper.py` | MODIFIED (~84 lines). Scraper changes for ratings/lists. |
+| `src/main.py` | MODIFIED (~48 lines). |
+| `.github/workflows/scrape.yml` | MODIFIED (1 line). |
+| `requirements.txt` | MODIFIED. Adds lightfm, scipy, scikit-learn, sentence-transformers, etc. |
+| `.kiro/specs/hybrid-movie-recommender/` | NEW. Full spec: `requirements.md`, `design.md` (594 lines), `tasks.md`, `.config.kiro`. Read this first to understand intended design. |
+| `tests/test_*.py`, `tests/__init__.py` | NEW. Stub tests for feature_engineer, id_mapper, recommender, tmdb_metadata (minimal coverage). |
+
+**To inspect without checking out:** `git diff origin/main...origin/feature/expand-and-retrain`
+**To read the design intent:** see `.kiro/specs/hybrid-movie-recommender/design.md` on the branch.
+
+> Caveat: the branch base is older than the latest `main` (which has many
+> automated "Update streaming data [skip ci]" commits). Expect to rebase or
+> resolve `src/app.py` / data files when integrating.
+
 ## Open Items / TODO
 
-- **PUSH the `feature/expand-and-retrain` branch.** It only exists locally and holds
-  the entire recommender system (the original 5 commits) PLUS `expand_and_retrain()`.
-  If this machine is lost before pushing, that work is gone. Run:
-  `git push -u origin feature/expand-and-retrain`
+- **`feature/expand-and-retrain` is pushed to remote** (origin). It holds the entire
+  recommender system + `expand_and_retrain()`. None of it is on `main` yet — it needs
+  a PR / merge. Inspect with `git diff origin/main...origin/feature/expand-and-retrain`.
 - **Test `expand_and_retrain()`** end to end. Fastest path: run the app
   (`source venv/bin/activate && python3 -m streamlit run src/app.py`), click
   "📥 Expand & Retrain", watch the log. Afterward the unmapped-films expander should
