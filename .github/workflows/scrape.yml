@@ -37,6 +37,9 @@ jobs:
           export PYTHONPATH=$PYTHONPATH:.
           python main.py
 
+      - name: Export data for web frontend
+        run: python src/export_web_data.py
+
       - name: Commit and Push Results
         run: |
           git config --global user.name "Scraper Bot"
@@ -44,5 +47,7 @@ jobs:
           git add -f data/unwatched_by_country.csv
           git add -f data/seen_watchlist.json
           git add -f data/seen_*.json
-          git commit -m "Update streaming data [skip ci]" || echo "No changes to commit"
+          git add -f web/public/data.json
+          # No "[skip ci]": Vercel honors it and would skip redeploying the site
+          git commit -m "Update streaming data" || echo "No changes to commit"
           git push
