@@ -3,6 +3,7 @@ JustWatch query module using the GraphQL API via simple-justwatch-python-api.
 Replaces the previous Playwright-based scraping approach for much faster lookups.
 """
 
+import math
 import re
 import time
 import unicodedata
@@ -11,6 +12,9 @@ from simplejustwatchapi import search, offers_for_countries
 # Rate limit config
 MAX_RETRIES = 5
 BASE_DELAY = 3  # seconds
+
+# Config country code -> JustWatch country code, where they differ
+JUSTWATCH_COUNTRY = {"UK": "GB"}
 
 
 def _retry_on_429(func, *args, **kwargs):
@@ -51,13 +55,16 @@ def validate_match(target_title, target_year, found_title, found_year):
     matched = sum(1 for w in significant if w in found_words)
     if len(significant) <= 2:
         return matched >= len(significant)
-    return matched >= max(2, len(significant) // 2)
+    # Require most of the title: a half-overlap let "From the End of the World"
+    # pass for "Do Not Expect Too Much from the End of the World".
+    return matched >= max(2, math.ceil(len(significant) * 0.75))
 
 
-def find_movie_id(title, year, local_title=None):
+def find_movie_id(title, year, local_title=None, tmdb_id=None):
     """
     Search JustWatch for a movie and return its node ID.
-    Tries localized title first, then English title.
+    An exact TMDB id match wins; otherwise falls back to fuzzy title matching,
+    trying the localized title first, then the English title.
     """
     target_year = int(year)
 
@@ -65,6 +72,10 @@ def find_movie_id(title, year, local_title=None):
     if local_title and local_title.lower() != title.lower():
         try:
             results = _retry_on_429(search, local_title, country="US", language="en", count=5)
+            for r in results:
+                if tmdb_id and r.object_type == "MOVIE" and r.tmdb_id == tmdb_id:
+                    print(f"   ✅ Found by TMDB id: {r.title} ({r.release_year}) [id={r.entry_id}]")
+                    return r.entry_id
             for r in results:
                 if r.object_type == "MOVIE" and validate_match(local_title, target_year, r.title, r.release_year):
                     print(f"   ✅ Found: {r.title} ({r.release_year}) [id={r.entry_id}]")
@@ -76,6 +87,12 @@ def find_movie_id(title, year, local_title=None):
     try:
         print(f"   🔎 Searching for: '{title} ({year})'...")
         results = _retry_on_429(search, title, country="US", language="en", count=5)
+        # JustWatch may list a film under its original-language title, so
+        # matching on the TMDB id is more reliable than comparing titles.
+        for r in results:
+            if tmdb_id and r.object_type == "MOVIE" and r.tmdb_id == tmdb_id:
+                print(f"   ✅ Found by TMDB id: {r.title} ({r.release_year}) [id={r.entry_id}]")
+                return r.entry_id
         for r in results:
             if r.object_type == "MOVIE" and validate_match(title, target_year, r.title, r.release_year):
                 print(f"   ✅ Found: {r.title} ({r.release_year}) [id={r.entry_id}]")
@@ -91,14 +108,18 @@ def get_streaming_offers(node_id, countries):
     Get streaming offers for a movie across multiple countries in one API call.
     Returns dict: {country_code: [provider_name, ...]}
     """
+    # JustWatch uses ISO "GB"; config and stored data use "UK".
+    to_jw = {c: JUSTWATCH_COUNTRY.get(c, c) for c in countries}
+    from_jw = {v: k for k, v in to_jw.items()}
     try:
-        all_offers = _retry_on_429(offers_for_countries, node_id, countries)
+        all_offers = _retry_on_429(offers_for_countries, node_id, set(to_jw.values()))
     except Exception as e:
         print(f"   ⚠️ Offers error: {e}")
         return {}
 
     result = {}
-    for country, country_offers in all_offers.items():
+    for jw_country, country_offers in all_offers.items():
+        country = from_jw.get(jw_country, jw_country)
         streaming = [
             o for o in country_offers
             if o.monetization_type in ('FLATRATE', 'FREE', 'ADS')
@@ -110,7 +131,7 @@ def get_streaming_offers(node_id, countries):
     return result
 
 
-def get_film_offers_api(title, year, countries, local_title=None):
+def get_film_offers_api(title, year, countries, local_title=None, tmdb_id=None):
     """
     High-level function: find a movie and get streaming offers for all countries.
     Returns dict: {country_code: [provider_name, ...]}
@@ -120,7 +141,7 @@ def get_film_offers_api(title, year, countries, local_title=None):
     except (TypeError, ValueError):
         return {}
 
-    node_id = find_movie_id(title, target_year, local_title=local_title)
+    node_id = find_movie_id(title, target_year, local_title=local_title, tmdb_id=tmdb_id)
     if not node_id:
         return {}
 

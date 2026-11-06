@@ -167,15 +167,16 @@ def main():
                 movie_id = f"{film['title']}_{film['year']}"
 
                 if movie_id not in movie_cache:
-                    poster, runtime = get_movie_metadata(film["title"], film["year"], TMDB_TOKEN)
-                    movie_cache[movie_id] = {"poster_url": poster, "runtime": runtime}
+                    poster, runtime, tmdb_id = get_movie_metadata(film["title"], film["year"], TMDB_TOKEN)
+                    movie_cache[movie_id] = {"poster_url": poster, "runtime": runtime, "tmdb_id": tmdb_id}
 
                 # Get localized title (use first non-English country for search hint)
                 local_title = get_localized_title(film["title"], film["year"], COUNTRIES[0], TMDB_TOKEN)
 
                 # Single API call gets offers for ALL countries
                 offers_by_country = get_film_offers_api(
-                    film["title"], film["year"], COUNTRIES, local_title=local_title
+                    film["title"], film["year"], COUNTRIES, local_title=local_title,
+                    tmdb_id=movie_cache[movie_id]["tmdb_id"],
                 )
 
                 source_label = ", ".join(sorted(all_films[movie_id]['sources']))

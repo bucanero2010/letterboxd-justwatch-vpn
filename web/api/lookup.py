@@ -6,6 +6,9 @@ from urllib.parse import parse_qs, urlparse
 
 from simplejustwatchapi import offers_for_countries, search
 
+# Config country code -> JustWatch country code, where they differ
+JUSTWATCH_COUNTRY = {"UK": "GB"}
+
 
 class handler(BaseHTTPRequestHandler):
     def _send(self, status, body):
@@ -34,10 +37,17 @@ class handler(BaseHTTPRequestHandler):
             if not results:
                 return self._send(200, {"error": "No movies found. Try a different search term."})
 
-            match = results[0]
-            offers = offers_for_countries(match.entry_id, countries)
+            # Prefer an exact title match; JustWatch's top hit can be a sequel or namesake.
+            exact = [r for r in results if r.title.casefold() == query.casefold()]
+            match = (exact or results)[0]
+
+            # JustWatch uses ISO "GB"; the app uses "UK".
+            to_jw = {c: JUSTWATCH_COUNTRY.get(c, c) for c in countries}
+            from_jw = {v: k for k, v in to_jw.items()}
+            offers = offers_for_countries(match.entry_id, set(to_jw.values()))
             out = {}
-            for country, country_offers in offers.items():
+            for jw_country, country_offers in offers.items():
+                country = from_jw.get(jw_country, jw_country)
                 providers = sorted({o.package.name for o in country_offers
                                     if o.monetization_type in ("FLATRATE", "FREE", "ADS")})
                 if providers:

@@ -4,8 +4,8 @@ TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w500"
 
 def get_movie_metadata(title, year, api_token):
     """
-    Fetch poster + runtime from TMDB.
-    Returns: (poster_url, runtime)
+    Fetch poster + runtime + TMDB id from TMDB.
+    Returns: (poster_url, runtime, tmdb_id). tmdb_id is a str, or None on failure.
     """
     search_url = "https://api.themoviedb.org/3/search/movie"
     headers = {
@@ -45,12 +45,13 @@ def get_movie_metadata(title, year, api_token):
             else "https://via.placeholder.com/500x750?text=No+Poster"
         )
 
-        return poster_url, runtime
+        return poster_url, runtime, str(movie_id)
 
     except Exception as e:
         print(f"⚠️ TMDB error for {title}: {e}")
         return (
             "https://via.placeholder.com/500x750?text=No+Poster",
+            None,
             None
         )
 
